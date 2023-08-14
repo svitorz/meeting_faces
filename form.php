@@ -5,7 +5,7 @@ require_once "header.php";
             <div class="m-5">
                 <div class="m-5 fs-5 p-3">
                     <div class="border">
-                    <form action="pesquisa.php" method="get">
+                    <form action="pesquisa.php" method="post">
                         <div class="input-group input-group-lg p-1">
                             <input type="text" placeholder="Primeiro nome:" name="pnome" id="pnome" class="form-control">
                         </div>
