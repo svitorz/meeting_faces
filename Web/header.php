@@ -18,7 +18,7 @@
           <a class="nav-link link-dark active" aria-current="page" href="inicio.php">Sobre Nos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-dark" href="form.php">Pesquisa</a>
+          <a class="btn btn-outline-dark" href="form.php" id="botaoPesquisa">Pesquisa</a>
         </li>
     </ul>
     <div class="d-flex">

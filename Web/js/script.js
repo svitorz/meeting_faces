@@ -3,12 +3,7 @@
     if (!lightSwitch) {
       return;
     }
-  
-    /**
-     * @function darkmode
-     * @summary: changes the theme to 'dark mode' and save settings to local stroage.
-     * Basically, replaces/toggles every CSS class that has '-light' class with '-dark'
-     */
+
     function darkMode() {
       document.querySelectorAll('.bg-light').forEach((element) => {
         element.className = element.className.replace(/-light/g, '-dark');
@@ -24,7 +19,12 @@
       } else {
         document.body.classList.add('text-light');
       }
-
+      botaoPesquisar = document.getElementById('botaoPesquisa');
+      if(botaoPesquisar.classList.contains('btn-outline-dark')) {
+        botaoPesquisar.classList.replace('btn-outline-dark', 'btn-outline-light');
+      } else {
+        botaoPesquisar.classList.add('btn-outline-light');
+      }
       var linkText = document.getElementsByClassName('nav-link');
       if(document.linkText.classList.contains('link-dark')) {
         document.linkText.classList.replace('link-dark', 'link-light');
@@ -66,6 +66,11 @@
         document.body.classList.replace('text-light', 'text-dark');
       } else {
         document.body.classList.add('text-dark');
+      }
+      if(document.body.classList.contains('bg-outline-dark')) {
+        document.body.classList.replace('bg-outline-dark', 'bg-outline-light');
+      } else {
+        document.body.classList.add('bg-outline-light');
       }
   
       // Tables
@@ -122,4 +127,3 @@
   
     setup();
   })();
-  
