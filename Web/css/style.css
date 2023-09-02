@@ -1,17 +1,186 @@
-#lightSwitch {
-    transform: scale(1.8);
-  }
-  
-  .custom-theme.bg-light {
-    background-color: darkslategray !important;
-    border-radius: 3px;
-    color: gainsboro;
-    text-decoration: underline;
-  }
-  
-  .custom-theme.bg-dark {
-    background-color: blanchedalmond !important;
-    box-shadow: 10px 5px 5px rgba(246, 255, 219, 0.5);
-    color: dimgray;
-    text-decoration: overline;
-  }
+#header{
+    background-image: url(https://observatorio3setor.org.br/wp-content/uploads/2018/05/morador-de-rua1-editada-home.jpg);
+    background-size: cover;
+}
+
+#icons {
+    background: url("img/bgtr.svg") top right no-repeat, url("img/bgbl.svg") bottom left no-repeat, url("img/bgbl.svg") bottom left no-repeat, url("img/overlay.png"), linear-gradient(79deg, rgba(0,0,0,1) 0%, rgba(96,96,96,1) 50%, rgb(97, 97, 97) 100%);
+}
+
+#text-image{
+    background: url("img/bgtr.svg") top right no-repeat, url("img/bgbl.svg") bottom left no-repeat, url("img/overlay.png"), linear-gradient(79deg,rgba(124,124,124,1), rgba(96,96,96,1) 50%, rgba(0,0,0,1) 0%  100%);
+}
+#last{
+    background: url("images/bgtr.svg") top right no-repeat, url("images/bgbl.svg") bottom left no-repeat, url("images/overlay.png"), linear-gradient(45deg, rgba(96,96,96,1), rgba(0,0,0,1), rgba(124,124,124,1));
+}
+/* Feature Icon */
+.feature-icon {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 5em;
+    margin-bottom: 2.75em;
+    cursor: default;
+}
+
+    .feature-icon .icon {
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        font-size: 4.5em;
+        border-radius: 100%;
+        box-shadow: inset 0 0 0 1px #ffffff;
+        color: #ffffff;
+        line-height: 2em;
+    }
+
+    .feature-icon:before {
+        content: '';
+        background: #ffffff;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -0.325em;
+        width: 0.65em;
+        height: 0.65em;
+        display: block;
+        border-radius: 100%;
+    }
+
+    .feature-icon:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0.65em;
+        width: 1px;
+        height: 4.35em;
+        background: #eaeaea;
+        margin-left: -0.5px;
+    }
+/* Icon */
+
+.dark .feature-icon .icon {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+.dark .feature-icon:before, .dark .feature-icon:after {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Icons */
+
+.icon {
+    text-decoration: none;
+    text-decoration: none;
+}
+
+    .icon:before {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        text-transform: none !important;
+        font-weight: 400;
+    }
+
+    .icon:before {
+        line-height: inhreit;
+    }
+
+    .icon > .label {
+        display: none;
+    }
+
+    .icon.solid:before {
+        font-weight: 900;
+    }
+
+/* Button */
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+.button {
+    -moz-transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    -webkit-appearance: none;
+    position: relative;
+    display: inline-block;
+    background: #FFFFFF26;
+    padding: 0.85em 3em 0.85em 3em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    border: 0;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+    input[type="button"]:hover,
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    button:hover,
+    .button:hover {
+        background: #4f4f4f;
+    }
+
+    input[type="button"].alt,
+    input[type="submit"].alt,
+    input[type="reset"].alt,
+    button.alt,
+    .button.alt {
+        color: inherit;
+        box-shadow: inset 0 0 0 1px #e6e6e6;
+        background: none;
+    }
+
+        input[type="button"].alt:hover,
+        input[type="submit"].alt:hover,
+        input[type="reset"].alt:hover,
+        button.alt:hover,
+        .button.alt:hover {
+            background: rgba(0, 0, 0, 0.025);
+        }
+
+.dark input[type="button"],
+.dark input[type="submit"],
+.dark input[type="reset"],
+.dark button,
+.dark .button {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 0 0 1px #fff;
+    color: #fff;
+}
+
+    .dark input[type="button"]:hover,
+    .dark input[type="submit"]:hover,
+    .dark input[type="reset"]:hover,
+    .dark button:hover,
+    .dark .button:hover {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    .dark input[type="button"].alt,
+    .dark input[type="submit"].alt,
+    .dark input[type="reset"].alt,
+    .dark button.alt,
+    .dark .button.alt {
+        background: none;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+        .dark input[type="button"].alt:hover,
+        .dark input[type="submit"].alt:hover,
+        .dark input[type="reset"].alt:hover,
+        .dark button.alt:hover,
+        .dark .button.alt:hover {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 0 0 1px #fff;
+        }
