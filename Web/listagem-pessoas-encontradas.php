@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 require 'logica.php';
 
 require 'header.php';

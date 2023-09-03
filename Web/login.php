@@ -1,37 +1,48 @@
 <?php 
+session_start();
+
 require 'logica.php';
 
 require 'conexao/conexao.php';
+
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
-
 if(isset($email)&&isset($senha)){
-$sql = "SELECT nome,senha,id_usuario FROM usuario WHERE email = ?";
-$stmt = $conn->prepare($sql);
-$stmt->execute([$email]);
-$rowUsuario = $stmt->fetch();
-    if(password_verify($senha, $rowUsuario['senha'])){
-      //Deu certo
-        $_SESSION['email'] = $email;
-        $_SESSION['nome'] = $rowUsuario['nome'];
-        $_SESSION['id'] = $rowUsuario['id_usuario'];
-        redireciona();
+    $selectUser = "SELECT nome,email,senha,id_usuario FROM usuario WHERE email = ?";
+    $stmt = $conn->prepare($selectUser);
+    $stmt->execute([$email]);
+    $row = $stmt->fetch();
+    if($row){
+        if(password_verify($senha, $row['senha'])){
+            $_SESSION['nome'] = $row['nome'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['id'] = $row['id_usuario'];
+            $_SESSION['permissao'] = $row['ID_PERMISSAO'];
+            $_SESSION['usuario'] = true;
+            redireciona();
+        }else{
+            $_SESSION['erro'] = true;
+            redirecionaLogin();
+        }
+    }else{
+        $selectAdmin = "SELECT nome,email,senha,id FROM administrador WHERE email = ?";
+        $stmt = $conn->prepare($selectAdmin);
+        $stmt->execute([$email]);
+        $row = $stmt->fetch();
+        if($row){
+            if(password_verify($senha, $row['senha'])){
+                $_SESSION['nome'] = $row['nome'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['permissao'] = $row['ID_PERMISSAO'];
+                $_SESSION['admin'] = true;
+                redireciona();
+            }else{
+                $_SESSION['erro'] = true;
+                redirecionaLogin();
+            }
+        }
     }
-}else if(isset($email)&&isset($senha)){
-$sqladm = "SELECT nome,senha,ID_ADM FROM adminstrador WHERE email = ?";
-$stmt = $conn->prepare($sqladm);
-$stmt->execute([$email]);
-$rowAdm = $stmt->fetch();
-    if((password_verify($senha, $rowAdm['senha']))){
-        $_SESSION['email'] = $email;
-        $_SESSION['nome'] = $rowUsuario['nome'];
-        $_SESSION['id'] = $rowUsuario['ID_ADM'];
-        redireciona();
-    }
-}else {
-    // Deu errado
-    $_SESSION['erro'] = true;
-    redirecionaLogin();
- }
+}
 ?>

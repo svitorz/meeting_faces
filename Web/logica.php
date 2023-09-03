@@ -29,3 +29,11 @@ function redirecionaLogin($pagina = null){
     }
     header('Location:' . $pagina);
 }
+
+function isAdmin(){
+    if(isset($_SESSION['admin'])){
+        return true;
+    }else{
+        return false;
+    }
+}

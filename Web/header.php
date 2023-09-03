@@ -34,10 +34,22 @@
       </div>
       <?php } else { ?>
       <div class="d-flex">
-          <span class="btn-outline-dark"> <?= nome_usuario(); ?></span>
+          <span class="btn me-2"> 
+          <i class="fa-solid fa-user"></i>
+          <span class="text-capitalize"> <?= nome_usuario(); ?> </span>
+          </span>
           <a href="logout.php" class="btn-dark btn me-2">Sair</a>
       </div>
-      <?php } ?>
+      <?php }
+      if($_SESSION['admin']){
+        ?>
+        <div class="d-flex">
+          <a href="tela-operacional.php" class="btn-out-dark btn me-2">Tela operacional</a>
+        </div>
+        <?php
+      }
+      ?>
+
     </div>
   </div>
 </nav>

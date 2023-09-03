@@ -26,8 +26,8 @@ unset($_SESSION['erro']);
                 </div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="form5Example2">Senha</label>
-                  <input type="password" id="form5Example2" class="form-control" placeholder="************" required />
+                    <label class="form-label" for="senha">Senha</label>
+                  <input type="password" id="senha" name="senha"  class="form-control" placeholder="************" required />
                 </div>
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4">Entrar</button>

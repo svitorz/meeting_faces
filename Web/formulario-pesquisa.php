@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'logica.php';
 include 'header.php'; ?>
 <div class="container-fluid px-5 py-3">
