@@ -16,6 +16,26 @@ if(isset($_SESSION['erro']) && $_SESSION['erro']){
 }
 unset($_SESSION['erro']);
 ?>
+<?php
+if(isset($_SESSION['restrito']) && $_SESSION['restrito']){
+  ?>
+  <div class="alert alert-warning" role="alert">
+    <h4>Erro ao acessar a página.</h4>
+    <p>Você precisa estar logado para acessar esta página.</p>
+  </div>
+  <?php
+unset($_SESSION['restrito']);
+}
+if(isset($_SESSION['sucesso']) && $_SESSION['sucesso']){
+  ?>
+  <div class="alert alert-success" role="alert">
+    <h4>Usuário cadastrado com sucesso.</h4>
+    <p>Faça login para acessar a página.</p>
+  </div>
+  <?php
+  unset($_SESSION['sucesso']);
+}
+?>
     <div class="justify-content-center align-items-center">
         <div class="container px-5 me-5 mb-5">
             <form action="login.php" method="post">

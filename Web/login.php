@@ -26,7 +26,7 @@ if(isset($email)&&isset($senha)){
             redirecionaLogin();
         }
     }else{
-        $selectAdmin = "SELECT nome,email,senha,id FROM administrador WHERE email = ?";
+        $selectAdmin = "SELECT nome,email,senha,id,ID_PERMISSAO FROM administrador WHERE email = ?";
         $stmt = $conn->prepare($selectAdmin);
         $stmt->execute([$email]);
         $row = $stmt->fetch();

@@ -3,6 +3,15 @@ session_start();
 
 require 'logica.php';
 require_once 'header.php';
+if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
+?>
+<div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
+  <strong>Formulário enviado com sucesso!</strong> Os dados foram registrados com sucesso!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<?php
+unset($_SESSION['sucesso']);
+}
 ?>
 <section id="header" class="container-fluid py-5" style="height: 100vh;">
     <header class="py-5 my-5">

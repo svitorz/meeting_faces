@@ -5,8 +5,6 @@ require 'logica.php';
 
 require 'conexao/conexao.php';
 
-require 'header.php';
-
 $nome = filter_input(INPUT_POST, 'nome_usuario', FILTER_SANITIZE_SPECIAL_CHARS);
 $email = filter_input(INPUT_POST, 'email_usuario', FILTER_SANITIZE_EMAIL);
 $telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -28,22 +26,12 @@ $insert = "INSERT INTO usuario(nome, email, telefone, senha, ID_PERMISSAO) VALUE
 $stmt = $conn->prepare($insert);
 $result = $stmt->execute([$nome, $email, $telefone, $senha_hash,$permissao]);
 if($result==true){
-    ?>
-    <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Cadastro realizado com sucesso!</h4>
-        <p>Seu cadastro foi realizado com sucesso. Você já pode fazer login.</p>
-        <hr>
-        <p class="mb-0">Clique <a href="formulario-login.php">aqui</a> para fazer login.</p>
-    </div>
-    <?php
+    $_SESSION['sucesso'] = true;
+    header('Location: formulario-login.php');
+    exit();
 }else{
-    ?>
-    <div class="alert-danger alert" role="alert">
-        <h4>Houve um erro ao registrar os dados.</h4>
-        <p>Tente novamente.</p>
-        <p><?= $errorArray[2]; ?></p>
-    </div>
-    <?php
+    $_SESSION['erro'] = true;
+    header('Location: formulario-cadastro-usuario.php');
+    exit();
 }
-require 'footer.php';
 ?>

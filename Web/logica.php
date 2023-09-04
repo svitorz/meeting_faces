@@ -16,6 +16,10 @@ function email_usuario(){
     return $_SESSION['email'];
 }
 
+function id_usuario(){
+    return $_SESSION['id'];
+}
+
 function redireciona($pagina = null){
     if(empty($pagina)){
         $pagina = 'inicio.php';

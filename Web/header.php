@@ -41,7 +41,7 @@
           <a href="logout.php" class="btn-dark btn me-2">Sair</a>
       </div>
       <?php }
-      if($_SESSION['admin']){
+      if(isset($_SESSION['admin'])&&$_SESSION['admin']){
         ?>
         <div class="d-flex">
           <a href="tela-operacional.php" class="btn-out-dark btn me-2">Tela operacional</a>

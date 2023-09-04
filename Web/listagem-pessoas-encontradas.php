@@ -17,8 +17,8 @@ $grau_parentesco = filter_input(INPUT_POST, 'grau_parentesco', FILTER_SANITIZE_S
     <div class="card-body">
         <h5 class="card-title">José Silva</h5>
         <p class="card-text">Encontra-se na cidade São Paulo.</p>
-        <a href="#" class="btn btn-primary my-1">Informações</a>
-        <a href="#" class="btn btn-success">Adicionar feedback</a>
+        <a href="info.php?id=" class="btn btn-primary my-1">Informações</a>
+        <a href="formulario-feedback.php" class="btn btn-success">Adicionar feedback</a>
     </div>
 </div>
 
