@@ -9,7 +9,7 @@ if(!autenticado()){
     die();
 }
 
-$id_morador = $_GET['id_morador'];
+$id_morador = filter_input(INPUT_GET, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
 
 require 'header.php';
 ?>

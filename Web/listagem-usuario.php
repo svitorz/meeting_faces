@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'logica.php';
+
 if(!isAdmin()){
     $_SESSION['restrito'] = true;
     redireciona();
@@ -9,7 +10,7 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT id_usuario,nome FROM usuario ORDER BY nome";
+$sql = "SELECT id_usuario,nome,id_permissao FROM usuario ORDER BY nome";
 
 $stmt = $conn->query($sql);
 
@@ -20,6 +21,7 @@ require_once 'header.php';
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Nome </th>
+          <th scope="col">Tipo de usuário:</th>
           <?php
           if(isAdmin()){
           ?> 
@@ -36,6 +38,16 @@ require_once 'header.php';
         <tr>
           <th scope="row"> <?= $row["id_usuario"]?> </th>
           <td><?= $row["nome"]?></td>
+          <td>
+            <?php if($row['id_permissao']==3){
+                    echo 'Administrador';
+                  }elseif($row['id_permissao']==2){
+                    echo 'Cadastrador';
+                  }else{
+                    echo 'Usuário';
+                  }
+            ?>
+          </td>
           <td>  
             <?php 
             if(isAdmin()){

@@ -9,22 +9,24 @@ if (!autenticado()) {
     die();
 }
 
-$id_morador = $_GET['id_morador'];
+$id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
 
 //CONCAT(myguests.firstname,' ',myguests.lastname) AS name, myguests.email, messages.message 
-$sql = "select moradores.*,CONCAT(usuario.nome) AS nome_usuario,usuario.id_usuario
+$sql = "select moradores.*,CONCAT(usuario.nome) AS nome_usuario,usuario.id_usuario,descricao.descricao AS feedback_texto
             from usuario inner join moradores 
                 on usuario.id_usuario = moradores.id_usuario 
-                    where moradores.id_morador=?;";
+                    left join descricao
+                        on moradores.id_morador=descricao.id_morador
+                    where moradores.id_morador=?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_morador]);
 $row = $stmt->fetch();
 
 require 'header.php';
 ?>
-<section style="background-color: #eee;">
+<section class="p-5" style="background-color: #eee;">
     <div class="row">
         <div class="col-lg-4">
             <div class="card mb-4">
@@ -47,24 +49,24 @@ require 'header.php';
                 <div class="card-body p-0">
                     <ul class="list-group list-group-flush rounded-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <i class="fas fa-globe fa-lg text-warning"></i>
-                            <p class="mb-0">https://mdbootstrap.com</p>
+                            <!-- <i class="fas fa-globe fa-lg text-warning"></i> -->
+                            <p class="mb-0"></p>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                            <p class="mb-0">mdbootstrap</p>
+                            <!-- <i class="fab fa-github fa-lg" style="color: #333333;"></i> -->
+                            <p class="mb-0"></p>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                            <p class="mb-0">@mdbootstrap</p>
+                            <!-- <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i> -->
+                            <p class="mb-0"></p>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                            <p class="mb-0">mdbootstrap</p>
+                            <!-- <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i> -->
+                            <p class="mb-0"></p>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                            <p class="mb-0">mdbootstrap</p>
+                            <!-- <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i> -->
+                            <p class="mb-0"></p>
                         </li>
                     </ul>
                 </div>
@@ -142,7 +144,7 @@ require 'header.php';
                     </div>
                     <?php 
                     }
-                        if(isset($rowDescricao['feedback_texto']) && $rowDescricao['feedback_texto']){
+                        if(isset($row['feedback_texto']) && $row['feedback_texto']){
                             ?>
                     <hr />
                     <div class="row">
@@ -151,7 +153,7 @@ require 'header.php';
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">
-                                <?= $rowDescricao['feedback_texto']; ?>
+                                <?= $row['feedback_texto']; ?>
                             </p>
                         </div>
                     </div>

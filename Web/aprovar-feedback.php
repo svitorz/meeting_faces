@@ -6,34 +6,21 @@ if(!isAdmin()){
     redireciona();
     die();
 }
-$aprovacao = $_GET['aprovacao'];
-$id_feedback = $_GET['id_feedback'];
+$aprovacao = filter_input(INPUT_GET, 'aprovacao', FILTER_SANITIZE_NUMBER_INT);
+$id = filter_input(INPUT_GET,'id',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
-if($aprovacao == 1){
-$sql = "UPDATE feedback SET aprovacao = :aprovacao WHERE id_feedback = :id_feedback";
-$stmt = $conn->prepare($sql);
-//usando bind param
-$stmt->bindParam(':aprovacao', $aprovacao);
-$stmt->bindParam(':id_feedback', $id_feedback);
-$stmt->execute();
-    if($count = $stmt->rowCount() > 0){
-        $_SESSION['aprovacao'] = true;
-        redireciona('listagem-feedback.php');
-        die();
-    }else{
-        $_SESSION['aprovacao'] = false;
-        redireciona('listagem-feedback.php');
-        die();
+if(isset($aprovacao)&&isset($id)){
+    if($aprovacao==2){
+        $sql = "UPDATE descricao SET id_permissao = 2 WHERE id_descricao = ?";
+    }elseif($aprovacao==3){
+        $sql = "UPDATE descricao SET id_permissao = 3 WHERE id_descricao = ?";
     }
-} else if($aprovacao == 2){
-$sql = "INSERT INTO feedback_negado (id_feedback, feedback_texto, id_morador, id_usuario, aprovacao)
-        SELECT (id_feedback, feedback_texto, id_morador, id_usuario, aprovacao) 
-        FROM feedback 
-        WHERE aprovacao = 2";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-redireciona('listagem-feedback.php');
-die();
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute([$id]);
+    if($result==true){
+        $_SESSION['sucesso'] = true;
+        header('Location: listagem-feedback.php');
+        exit();
+    }   
 }
-?>
