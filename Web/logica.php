@@ -19,6 +19,12 @@ function email_usuario(){
 function id_usuario(){
     return $_SESSION['id_usuario'];
 }
+function telefone_usuario(){
+    return $_SESSION['telefone'];
+}
+function data_nasc(){
+    return $_SESSION['data_nasc'];
+}
 
 function redireciona($pagina = null){
     if(empty($pagina)){
@@ -27,17 +33,15 @@ function redireciona($pagina = null){
     header('Location:' . $pagina);
 }
 
-function redirecionaLogin($pagina = null){
-    if(empty($pagina)){
-        $pagina = 'formulario-login.php';
-    }
-    header('Location:' . $pagina);
-}
-
 function isAdmin(){
-    if(isset($_SESSION['admin'])){
+    if(isset($_SESSION['permissao']) && $_SESSION['permissao'] == 3){
         return true;
-    }else{
-        return false;
     }
+    return false;
+}
+function isCadastrador(){
+    if(isset($_SESSION['permissao']) && $_SESSION['permissao'] == 2){
+        return true;
+    }
+    return false;
 }

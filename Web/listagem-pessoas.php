@@ -8,7 +8,7 @@ require_once 'header.php';
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT id_morador,nome,cidade_atual FROM morador ORDER BY nome";
+$sql = "SELECT id_morador,nome,cidade_atual FROM moradores ORDER BY nome";
 $stmt = $conn->query($sql);
 ?>
 <div class="row">

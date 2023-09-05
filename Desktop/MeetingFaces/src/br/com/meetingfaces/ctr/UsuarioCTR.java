@@ -9,6 +9,7 @@ import br.com.meetingfaces.dto.UsuarioDTO;
 
 public class UsuarioCTR {
     public String returnUsuario(UsuarioDTO usuarioDTO){
-        return "O cadastro foi realizado com sucesso!";
+        return "O cadastro foi realizado com sucesso!"+
+                "\n O nome cadastrado foi "+ usuarioDTO.getNome();
     }
 }

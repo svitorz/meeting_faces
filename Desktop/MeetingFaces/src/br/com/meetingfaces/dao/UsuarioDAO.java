@@ -41,11 +41,11 @@ public class UsuarioDAO {
             stmt = ConexaoDAO.con.createStatement();
             
             //INSERT INTO usuario(nome, email, telefone, senha, ID_PERMISSAO) VALUES (?, ?, ?, ?,?)
-            String sql = "INSERT INTO usuario(nome, email, senha,telefone, id_permissao) VALUES ( "
-                    + ""+"'"+usuarioDTO.getNome()+"', "
-                    +"'"+usuarioDTO.getEmail()+"', "
-                    +"'"+ criptografaSenha(md5) +"', "
+            String sql = "INSERT INTO usuario(nome, telefone, email, senha,id_permissao) VALUES ( "
+                    + " "+"'"+usuarioDTO.getNome()+"', "
                     +"'"+usuarioDTO.getTelefone()+"', "
+                    +"'"+ usuarioDTO.getEmail() +"', "
+                    +"'"+ criptografaSenha(md5)  +"', "
                     +"'"+usuarioDTO.getId_permissao()+"')";
             
             stmt.execute(sql.toUpperCase());

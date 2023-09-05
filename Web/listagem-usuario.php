@@ -38,7 +38,7 @@ require_once 'header.php';
           <td><?= $row["nome"]?></td>
           <td>  
             <?php 
-            if($_SESSION['permissao']==1){
+            if(isAdmin()){
             ?>
             <a href="excluir-usuario.php?id=<?=$row['id_usuario'];?>" onclick="if(!confirm('Deseja excluir?')) return false;" class=" btn btn-sm btn-danger">
               <span data-feather="trash-2"></span>

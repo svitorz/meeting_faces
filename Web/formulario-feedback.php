@@ -5,7 +5,7 @@ require 'logica.php';
 
 if(!autenticado()){
     $_SESSION['restrito'] = true;
-    redirecionaLogin();
+    redireciona('formulario-login.php');
     die();
 }
 

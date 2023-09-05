@@ -41,7 +41,7 @@
           <a href="logout.php" class="btn-dark btn me-2">Sair</a>
       </div>
       <?php }
-      if(isset($_SESSION['admin'])&& $_SESSION['admin']||isset($_SESSION['cadastrador'])&& $_SESSION['cadastrador']){
+      if(isAdmin()||isCadastrador()){
         ?>
         <div class="d-flex">
           <a href="tela-operacional.php" class="btn-out-dark btn me-2">Tela operacional</a>

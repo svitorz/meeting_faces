@@ -13,15 +13,7 @@ $id_morador = $_GET['id_morador'];
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT * FROM morador WHERE id_morador = ?";
-$stmt = $conn->prepare($sql);
-$stmt->execute([$id_morador]);
-$row = $stmt->fetch();
-
-$descricao = "SELECT feedback_texto FROM feedback WHERE id_morador = ?";
-$stmt = $conn->prepare($descricao);
-$stmt->execute([$id_morador]);
-$rowDescricao = $stmt->fetch();
+//Inner join
 
 require 'header.php';
 ?>

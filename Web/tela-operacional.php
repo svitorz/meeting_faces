@@ -3,7 +3,7 @@ session_start();
 
 require 'logica.php';
 
-if(!isAdmin()){
+if(!isAdmin()&&!isCadastrador()){
     $_SESSION['restrito'] = true;
     redireciona();
     die();
@@ -23,7 +23,7 @@ require 'header.php';
                             </span>
                         </a>
 <?php 
-if(isset($_SESSION['admin'])&& $_SESSION['admin']){
+if(isAdmin()){
 ?>
                     </li>
                     <li class="nav-link mb-5">
@@ -60,7 +60,7 @@ if(isset($_SESSION['admin'])&& $_SESSION['admin']){
             </div>
             <p class="text-center">
             Olá <span class="text-capitalize"> <?= nome_usuario(); ?></span>, seja bem vindo!    
-            Você está registrado como <?php if($_SESSION['admin']){echo 'administrador'; }else{ echo  'cadastrante';} ?>
+            Você está registrado como <?php if(isAdmin()){echo 'administrador'; }else{ echo  'cadastrante';} ?>
         </p>
         <?php 
         if(isset($_SESSION['cadastrado']) && $_SESSION['cadastrado']){
