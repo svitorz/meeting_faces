@@ -49,7 +49,12 @@
         <?php
       }
       ?>
-
     </div>
   </div>
 </nav>
+<?php 
+$pagina = null;
+if($pagina == 'inicio.php'){
+  echo "<h1 class='text-center py-3'>".$titulo_pagina."</h1>";
+} 
+?>

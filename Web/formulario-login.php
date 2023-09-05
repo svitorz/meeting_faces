@@ -4,7 +4,6 @@ require 'logica.php';
 require "header.php"; 
 ?>
 <div class="container-fluid my-5 py-5">
-    <h1 class="text-center my-3 pt-5">Insira seus dados:  </h1>
     <?php 
 if(isset($_SESSION['erro']) && $_SESSION['erro']){
   ?>

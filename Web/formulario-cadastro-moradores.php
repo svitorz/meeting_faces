@@ -1,10 +1,10 @@
 <?php
 session_start();
 require 'logica.php';
+
 include 'header.php'; 
 ?>
 <div class="container-fluid px-5 py-3">
-    <h4 class="text-center py-5">Insira os dados para cadastro:</h4>
     <form action="inserir-morador.php" method="post">
         <div class="form-outline mb-4">
             <label class="form-label" for="nome_completo">Nome</label>

@@ -12,8 +12,6 @@ if(!isAdmin()){
 
 include 'header.php';
 ?>
-<h1 class="text-center py-5">Insira os dados para cadastro: </h1>
-<!--  -->
 <?php 
 if(isset($_SESSION['usuario_existe']) && $_SESSION['usuario_existe']){
   ?>

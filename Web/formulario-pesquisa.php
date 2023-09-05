@@ -1,9 +1,10 @@
 <?php
 session_start();
 require 'logica.php';
-include 'header.php'; ?>
+$titulo_pagina = "Pesquisa de pessoas";
+include 'header.php'; 
+?>
 <div class="container-fluid px-5 py-3">
-    <h4 class="text-center py-5">Insira os dados da pessoa procurada:</h4>
     <form action="listagem-pessoas-encontradas.php" method="post">
         <div class="form-outline mb-4">
             <label class="form-label" for="nome_completo">Nome</label>
@@ -24,7 +25,12 @@ include 'header.php'; ?>
         </div>
       </div>
       <div class="form-outline mb-4">
-          <label class="form-label" for="nome_familiar">Address</label>
+          <label class="form-label" for="data_nasc">Data de nascimento</label>
+          <input type="date" id="data_nasc" name="data_nasc" class="form-control"/>
+      </div>
+      </div>
+      <div class="form-outline mb-4">
+          <label class="form-label" for="nome_familiar">Nome de um familiar próximo</label>
           <input type="text" id="nome_familiar" name="nome_familiar" class="form-control" placeholder="Ex: Maria Silva"/>
       </div>
       <div class="form-outline mb-4">

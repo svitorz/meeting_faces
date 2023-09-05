@@ -13,7 +13,6 @@ $id_morador = $_GET['id_morador'];
 
 require 'header.php';
 ?>
-<h1 class="text-center py-3">Escreva seu feedback</h1>
 <div class="row justify-content-center align-items-center">
     <div class="col-6">
         <form method="post" action="inserir-feedback.php">
