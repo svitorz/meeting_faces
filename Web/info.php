@@ -13,7 +13,14 @@ $id_morador = $_GET['id_morador'];
 
 require 'conexao/conexao.php';
 
-//Inner join
+//CONCAT(myguests.firstname,' ',myguests.lastname) AS name, myguests.email, messages.message 
+$sql = "select moradores.*,CONCAT(usuario.nome) AS nome_usuario,usuario.id_usuario
+            from usuario inner join moradores 
+                on usuario.id_usuario = moradores.id_usuario 
+                    where moradores.id_morador=?;";
+$stmt = $conn->prepare($sql);
+$stmt->execute([$id_morador]);
+$row = $stmt->fetch();
 
 require 'header.php';
 ?>
@@ -94,7 +101,7 @@ require 'header.php';
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">
-                                <?= $row['cidade_origem']; ?>
+                                <?= $row['cidade_natal']; ?>
                             </p>
                         </div>
                     </div>
@@ -105,7 +112,7 @@ require 'header.php';
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">
-                                <?= $row['nome_familiar']; ?>
+                                <?= $row['nome_familiar_proximo']; ?>
                             </p>
                         </div>
                     </div>
@@ -120,7 +127,21 @@ require 'header.php';
                             </p>
                         </div>
                     </div>
+                    <?php if(isAdmin()||isCadastrador()){
+                        ?>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Cadastrado por</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted text-capitalize mb-0">
+                                <?= $row['nome_usuario']; ?>, id: <?= $row['id_usuario']; ?>
+                            </p>
+                        </div>
+                    </div>
                     <?php 
+                    }
                         if(isset($rowDescricao['feedback_texto']) && $rowDescricao['feedback_texto']){
                             ?>
                     <hr />

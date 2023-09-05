@@ -44,7 +44,7 @@
       if(isAdmin()||isCadastrador()){
         ?>
         <div class="d-flex">
-          <a href="tela-operacional.php" class="btn-out-dark btn me-2">Tela operacional</a>
+          <a href="tela-operacional.php" class="btn-light btn me-2">Tela operacional</a>
         </div>
         <?php
       }
