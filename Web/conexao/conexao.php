@@ -9,10 +9,11 @@ try {
         $conf["user"],
         $conf["password"]
     );
-    // if ($conf["debug"] == "true") {
+    // if($conf["debug"] == "true") {
     //     echo "<h2>Sucesso!</h2>";
     //     echo "<p>Conectado ao banco <b>" . $conf["database"] . "</b></p>";
     // }
+
 } catch (Exception $e) {
     echo "<p>Erro ao se conectar no banco de dados. </p>";
     echo $e->getMessage();

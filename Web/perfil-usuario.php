@@ -1,28 +1,18 @@
 <?php
 session_start();
-
 require 'logica.php';
 
 if (!autenticado()) {
-    $_SESSION['restrito'] = true;
-    redireciona();
-    die();
+    header('location: formulario-login.php');
+    exit();
 }
 
-$id_morador = $_GET['id_morador'];
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT * FROM morador WHERE id_morador = ?";
-$stmt = $conn->prepare($sql);
-$stmt->execute([$id_morador]);
-$row = $stmt->fetch();
-
-$descricao = "SELECT feedback_texto FROM feedback WHERE id_morador = ?";
-$stmt = $conn->prepare($descricao);
-$stmt->execute([$id_morador]);
-$rowDescricao = $stmt->fetch();
-
+    $sql = "SELECT nome,email,telefone from usuario where id_permissao = 3";
+    $dados = $conn->query($sql);
+    $usuario = $dados->fetch();
 require 'header.php';
 ?>
 <section style="background-color: #eee;">
@@ -33,11 +23,10 @@ require 'header.php';
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                         class="rounded-circle img-fluid" style="width: 150px;">
                     <h5 class="my-3">
-                        <?= $row['nome']; ?>
+                        <span class="text-capitalize">
+                            <?= $usuario['nome']; ?>
+                        </span>
                     </h5>
-                    <p class="text-muted mb-1">Está em
-                        <?= $row['cidade_atual']; ?>
-                    </p>
                     <div class="d-flex justify-content-center mb-2">
                         <button type="button" class="btn btn-primary">Follow</button>
                         <button type="button" class="btn btn-outline-primary ms-1">Message</button>
@@ -76,73 +65,36 @@ require 'header.php';
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Nome:</p>
+                            <p class="mb-0">Nome</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= $row['nome']; ?>
+                            <p class="text-muted text-capitalize mb-0">
+                                <?= $usuario['nome']; ?>
                             </p>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Cidade atual:</p>
+                            <p class="mb-0">Email</p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">
-                                <?= $row['cidade_atual']; ?>
+                                <?= $usuario['email']; ?>
                             </p>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Cidade natal</p>
+                            <p class="mb-0">Telefone</p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">
-                                <?= $row['cidade_origem']; ?>
+                                <?= $usuario['telefone']; ?>
                             </p>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Nome de um familiar próximo</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= $row['nome_familiar']; ?>
-                            </p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Grau de parentesco</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= $row['grau_parentesco']; ?>
-                            </p>
-                        </div>
-                    </div>
-                    <?php 
-                        if(isset($rowDescricao['feedback_texto']) && $rowDescricao['feedback_texto']){
-                            ?>
-                    <hr />
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Descrição</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= $rowDescricao['feedback_texto']; ?>
-                            </p>
-                        </div>
-                    </div>
-                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -153,4 +105,4 @@ require 'header.php';
 </div>
 </div>
 </section>
-<?php require 'footer.php'; ?>
+<?php include 'footer.php'; ?>

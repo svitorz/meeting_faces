@@ -116,7 +116,7 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
     RedirectVIEW redirectView = new RedirectVIEW();
     
-    this.desktopPane
+    
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

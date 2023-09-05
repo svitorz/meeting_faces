@@ -1,8 +1,8 @@
 package br.com.meetingfaces.dto;
 
 public class MoradoresDTO {
-    String nome, nome_pais, cidade_origem;
-    int id_Morador;
+    String nome, cidade_atual, cidade_origem, nome_familiar,grau_parentesco;
+       int id_morador;
 
     public String getNome() {
         return nome;
@@ -12,12 +12,12 @@ public class MoradoresDTO {
         this.nome = nome;
     }
 
-    public String getNome_pais() {
-        return nome_pais;
+    public String getCidade_atual() {
+        return cidade_atual;
     }
 
-    public void setNome_pais(String nome_pais) {
-        this.nome_pais = nome_pais;
+    public void setCidade_atual(String cidade_atual) {
+        this.cidade_atual = cidade_atual;
     }
 
     public String getCidade_origem() {
@@ -28,11 +28,27 @@ public class MoradoresDTO {
         this.cidade_origem = cidade_origem;
     }
 
-    public int getId_Morador() {
-        return id_Morador;
+    public String getNome_familiar() {
+        return nome_familiar;
     }
 
-    public void setId_Morador(int id_Morador) {
-        this.id_Morador = id_Morador;
+    public void setNome_familiar(String nome_familiar) {
+        this.nome_familiar = nome_familiar;
+    }
+
+    public String getGrau_parentesco() {
+        return grau_parentesco;
+    }
+
+    public void setGrau_parentesco(String grau_parentesco) {
+        this.grau_parentesco = grau_parentesco;
+    }
+
+    public int getId_morador() {
+        return id_morador;
+    }
+
+    public void setId_morador(int id_morador) {
+        this.id_morador = id_morador;
     }
 }

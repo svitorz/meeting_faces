@@ -8,41 +8,29 @@ require 'conexao/conexao.php';
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
-if(isset($email)&&isset($senha)){
-    $selectUser = "SELECT nome,email,senha,id_usuario FROM usuario WHERE email = ?";
-    $stmt = $conn->prepare($selectUser);
+if($email && $senha){
+    $sql = "SELECT email,senha,id_usuario,nome,id_permissao FROM usuario WHERE email = ?";
+    $stmt = $conn->prepare($sql);
     $stmt->execute([$email]);
     $row = $stmt->fetch();
-    if($row){
-        if(password_verify($senha, $row['senha'])){
-            $_SESSION['nome'] = $row['nome'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['id'] = $row['id_usuario'];
-            $_SESSION['permissao'] = $row['ID_PERMISSAO'];
-            $_SESSION['usuario'] = true;
-            redireciona();
-        }else{
-            $_SESSION['erro'] = true;
-            redirecionaLogin();
+    if($senha==$row['senha']){
+        $_SESSION['id_usuario'] = $row['id_usuario'];
+        $_SESSION['nome'] = $row['nome'];
+        $_SESSION['email'] = $row['email'];
+        if($row['id_permissao']==3){
+            $_SESSION['admin'] = true;
+            $_SESSION['cadastrador'] = false;
+            $_SESSION['usuario'] = false;
+        }else if($row['id_permissao'] == 2){
+            $_SESSION['cadastrador'] = true;
+            $_SESSION['admin'] = false;
+            $_SESSION['usuario'] = false;
         }
-    }else{
-        $selectAdmin = "SELECT nome,email,senha,id,ID_PERMISSAO FROM administrador WHERE email = ?";
-        $stmt = $conn->prepare($selectAdmin);
-        $stmt->execute([$email]);
-        $row = $stmt->fetch();
-        if($row){
-            if(password_verify($senha, $row['senha'])){
-                $_SESSION['nome'] = $row['nome'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['id'] = $row['id'];
-                $_SESSION['permissao'] = $row['ID_PERMISSAO'];
-                $_SESSION['admin'] = true;
-                redireciona();
-            }else{
-                $_SESSION['erro'] = true;
-                redirecionaLogin();
-            }
-        }
-    }
+        $_SESSION['usuario'] = true;
+        $_SESSION['admin'] = false;
+        $_SESSION['cadastrador'] = false;
+        
+        header('location: index.php');
+        exit();
+    }//fecha if
 }
-?>
