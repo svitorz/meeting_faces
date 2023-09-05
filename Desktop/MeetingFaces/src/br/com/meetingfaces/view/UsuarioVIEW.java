@@ -18,7 +18,7 @@ public class UsuarioVIEW {
             
             usuarioDTO.setNome(JOptionPane.showInputDialog("Insira seu nome: "));
             usuarioDTO.setEmail(JOptionPane.showInputDialog("Insira seu email: "));
-            usuarioDTO.setTelefone(JOptionPane.showInputDialog("Insira seu nome: "));
+            usuarioDTO.setTelefone(JOptionPane.showInputDialog("Insira seu telefone: "));
             usuarioDTO.setSenha(JOptionPane.showInputDialog("Insira sua senha: "));
             
             JOptionPane.showMessageDialog(null, usuarioCTR.returnUsuario(usuarioDTO));

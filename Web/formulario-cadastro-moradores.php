@@ -20,8 +20,14 @@ include 'header.php';
         <div class="col">
           <div class="form-outline">
               <label class="form-label" for="cidade_atual">Cidade atual</label>
-            <input type="text" id="cidade_atual" name="cidade_atual" class="form-control" placeholder="Ex:: Rio de Janeiro"/>
+              <input type="text" id="cidade_atual" name="cidade_atual" class="form-control" placeholder="Ex: Rio de Janeiro"/>
           </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline mb-4">
+          <label for="data_nasc" class="form-label">Data de nascimento</label>
+          <input type="date" name="data_nasc" id="data_nasc" class="form-control">
         </div>
       </div>
       <div class="row">

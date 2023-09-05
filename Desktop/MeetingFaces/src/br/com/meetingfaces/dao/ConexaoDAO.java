@@ -12,20 +12,20 @@ public class ConexaoDAO {
     public static void ConectDB(){
         try{
             String dsn = "meetingfaces_teste";
-            String user = "root";
-            String senha = "";
+            String user = "postgres";
+            String senha = "postdba";
             
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-            //DrivrManager.registerDriver(new org.postgresql.Driver());
+            //DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+            DriverManager.registerDriver(new org.postgresql.Driver());
             
-            String url = "jdbc:mysql://localhost:3306/"+dsn;
-            //String url = "jdbc:postgresql://localhost:5432/"+dsn;
+            //String url = "jdbc:mysql://localhost:3306/"+dsn;
+            String url = "jdbc:postgresql://localhost:5432/"+dsn;
             
             con = DriverManager.getConnection(url, user, senha);
             
             con.setAutoCommit(false);
             if(con == null){
-                System.out.println("Erro ao abrir banco de dados MySQL.");
+                System.out.println("Erro ao abrir banco de dados POSTGRE.");
             }
         }
         catch(Exception e){

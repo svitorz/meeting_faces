@@ -13,10 +13,13 @@ if($email && $senha){
     $stmt = $conn->prepare($sql);
     $stmt->execute([$email]);
     $row = $stmt->fetch();
-    if($senha==$row['senha']){
+    if(password_verify($senha, $row['senha'])){
         $_SESSION['id_usuario'] = $row['id_usuario'];
         $_SESSION['nome'] = $row['nome'];
         $_SESSION['email'] = $row['email'];
+        $_SESSION['usuario'] = true;
+        $_SESSION['admin'] = false;
+        $_SESSION['cadastrador'] = false;
         if($row['id_permissao']==3){
             $_SESSION['admin'] = true;
             $_SESSION['cadastrador'] = false;
@@ -26,10 +29,6 @@ if($email && $senha){
             $_SESSION['admin'] = false;
             $_SESSION['usuario'] = false;
         }
-        $_SESSION['usuario'] = true;
-        $_SESSION['admin'] = false;
-        $_SESSION['cadastrador'] = false;
-        
         header('location: index.php');
         exit();
     }//fecha if

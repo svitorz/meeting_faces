@@ -73,6 +73,10 @@ unset($_SESSION['usuario_existe']);
           <label class="form-label" for="telefone">Telefone</label>
         <input type="tel" id="telefone" name="telefone" class="form-control" maxlength="15" onkeyup="handlePhone(event)" placeholder="(17)99999-9999" required />
       </div>
+      <div class="form-outline mb-4">
+          <label class="form-label" for="data_nasc">Data de nascimento</label>
+        <input type="date" id="data_nasc" name="data_nasc" class="form-control" required />
+      </div>
 
       <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>

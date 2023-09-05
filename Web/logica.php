@@ -17,7 +17,7 @@ function email_usuario(){
 }
 
 function id_usuario(){
-    return $_SESSION['id'];
+    return $_SESSION['id_usuario'];
 }
 
 function redireciona($pagina = null){

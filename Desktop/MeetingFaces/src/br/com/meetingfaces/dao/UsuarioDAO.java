@@ -7,9 +7,8 @@ package br.com.meetingfaces.dao;
 
 import br.com.meetingfaces.dto.UsuarioDTO;
 import java.sql.*;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.security.*;
+
 
 public class UsuarioDAO {
     public UsuarioDAO(){    
@@ -17,31 +16,35 @@ public class UsuarioDAO {
     
     private ResultSet rs = null;
     private Statement stmt = null;
+    public String md5;
     
-    public String getHashMd5(UsuarioDTO usuarioDTO) {
-        MessageDigest md;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+    public String criptografaSenha(String md5) {
+    try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes());
+            StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < array.length; ++i) {
+            sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
         }
-        BigInteger hash = new BigInteger(1, md.digest(usuarioDTO.getSenha().getBytes()));
-        return hash.toString(16);
+            return sb.toString();
+        } 
+    catch (java.security.NoSuchAlgorithmException e) {
+        System.out.print("Erro ao criptografar senha "+e.getMessage());
+    }
+        return null;
     }
     
-    public boolean inserirMorador(String getHashMd5,UsuarioDTO usuarioDTO){
+    public boolean inserirUsuario(UsuarioDTO usuarioDTO){
         try{
             ConexaoDAO.ConectDB();
             
             stmt = ConexaoDAO.con.createStatement();
             
-            //INSERT INTO `morador`
-            //(`ID_MORADOR`, `nome`, `cidade_atual`, `cidade_origem`, `nome_familiar`, `grau_parentesco`) 
-            //VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
-            
-            String sql = "INSERT INTO usuario(nome, email, senha, telefone, id_permissao) VALUES ("+"'"+usuarioDTO.getNome()+"', "
+            //INSERT INTO usuario(nome, email, telefone, senha, ID_PERMISSAO) VALUES (?, ?, ?, ?,?)
+            String sql = "INSERT INTO usuario(nome, email, senha,telefone, id_permissao) VALUES ( "
+                    + ""+"'"+usuarioDTO.getNome()+"', "
                     +"'"+usuarioDTO.getEmail()+"', "
-                    +"'"+ getHashMd5(usuarioDTO) +"', "
+                    +"'"+ criptografaSenha(md5) +"', "
                     +"'"+usuarioDTO.getTelefone()+"', "
                     +"'"+usuarioDTO.getId_permissao()+"')";
             
