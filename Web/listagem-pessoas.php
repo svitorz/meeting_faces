@@ -10,7 +10,8 @@ require 'conexao/conexao.php';
 
 $sql = "SELECT id_morador,nome,cidade_atual FROM moradores ORDER BY nome";
 $stmt = $conn->query($sql);
-if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
+
+if(isset($_SESSION['sucesso']) && $_SESSION['sucesso']){
 ?>
     <div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
       <strong>Formulário enviado com sucesso!</strong> Os dados foram registrados com sucesso!
@@ -19,7 +20,18 @@ if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
     <?php
     unset($_SESSION['sucesso']);
     }
+
+if(isset($_SESSION['erro']) && $_SESSION['erro']){
+?>
+    <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert">
+      <strong>Formulário não enviado!</strong> Erro ao gravar dados!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['erro']);
+    }
     ?>
+    
 <div class="row p-5">
     <?php 
     while($row = $stmt->fetch()){
@@ -36,7 +48,7 @@ if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
                 <?php 
                 if(isAdmin()){
                     ?>
-                <a href="editar-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-warning mx-2 mb-2">Editar registro</a>
+                <a href="formulario-editar-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-warning mx-2 mb-2">Editar registro</a>
                 <a href="excluir-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-danger mx-2 mb-2" onclick="if(!confirm('Deseja excluir?')) return false;">Excluir registro</a>
                 <?php
                 }

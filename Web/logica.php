@@ -23,7 +23,7 @@ function telefone_usuario(){
     return $_SESSION['telefone'];
 }
 function data_nasc(){
-    return $_SESSION['data_nasc'];
+    return $data = str_replace("/", "-", $_SESSION['data_nasc']);
 }
 
 function redireciona($pagina = null){

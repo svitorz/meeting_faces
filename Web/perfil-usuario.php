@@ -99,7 +99,7 @@ require 'header.php';
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">
-                                <?= data_nasc(); ?>
+                                <?= date('d-m-Y', strtotime(data_nasc())); ?>
                             </p>
                         </div>
                     </div>

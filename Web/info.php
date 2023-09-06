@@ -39,10 +39,15 @@ require 'header.php';
                     <p class="text-muted mb-1">Está em
                         <?= $row['cidade_atual']; ?>
                     </p>
+                    <?php if(isAdmin()){
+                        ?>
                     <div class="d-flex justify-content-center mb-2">
-                        <button type="button" class="btn btn-primary">Follow</button>
-                        <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                        <a href="formulario-editar-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-warning me-2">Editar</a>
+                        <a href="excluir-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-danger">Excluir</a>
                     </div>
+                    <?php 
+                    }
+                    ?>
                 </div>
             </div>
             <div class="card mb-4 mb-lg-0">

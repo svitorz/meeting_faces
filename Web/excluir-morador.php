@@ -20,9 +20,11 @@ $stmt = $conn->prepare($sql);
 $result = $stmt->execute([$id_morador]);
 if($result){
     $_SESSION['sucesso'] = true;
+    $_SESSION['erro'] = false;
     header('Location: listagem-pessoas.php');
     exit();
 }else {
+    $_SESSION['sucesso'] = false;
     $_SESSION['erro'] = true;
     header('Location: listagem-pessoas.php');
     exit();
