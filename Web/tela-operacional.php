@@ -22,10 +22,10 @@ require 'header.php';
                                 Cadastrar novo morador de rua
                             </span>
                         </a>
-<?php 
+                    </li>
+                        <?php 
 if(isAdmin()){
 ?>
-                    </li>
                     <li class="nav-link mb-5">
                         <a class="nav-link" href="listagem-pessoas.php">
                             <span class="btn btn-dark">
@@ -39,6 +39,13 @@ if(isAdmin()){
                                 Listagem de usuários cadastrados
                             </span>
                         </a>
+                        <li class="nav-link mb-5">
+                        <a class="nav-link" href="formulario-cadastro-cadastrador.php">
+                            <span class="btn btn-dark">
+                                Cadastrar novo cadastrador
+                            </span>
+                        </a>
+                    </li>
                     </li>
                     </li>
                     <li class="nav-link mb-5">

@@ -50,9 +50,9 @@ require_once 'header.php';
           </td>
           <td>  
             <?php 
-            if(isAdmin()){
+            if(isAdmin()&&$row['id_permissao']!=3){
             ?>
-            <a href="excluir-usuario.php?id=<?=$row['id_usuario'];?>" onclick="if(!confirm('Deseja excluir?')) return false;" class=" btn btn-sm btn-danger">
+            <a href="excluir-usuario.php?id_usuario=<?=$row['id_usuario'];?>" onclick="if(!confirm('Deseja excluir?')) return false;" class=" btn btn-sm btn-danger">
               <span data-feather="trash-2"></span>
                 Excluir 
             </a>
