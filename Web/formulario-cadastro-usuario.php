@@ -1,6 +1,12 @@
 <?php
 session_start();
 require 'logica.php';
+
+if(autenticado()){
+  redireciona('inicio.php');
+  exit();
+}
+
 include 'header.php';
 ?>
 <script>
@@ -55,19 +61,14 @@ unset($_SESSION['usuario_existe']);
 ?>
 <div class="container-fluid px-5 py-3">
     <form action="inserir-usuario.php" method="post">
-      <!-- Text input -->
       <div class="form-outline mb-4">
         <label class="form-label" for="nome_usuario">Nome</label>
         <input type="text" id="nome_usuario" name="nome_usuario" class="form-control" placeholder="João Silva" required/>
       </div>
-
-      <!-- Text input -->
       <div class="form-outline mb-4">
           <label class="form-label" for="email_usuario">Endereço de email</label>
         <input type="email" id="email_usuario" name="email_usuario" class="form-control" placeholder="joao@gmail.com" required/>
       </div>
-
-      <!-- Email input -->
       <div class="form-outline mb-4">
           <label class="form-label" for="telefone">Telefone</label>
         <input type="tel" id="telefone" name="telefone" class="form-control" maxlength="15" onkeyup="handlePhone(event)" placeholder="(17)99999-9999" required />
@@ -76,7 +77,6 @@ unset($_SESSION['usuario_existe']);
           <label class="form-label" for="data_nasc">Data de nascimento</label>
         <input type="date" id="data_nasc" name="data_nasc" class="form-control" required />
       </div>
-
       <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha" name="senha" required/>

@@ -3,6 +3,9 @@ session_start();
 
 require 'logica.php';
 
+//Necessária a implementação de uma medida de segurança que impessa os deletes pela url
+
+
 if(!isAdmin()){
     redireciona();
     die();

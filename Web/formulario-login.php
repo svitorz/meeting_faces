@@ -38,20 +38,16 @@ if(isset($_SESSION['sucesso']) && $_SESSION['sucesso']){
     <div class="justify-content-center align-items-center">
         <div class="container px-5 me-5 mb-5">
             <form action="login.php" method="post">
-                <!-- Name input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="jose@gmail.com" class="form-control" required />
                 </div>
-                <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="senha">Senha</label>
                   <input type="password" id="senha" name="senha"  class="form-control" placeholder="************" required />
                 </div>
-                <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-block mb-4">Entrar</button>
             </form>
         </div>
     </div>
-</div>
 <?php include 'footer.php'; ?>

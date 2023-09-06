@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require 'logica.php';
 
 include 'header.php'; 
@@ -24,20 +25,22 @@ include 'header.php';
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="form-outline mb-4">
-          <label for="data_nasc" class="form-label">Data de nascimento</label>
-          <input type="date" name="data_nasc" id="data_nasc" class="form-control">
+      <div class="row">
+        <div class="col-6">
+          <div class="form-outline mb-4">
+            <label for="data_nasc" class="form-label">Data de nascimento</label>
+            <input type="date" name="data_nasc" id="data_nasc" class="form-control">
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-6">
             <div class="form-outline mb-4">
                 <label class="form-label" for="nome_familiar">Nome de um familiar próximo</label>
                 <input type="text" id="nome_familiar" name="nome_familiar" class="form-control" placeholder="Ex: Maria Silva"/>
             </div>
         </div>
-        <div class="col">
+        <div class="col-6">
             <div class="form-outline mb-4">
                 <label class="form-label" for="grau_parentesco">Grau de parentesco do familiar</label>
               <select class="form-select" name="grau_parentesco" id="grau_parentesco">
