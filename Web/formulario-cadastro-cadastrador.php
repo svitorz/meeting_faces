@@ -6,7 +6,7 @@ if(!isAdmin()){
   redireciona('inicio.php');
   exit();
 }
-
+  
 include 'header.php';
 ?>
 <script>
@@ -75,7 +75,8 @@ unset($_SESSION['usuario_existe']);
       </div>
       <div class="form-outline mb-4">
           <label class="form-label" for="data_nasc">Data de nascimento</label>
-        <input type="date" id="data_nasc" name="data_nasc" class="form-control" required />
+        <!-- <input type="text" id="data_nasc" name="data_nasc" class="form-control" required /> -->
+        <input type="text" class="form-control" id="data_nasc" name="data_nasc" placeholder="Ex.: dd/mm/aaaa" data-mask="00/00/0000" maxlength="10" autocomplete="off"/> 
       </div>
       <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>

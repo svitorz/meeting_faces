@@ -2,30 +2,85 @@
 session_start();
 
 require 'logica.php';
+//jquery mascara pra data, transformar atributo de data em String
 
 $nome = filter_input(INPUT_POST, 'nome_completo', FILTER_SANITIZE_SPECIAL_CHARS);
 $cidade_natal = filter_input(INPUT_POST, 'cidade_origem', FILTER_SANITIZE_SPECIAL_CHARS);
 $cidade_atual = filter_input(INPUT_POST, 'cidade_atual', FILTER_SANITIZE_SPECIAL_CHARS);
-$data_nasc = filter_input(INPUT_POST, 'data_nasc', FILTER_SANITIZE_SPECIAL_CHARS);
 $nome_familiar = filter_input(INPUT_POST, 'nome_familiar', FILTER_SANITIZE_SPECIAL_CHARS);
 $grau_parentesco = filter_input(INPUT_POST, 'grau_parentesco', FILTER_SANITIZE_SPECIAL_CHARS);
-$data = str_replace("/", "-", $data_nasc);
-
-
-require 'header.php';
-require 'conexao/conexao.php';
-try{
-    if(isset($nome)&&!empty($nome)){
-        $sql = "SELECT id_morador,nome,cidade_atual FROM moradores WHERE nome = '%$nome%' ORDER BY nome";
-    } 
-    $stmt = $conn->query($sql);
-    $stmt->execute();
-} catch (Exception $ex) {
-    echo "<div class='alert alert-danger' role='alert'>
-            Nenhum morador encontrado!
-         </div>"
-    . $ex->getMessage();
+//Recebe a variavel via post e filtra para que não haja caracteres especiais
+$data_nasc = filter_input(INPUT_POST, 'data_nasc', FILTER_SANITIZE_SPECIAL_CHARS);
+//transforma em string a data atual do sistema
+strval($ano_atual = date('d/m/Y'));
+//faz a comparação do string, se a inserida for maior que a data atual, a data inserida se torna nula. 
+if(strcmp($data_nasc,$ano_atual)>=0){
+    $data_nasc = null;
 }
+    
+require 'conexao/conexao.php';
+
+$where = null;
+
+if(isset($nome)&&!empty($nome)){
+    if(!empty($where)){
+        $where .= " AND nome LIKE '%$nome%' ";
+    }else{
+        $where = "WHERE nome LIKE '%$nome%' ";
+    }
+}
+
+if(isset($cidade_natal)&&!empty($cidade_natal)){
+    if(!empty($where)){
+        $where .= " AND cidade_natal LIKE '%$cidade_natal%' ";
+    }else{
+        $where = " WHERE cidade_natal LIKE '%$cidade_natal%' ";
+    }
+}
+
+
+if(isset($nome_familiar)&&!empty($nome_familiar)){
+    if(!empty($where)){
+        $where .= " AND nome_familiar_proximo LIKE '%$nome_familiar%' ";
+    }else{
+        $where = " WHERE nome_familiar_proximo LIKE '%$nome_familiar%' ";
+    }
+}
+
+
+if(isset($grau_parentesco)&&!empty($grau_parentesco)){
+    if(!empty($where)){
+        $where .= " AND grau_parentesco LIKE '%$grau_parentesco%' ";
+    }else{
+        $where = " WHERE grau_parentesco LIKE '%$grau_parentesco%' ";
+    }
+}
+
+
+if(isset($cidade_natal)&&!empty($cidade_natal)){
+    if(!empty($where)){
+        $where .= " AND cidade_natal LIKE '%$cidade_natal%' ";
+    }else{
+        $where = " WHERE cidade_natal LIKE '%$cidade_natal%' ";
+    }
+}
+
+
+if(isset($data)&&!empty($data)){
+    if(!empty($where)){
+        $where .= " AND data_nasc LIKE '%$data%' ";
+    }else{
+        $where = " WHERE data_nasc LIKE '%$data%' ";
+    }
+}
+
+$sql = "SELECT * FROM moradores $where";
+
+$stmt = $conn->query($sql);
+$stmt->execute();
+// var_dump($moradoresderua);
+require 'header.php';
+
 while($row = $stmt->fetch()){
     ?>
 <div class="card py-4 my-3 m-5" style="width: 20rem;">
@@ -43,7 +98,7 @@ while($row = $stmt->fetch()){
         <?php
         if(isAdmin()){
                     ?>
-                <a href="formulario-editar-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-warning mx-2 mb-2">Editar registro</a>
+                <a href="formulaieditar-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-warning mx-2 mb-2">Editar registro</a>
                 <a href="excluir-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-danger mx-2 mb-2" onclick="if(!confirm('Deseja excluir?')) return false;">Excluir registro</a>
                 <?php
                 }

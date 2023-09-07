@@ -44,7 +44,8 @@ include 'header.php';
             <div class="form-outline mb-4">
                 <label class="form-label" for="grau_parentesco">Grau de parentesco do familiar</label>
               <select class="form-select" name="grau_parentesco" id="grau_parentesco">
-                  <option value="pai" selected>Pai</option>
+                  <option value="">Selecionar</option>  
+                  <option value="pai">Pai</option>
                   <option value="mae">Mãe</option>
                   <option value="irmão">Irmão(ã)</option>
                   <option value="filho">Filho(a)</option>

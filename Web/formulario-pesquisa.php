@@ -27,7 +27,8 @@ include 'header.php';
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="data_nasc">Data de nascimento</label>
-      <input type="date" id="data_nasc" name="data_nasc" class="form-control" />
+      <!-- <input type="text" id="data_nasc" name="data_nasc" class="form-control" /> -->
+      <input type="text" class="form-control" id="data_nasc" name="data_nasc" placeholder="Ex.: dd/mm/aaaa" data-mask="00/00/0000" maxlength="10" autocomplete="off" />
     </div>
     <div class="form-outline mb-4">
       <label class="form-label" for="nome_familiar">Nome de um familiar próximo</label>
@@ -36,7 +37,8 @@ include 'header.php';
     <div class="form-outline mb-4">
       <label class="form-label" for="grau_parentesco">Grau de parentesco</label>
       <select class="form-select" name="grau_parentesco" id="grau_parentesco">
-        <option value="pai" selected>Pai</option>
+        <option value="">Selecionar</option>
+        <option value="pai">Pai</option>
         <option value="mae">Mãe</option>
         <option value="irmão">Irmão(ã)</option>
         <option value="filho">Filho(a)</option>

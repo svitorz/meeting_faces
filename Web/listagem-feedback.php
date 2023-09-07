@@ -10,7 +10,7 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$sql = "select descricao.*,CONCAT(usuario.nome) AS nome_usuario,usuario.id_usuario, CONCAT(moradores.nome) AS nome_morador,moradores.id_morador
+$sql = "SELECT descricao.*,CONCAT(usuario.nome) AS nome_usuario, CONCAT(moradores.nome) AS nome_morador
             from descricao inner join moradores 
                 on descricao.id_morador = moradores.id_morador
                     inner join usuario
@@ -39,17 +39,31 @@ require 'header.php';
         <tr>
           <th scope="row"> <?= $row["id_descricao"]?> </th>
           <td><?= $row["descricao"]?></td>
-          <td><?= $row["nome_usuario"]?>, ID: <?=$row['id_usuario']?></td>
-          <td><?= $row["nome_morador"]?>, ID: <?= $row["id_morador"]?></td>
+          <td> <a href="perfil-usuario.php?"></a> <?= $row["nome_usuario"]?>, ID: <?=$row['id_usuario']?></td>
+          <td> <a href="info.php?id_morador=<?= $row["id_morador"]?>"><?= $row["nome_morador"]?>, ID: <?= $row["id_morador"]?> </a></td>
           <td>  
-            <a href="aprovar-feedback.php?id=<?=$row['id_descricao'];?>&aprovacao=2" onclick="if(!confirm('Deseja excluir?')) return false;" class=" btn btn-sm btn-danger">
+            <!-- <a href="aprovar-feedback.php?id=<?=$row['id_descricao'];?>&aprovacao=2" onclick="if(!confirm('Deseja excluir?')) return false;" class=" btn btn-sm btn-danger">
               <span data-feather="trash-2"></span>
                 Excluir 
             </a>
             <a href="aprovar-feedback.php?id=<?=$row['id_descricao'];?>&aprovacao=3" class=" btn btn-sm btn-success">
               <span data-feather="trash-2"></span>
                 Aprovar 
-            </a>
+            </a> -->
+            <div class="input-group">
+              <form action="aprovar-feedback.php" method="post">
+                <input type="hidden" name="id" value="<?=$row['id_descricao'];?>" />
+                <input type="hidden" name="descricao" value="<?=$row['descricao'];?>" />
+                <input type="hidden" name="aprovacao" value="2" />
+                <button type="submit" class="btn btn-sm btn-danger mx-2">Excluir</button>
+              </form>
+              <form action="aprovar-feedback.php" method="post">
+                <input type="hidden" name="id" value="<?=$row['id_descricao'];?>" />
+                <input type="hidden" name="descricao" value="<?=$row['descricao'];?>" />
+                <input type="hidden" name="aprovacao" value="3" />
+                <button type="submit" class="btn btn-sm btn-success">Aprovar</button>
+              </form>
+            </div>
           </td>
         </tr>
         <?php

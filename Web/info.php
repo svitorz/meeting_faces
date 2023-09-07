@@ -14,7 +14,7 @@ $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 require 'conexao/conexao.php';
 
 //CONCAT(myguests.firstname,' ',myguests.lastname) AS name, myguests.email, messages.message 
-$sql = "select moradores.*,CONCAT(usuario.nome) AS nome_usuario,usuario.id_usuario,descricao.descricao AS feedback_texto
+$sql = "select moradores.*,CONCAT(usuario.nome) AS nome_usuario,usuario.id_usuario,descricao.descricao AS feedback_texto, descricao.id_permissao AS id_feedback
             from usuario inner join moradores 
                 on usuario.id_usuario = moradores.id_usuario 
                     left join descricao
@@ -39,15 +39,16 @@ require 'header.php';
                     <p class="text-muted mb-1">Está em
                         <?= $row['cidade_atual']; ?>
                     </p>
+                    <div class="d-flex justify-content-center mb-2">
+                    <a href="formulario-feedback.php?id_morador=<?=$id_morador;?>" class="btn btn-success me-2">Enviar feedback</a>
                     <?php if(isAdmin()){
                         ?>
-                    <div class="d-flex justify-content-center mb-2">
                         <a href="formulario-editar-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-warning me-2">Editar</a>
                         <a href="excluir-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-danger">Excluir</a>
-                    </div>
                     <?php 
                     }
                     ?>
+                    </div>
                 </div>
             </div>
             <div class="card mb-4 mb-lg-0">
@@ -80,16 +81,25 @@ require 'header.php';
         <div class="col-lg-8">
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Nome:</p>
+                    <?php
+                    if(isset($row['nome']) && $row['nome']){
+                        ?>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Nome:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">
+                                    <?= $row['nome']; ?>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= $row['nome']; ?>
-                            </p>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
+                    <?php 
+                    if(isset($row['cidade_atual']) && $row['cidade_atual']){
+                        ?>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
@@ -101,6 +111,10 @@ require 'header.php';
                             </p>
                         </div>
                     </div>
+                    <?php
+                    }
+                    if(isset($row['cidade_natal']) && $row['cidade_natal']){
+                        ?>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
@@ -112,6 +126,10 @@ require 'header.php';
                             </p>
                         </div>
                     </div>
+                    <?php
+                    }
+                    if(isset($row['nome_familiar_proximo']) && $row['nome_familiar_proximo']){
+                    ?>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
@@ -123,6 +141,10 @@ require 'header.php';
                             </p>
                         </div>
                     </div>
+                    <?php
+                    }
+                    if(isset($row['grau_parentesco']) && $row['grau_parentesco']){
+                        ?>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
@@ -134,6 +156,9 @@ require 'header.php';
                             </p>
                         </div>
                     </div>
+                    <?php
+                    }
+                    ?>
                     <?php if(isAdmin()||isCadastrador()){
                         ?>
                     <hr>
@@ -149,7 +174,7 @@ require 'header.php';
                     </div>
                     <?php 
                     }
-                        if(isset($row['feedback_texto']) && $row['feedback_texto']){
+                        if(isset($row['feedback_texto']) && $row['feedback_texto']&& $row['id_feedback']==3){
                             ?>
                     <hr />
                     <div class="row">

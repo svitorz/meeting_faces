@@ -19,12 +19,11 @@ unset($_SESSION['sucesso']);
         <div class="container py-5">
             <div class="text-center text-light py-5 my-5">
             <h2 class="fs-1">
-                População em situação de rua supera 281,4 mil pessoas no Brasil.
+                Meeting Faces
             </h2>
-                <p class="fs-5">
-                    A população em situação de rua no Brasil cresceu 38% entre 2019 e
-                    2022, quando atingiu 281.472 pessoas.
-                </p>
+                <a href="" class="btn btn-outline-light mt-2 p-3 px-4 btn-lg border">
+                    Texto 
+                </a>
             </div>
         </div>
     </header>
