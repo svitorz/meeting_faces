@@ -1,47 +1,181 @@
 package br.com.meetingfaces.dao;
 
 import br.com.meetingfaces.dto.MoradoresDTO;
-import java.sql.*;
+import br.com.meetingfaces.dto.UsuarioDTO;
+
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class MoradoresDAO {
-    
-    public MoradoresDAO(){    
-    }// fecha construtor
-    
+    public MoradoresDAO(){
+    }
+
+    //Classe que faz hash da senha inserida pelo usuario
+
+
+    //Atributo do tipo ResultSet utilizado para realizar consultas
     private ResultSet rs = null;
+    //Manipular o banco de dados
     private Statement stmt = null;
-    
-    public boolean inserirMorador(MoradoresDTO moradoresDTO){
+
+    /* Método para inserir morador
+     *
+     * @param usuarioDTO que vem da classe PessoaCTR
+     * @return Um boolean
+     */
+    public boolean inserirMorador(MoradoresDTO moradoresDTO, UsuarioDTO usuarioDTO){
+        String comando = "";
+        int id_morador =0;
         try{
+            //Inicia a conexão
             ConexaoDAO.ConectDB();
-            
+
+            //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
-            
-            //INSERT INTO `morador`
-            //(`ID_MORADOR`, `nome`, `cidade_atual`, `cidade_origem`, `nome_familiar`, `grau_parentesco`) 
-            //VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
-            
-            String sql = "INSERT INTO morador(nome, cidade_atual, cidade_origem, nome_familiar, grau_parentesco) VALUES ("+"'"+moradoresDTO.getNome()+"', "
+            //Criando a query
+            comando = "INSERT INTO usuario(nome, cidade_atual,"
+                    +"cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_usuario) VALUES ("
+                    +"'"+moradoresDTO.getNome_completo()+"', "
                     +"'"+moradoresDTO.getCidade_atual()+"', "
-                    +"'"+moradoresDTO.getCidade_origem()+"', "
-                    +"'"+moradoresDTO.getNome_familiar()+"', "
-                    +"'"+moradoresDTO.getGrau_parentesco()+"')";
-            
-            stmt.execute(sql.toUpperCase());
-            
+                    +"'"+moradoresDTO.getCidade_natal()+"', "
+                    +"'"+moradoresDTO.getData_nasc()+"', "
+                    +"'"+moradoresDTO.getNome_familiar_proximo()+"', "
+                    +"'"+moradoresDTO.getGrau_parentesco()+"', "
+                    +"'"+usuarioDTO.getId_usuario()+"', "+
+                    ")";
+
+            System.out.println(comando);
+            stmt.execute(comando.toUpperCase(), Statement.RETURN_GENERATED_KEYS);
+            rs = stmt.getGeneratedKeys();
+            rs.next();
             ConexaoDAO.con.commit();
-            
+            //fecha statement
             stmt.close();
-            
+            rs.close();
             return true;
-        }
-        catch (Exception e){
-            System.out.println("Erro ao inserir dados "+e.getMessage());
+        }catch(Exception e){
+            System.out.println("Erro ao conectar ao banco de dados. "+e.getMessage());
             return false;
-        }
+        }finally {
+            //Chama o metodo da classe ConexaoDAO para fechar o banco de dados
+            ConexaoDAO.CloseDB();
+        }// fecha try,catch,finally
+    }//fecha método
+
+
+    /**
+     * Método utilizado para alterar um objeto PessoaDTO no banco de dados
+     *
+     * @param moradoresDTO que vem da classe PessoaCTR
+     * @return Um boolean
+     */
+    public boolean alterarMorador(MoradoresDTO moradoresDTO) {
+        String comando = "";
+        try {
+            //Chama o metodo que esta na classe ConexaoDAO para abrir o banco de dados
+            ConexaoDAO.ConectDB();
+            //Cria o Statement que responsavel por executar alguma coisa no banco de dados
+            stmt = ConexaoDAO.con.createStatement();
+            //Comando SQL que sera executado no banco de dados
+            comando = "Update usuario set "
+                    + "nome = '" + moradoresDTO.getNome_completo() + "', "
+                    + "cidade_natal = '" + moradoresDTO.getCidade_natal() + "', "
+                    + "cidade_atual = '" + moradoresDTO.getCidade_atual() + "', "
+                    + "data_nasc  = '" + moradoresDTO.getData_nasc() + "', "
+                    + "nome_familiar = " + moradoresDTO.getNome_familiar_proximo() + "'"
+                    + "grau_parentesco = " + moradoresDTO.getGrau_parentesco() + "'";
+
+            stmt.execute(comando.toUpperCase());
+            ConexaoDAO.con.commit();
+            //Fecha o statement
+            stmt.close();
+            return true;
+        } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
+        catch (Exception e) {
+            System.out.println("Erro UsuarioDAO" +e.getMessage());
+            return false;
+        } //Independente de dar erro ou não ele vai fechar o banco de dados.
         finally {
+            //Chama o metodo da classe ConexaoDAO para fechar o banco de dados
             ConexaoDAO.CloseDB();
         }
-    }//fecha metodo inserir
-    
-}//FECHA CLASSE
+    }//Fecha o método alterarUsuario
+
+    /**
+     * Método utilizado para excluir um objeto PessoaDTO no banco de dados
+     *
+     * @param moradoresDTO que vem da classe PessoaCTR
+     * @return Um boolean
+     */
+    public boolean excluirMorador(MoradoresDTO moradoresDTO) {
+        try {
+            String comando = "";
+            //Chama o metodo que esta na classe ConexaoDAO para abrir o banco de dados
+            ConexaoDAO.ConectDB();
+            //Cria o Statement que responsavel por executar alguma coisa no banco de dados
+            stmt = ConexaoDAO.con.createStatement();
+            //Comando SQL que sera executado no banco de dados
+
+            comando = "Delete from moradores "+
+                    "where id_morador = " + moradoresDTO.getId_morador();
+
+            stmt.execute(comando);
+            ConexaoDAO.con.commit();
+            //Fecha o statement
+            stmt.close();
+            return true;
+        } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        } //Independente de dar erro ou não ele vai fechar o banco de dados.
+        finally {
+            //Chama o metodo da classe ConexaoDAO para fechar o banco de dados
+            ConexaoDAO.CloseDB();
+        }
+    }//Fecha o método excluirUsuario
+
+    /**
+     * Método utilizado para consultar um objeto FuncionarioDTO no banco de dados
+     * @param moradoresDTO que vem da classe FuncionarioCTR
+     * @param opcao que vem da classe FuncionarioCTR
+     * @return Um ResultSet com os dados do funcionario
+     */
+    public ResultSet consultarMoradores(MoradoresDTO moradoresDTO, int opcao) {
+        try {
+            //Chama o metodo que esta na classe ConexaoDAO para abrir o banco de dados
+            ConexaoDAO.ConectDB();
+            //Cria o Statement que responsavel por executar alguma coisa no banco de dados
+            stmt = ConexaoDAO.con.createStatement();
+            //Comando SQL que sera executado no banco de dados
+            String comando="";
+
+            switch(opcao){
+                case 1: //Pesquisa por nome
+                    comando = "Select * " +
+                            "from moradores " +
+                            "where id_morador = id_morador " +
+                            "nome like '" + moradoresDTO.getNome_completo() + "%' " +
+                            "order by nome";
+                    break;
+
+                case 2: //Pesquisa por id
+                    comando = "Select * " +
+                            "from moradores " +
+                            "where" +
+                            "id_morador = " + moradoresDTO.getId_morador();
+
+            }//fecha switch opcao
+            //Executa o comando SQL no banco de Dados
+            rs = stmt.executeQuery(comando.toUpperCase());
+
+            return rs;
+
+        } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return rs;
+        }
+    }//Fecha o método consultarFuncionario
+
+}

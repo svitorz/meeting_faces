@@ -5,7 +5,7 @@ require 'logica.php';
 
 if (!autenticado()) {
     $_SESSION['restrito'] = true;
-    redireciona();
+    redireciona('formulario-login.php');
     die();
 }
 
@@ -14,18 +14,19 @@ $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 require 'conexao/conexao.php';
 
 //CONCAT(myguests.firstname,' ',myguests.lastname) AS name, myguests.email, messages.message 
-$sql = "select moradores.*,CONCAT(usuario.nome) AS nome_usuario,usuario.id_usuario,descricao.descricao AS feedback_texto, descricao.id_permissao AS id_feedback
+$sql = "select moradores.*,CONCAT(usuario.primeiro_nome) AS primeiro_nome_usuario,usuario.id_usuario,descricao.descricao AS feedback_texto, descricao.id_permissao AS id_feedback
             from usuario inner join moradores 
                 on usuario.id_usuario = moradores.id_usuario 
                     left join descricao
                         on moradores.id_morador=descricao.id_morador
-                    where moradores.id_morador=?";
+                            where moradores.id_morador=?
+                            and descricao.id_permissao=3";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_morador]);
 $row = $stmt->fetch();
-
-require 'header.php';
-?>
+$titulo_pagina = "Perfil de ".$row['primeiro_nome']; 
+require 'header.php'; 
+    ?>
 <section class="p-5" style="background-color: #eee;">
     <div class="row">
         <div class="col-lg-4">
@@ -34,9 +35,9 @@ require 'header.php';
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                         class="rounded-circle img-fluid" style="width: 150px;">
                     <h5 class="my-3">
-                        <?= $row['nome']; ?>
+                        <?= $row['primeiro_nome']; ?>
                     </h5>
-                    <p class="text-muted mb-1">Está em
+                    <p class="text-muted text-capitalize mb-1">Está em
                         <?= $row['cidade_atual']; ?>
                     </p>
                     <div class="d-flex justify-content-center mb-2">
@@ -54,26 +55,19 @@ require 'header.php';
             <div class="card mb-4 mb-lg-0">
                 <div class="card-body p-0">
                     <ul class="list-group list-group-flush rounded-3">
+                        <?php 
+                        while($rowFeedback = $stmt->fetch()){ 
+                        if(isset($rowFeedback['feedback_texto']) && $rowFeedback['feedback_texto']){
+                            if($rowFeedback['id_feedback']==3){
+                        ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <!-- <i class="fas fa-globe fa-lg text-warning"></i> -->
-                            <p class="mb-0"></p>
+                            <p class="mb-0"> <?= $rowFeedback['feedback_texto'] ?> </p>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <!-- <i class="fab fa-github fa-lg" style="color: #333333;"></i> -->
-                            <p class="mb-0"></p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <!-- <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i> -->
-                            <p class="mb-0"></p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <!-- <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i> -->
-                            <p class="mb-0"></p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <!-- <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i> -->
-                            <p class="mb-0"></p>
-                        </li>
+                        <?php
+                                }
+                            }
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -82,15 +76,20 @@ require 'header.php';
             <div class="card mb-4">
                 <div class="card-body">
                     <?php
-                    if(isset($row['nome']) && $row['nome']){
+                    if(isset($row['primeiro_nome']) && $row['primeiro_nome']){
                         ?>
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Nome:</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">
-                                    <?= $row['nome']; ?>
+                                <p class="text-muted text-capitalize mb-0">
+                                    <?php
+                                    print_r($row['primeiro_nome']);
+                                    echo "<span class='px-1' />";
+                                    if(isset($row['segundo_nome']) && $row['segundo_nome'])
+                                    { print_r($row['segundo_nome']); }
+                                    ?>
                                 </p>
                             </div>
                         </div>
@@ -106,7 +105,7 @@ require 'header.php';
                             <p class="mb-0">Cidade atual:</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">
+                            <p class="text-muted text-capitalize mb-0">
                                 <?= $row['cidade_atual']; ?>
                             </p>
                         </div>
@@ -121,7 +120,7 @@ require 'header.php';
                             <p class="mb-0">Cidade natal</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">
+                            <p class="text-muted text-capitalize mb-0">
                                 <?= $row['cidade_natal']; ?>
                             </p>
                         </div>
@@ -136,7 +135,7 @@ require 'header.php';
                             <p class="mb-0">Nome de um familiar próximo</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">
+                            <p class="text-muted text-capitalize mb-0">
                                 <?= $row['nome_familiar_proximo']; ?>
                             </p>
                         </div>
@@ -151,7 +150,7 @@ require 'header.php';
                             <p class="mb-0">Grau de parentesco</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">
+                            <p class="text-muted text-capitalize mb-0">
                                 <?= $row['grau_parentesco']; ?>
                             </p>
                         </div>
@@ -167,35 +166,18 @@ require 'header.php';
                             <p class="mb-0">Cadastrado por</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted text-capitalize mb-0">
-                                <?= $row['nome_usuario']; ?>, id: <?= $row['id_usuario']; ?>
+                            <p class="text-muted text-capitalize text-capitalize mb-0">
+                                <?= $row['primeiro_nome_usuario']; ?>, id: <?= $row['id_usuario']; ?>
                             </p>
                         </div>
                     </div>
                     <?php 
                     }
-                        if(isset($row['feedback_texto']) && $row['feedback_texto']&& $row['id_feedback']==3){
-                            ?>
-                    <hr />
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Descrição</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= $row['feedback_texto']; ?>
-                            </p>
-                        </div>
-                    </div>
-                    <?php } ?>
+                    ?>
                 </div>
             </div>
         </div>
     </div>
     </div>
-</section>
-</div>
-</div>
-</div>
 </section>
 <?php require 'footer.php'; ?>

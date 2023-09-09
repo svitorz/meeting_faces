@@ -8,7 +8,8 @@ if(!isAdmin()){
 }
 require 'conexao/conexao.php';
 
-$nome = filter_input(INPUT_POST, 'nome_completo', FILTER_SANITIZE_SPECIAL_CHARS);
+$primeiro_nome = filter_input(INPUT_POST, 'primeiro_nome', FILTER_SANITIZE_SPECIAL_CHARS);
+$segundo_nome = filter_input(INPUT_POST, 'segundo_nome', FILTER_SANITIZE_SPECIAL_CHARS);
 $cidade_origem = filter_input(INPUT_POST, 'cidade_origem', FILTER_SANITIZE_SPECIAL_CHARS);
 $cidade_atual = filter_input(INPUT_POST, 'cidade_atual', FILTER_SANITIZE_SPECIAL_CHARS);
 $data_nasc = filter_input(INPUT_POST, 'data_nasc', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -23,10 +24,11 @@ strval($ano_atual = date('d/m/Y'));
 if(strcmp($data_nasc,$ano_atual)>=0){
     $data_nasc = null;
 }
-$sql = "INSERT INTO moradores(nome, cidade_atual, cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_usuario) VALUES (:nome, :cidade_atual, :cidade_origem, :data, :nome_familiar, :grau_parentesco, :id_usuario)";
+$sql = "INSERT INTO moradores(primeiro_nome,segundo_nome, cidade_atual, cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_usuario) VALUES (:primeiro_nome, :segundo_nome, :cidade_atual, :cidade_origem, :data, :nome_familiar, :grau_parentesco, :id_usuario)";
 $stmt = $conn->prepare($sql);
 $result = $stmt->execute([
-    ':nome' => $nome,
+    ':primeiro_nome' => $primeiro_nome,
+    ':segundo_nome' => $segundo_nome,
     ':cidade_atual' => $cidade_atual,
     ':cidade_origem' => $cidade_origem,
     ':data' => $data,

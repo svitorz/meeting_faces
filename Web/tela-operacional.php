@@ -8,7 +8,7 @@ if(!isAdmin()&&!isCadastrador()){
     redireciona();
     die();
 }
-
+$titulo_pagina = "";
 require 'header.php';
 ?>
 <div class="container-fluid">

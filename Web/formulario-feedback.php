@@ -11,6 +11,7 @@ if(!autenticado()){
 
 $id_morador = filter_input(INPUT_GET, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
 
+$titulo_pagina = "Faça seu Feedback";
 require 'header.php';
 ?>
 <div class="row justify-content-center align-items-center">

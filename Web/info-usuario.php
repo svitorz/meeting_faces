@@ -1,15 +1,24 @@
 <?php
 session_start();
+
 require 'logica.php';
 
-if (!autenticado()) {
-    header('location: formulario-login.php');
-    exit();
+if (!isAdmin()) {
+    $_SESSION['restrito'] = true;
+    redireciona();
+    die();
 }
-$id_usuario = id_usuario();
+
+$id_usuario = filter_input(INPUT_GET, 'id_usuario',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
-$titulo_pagina = "Faça login para continuar";
+
+$sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+$stmt = $conn->prepare($sql);
+$stmt->execute([$id_usuario]);
+$row = $stmt->fetch();
+
+$titulo_pagina = "Perfil de ".$row['primeiro_nome']; 
 require 'header.php';
 ?>
 <section class="p-5" style="background-color: #eee;">
@@ -20,14 +29,8 @@ require 'header.php';
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                         class="rounded-circle img-fluid" style="width: 150px;">
                     <h5 class="my-3">
-                        <span class="text-capitalize">
-                            <?= nome_usuario(); ?>
-                        </span>
+                        <?= $row['primeiro_nome']; ?>
                     </h5>
-                    <!-- <div class="d-flex justify-content-center mb-2">
-                        <button type="button" class="btn btn-primary">Follow</button>
-                        <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-                    </div> -->
                 </div>
             </div>
             <div class="card mb-4 mb-lg-0">
@@ -60,49 +63,75 @@ require 'header.php';
         <div class="col-lg-8">
             <div class="card mb-4">
                 <div class="card-body">
+                    <?php
+                    if(isset($row['primeiro_nome']) && $row['primeiro_nome']){
+                        ?>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Nome:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted text-capitalize mb-0">
+                                    <?php
+                                    print_r($row['primeiro_nome']);
+                                    echo "<span class='px-1' />";
+                                    if(isset($row['segundo_nome']) && $row['segundo_nome'])
+                                    { print_r($row['segundo_nome']); }
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <?php 
+                    if(isset($row['telefone']) && $row['telefone']){
+                        ?>
+                    <hr>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Nome</p>
+                            <p class="mb-0">Telefone:</p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted text-capitalize mb-0">
-                                <?= nome_usuario(); ?>
+                                <?= $row['telefone']; ?>
                             </p>
                         </div>
                     </div>
+                    <?php
+                    }
+                    if(isset($row['email']) && $row['email']){
+                        ?>
                     <hr>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Email</p>
+                            <p class="mb-0">Email:</p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">
-                                <?= email_usuario(); ?>
+                                <?= $row['email']; ?>
                             </p>
                         </div>
                     </div>
+                    <?php
+                    }
+                    if(isset($row['data_nasc']) && $row['data_nasc']){
+                    ?>
                     <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Telefone</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= telefone_usuario(); ?>
-                            </p>
-                        </div>
-                    </div>
-                    <hr/>
                     <div class="row">
                         <div class="col-sm-3">
                             <p class="mb-0">Data de nascimento</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= date('d-m-Y', strtotime(data_nasc())); ?>
+                            <p class="text-muted text-capitalize mb-0">
+                                <?= $row['data_nasc']; ?>
                             </p>
                         </div>
                     </div>
+                    <?php
+                    }
+                        ?>
+                    <hr />
                 </div>
             </div>
         </div>
@@ -113,3 +142,4 @@ require 'header.php';
 </div>
 </div>
 </section>
+<?php require 'footer.php'; ?>

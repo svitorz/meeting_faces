@@ -6,7 +6,7 @@ if(autenticado()){
   redireciona('inicio.php');
   exit();
 }
-
+$titulo_pagina = "Insira seus dados para cadastro";
 include 'header.php';
 ?>
 <script>
@@ -61,9 +61,15 @@ unset($_SESSION['usuario_existe']);
 ?>
 <div class="container-fluid px-5 py-3">
     <form action="inserir-usuario.php" method="post">
-      <div class="form-outline mb-4">
-        <label class="form-label" for="nome_usuario">Nome</label>
-        <input type="text" id="nome_usuario" name="nome_usuario" class="form-control" placeholder="João Silva" required/>
+    <div class="row">
+        <div class="form-outline col mb-4">
+            <label class="form-label" for="primeiro_nome">Nome</label>
+            <input type="text" id="primeiro_nome" name="primeiro_nome" class="form-control" placeholder="Ex: José" />
+        </div>
+        <div class="form-outline col mb-4">
+            <label class="form-label" for="segundo_nome">Sobrenome</label>
+            <input type="text" id="segundo_nome" name="segundo_nome" class="form-control" placeholder="Ex: Silva" />
+        </div>
       </div>
       <div class="form-outline mb-4">
           <label class="form-label" for="email_usuario">Endereço de email</label>

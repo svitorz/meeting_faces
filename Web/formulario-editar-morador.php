@@ -14,16 +14,22 @@ $sql = "SELECT * FROM moradores WHERE id_morador = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_morador]);
 $row = $stmt->fetch();
-
+$titulo_pagina = "Insira as novas informações do morador";
 include 'header.php'; 
 ?>
 <div class="container-fluid px-5 py-3">
     <form action="editar-morador.php" method="post">
       <input type="hidden" name="id_morador" value="<?=$id_morador;?>">
-        <div class="form-outline mb-4">
-            <label class="form-label" for="nome_completo">Nome</label>
-            <input type="text" id="nome_completo" name="nome_completo" class="form-control" value="<?= $row['nome']?>" />
+      <div class="row">
+        <div class="form-outline col mb-4">
+            <label class="form-label" for="primeiro_nome">Nome</label>
+            <input type="text" id="primeiro_nome" name="primeiro_nome" class="form-control" value="<?= $row['primeiro_nome']?>" />
         </div>
+        <div class="form-outline col mb-4">
+            <label class="form-label" for="segundo_nome">Sobrenome</label>
+            <input type="text" id="segundo_nome" name="segundo_nome" class="form-control" value="<?= $row['segundo_nome']?>" />
+        </div>
+      </div>
       <div class="row mb-4">
         <div class="col">
           <div class="form-outline">

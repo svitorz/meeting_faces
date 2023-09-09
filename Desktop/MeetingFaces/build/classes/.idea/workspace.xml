@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="27ee9ef2-1ff3-4921-a8f0-70d7a14b225b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/dto/MoradoresDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/dto/MoradoresDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW.form" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/CadastroMrVIEW.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/LoginAdmVIEW.class" beforeDir="false" afterPath="$PROJECT_DIR$/../build/classes/br/com/meetingfaces/view/LoginAdmVIEW.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/br/com/meetingfaces/dto/MoradoresDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/meetingfaces/dto/MoradoresDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/br/com/meetingfaces/view/CadastroMrVIEW.form" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/meetingfaces/view/CadastroMrVIEW.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/br/com/meetingfaces/view/CadastroMrVIEW.java" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/meetingfaces/view/CadastroMrVIEW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/br/com/meetingfaces/view/LoginAdmVIEW.java" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/meetingfaces/view/LoginAdmVIEW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Web/conexao/conexao.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Web/conexao/conexao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Web/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Web/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Web/images/pic07.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Web/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Web/info.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2UwuGuuB3LugwuEGdqppBtgnbBH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/programming/Java/Projeto_Locadora",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="27ee9ef2-1ff3-4921-a8f0-70d7a14b225b" name="Changes" comment="" />
+      <created>1693862871936</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693862871936</updated>
+      <workItem from="1693862873162" duration="1265000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

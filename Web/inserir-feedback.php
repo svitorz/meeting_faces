@@ -2,7 +2,10 @@
 session_start();
 
 require 'logica.php';
-
+if(!autenticado()){
+    redireciona('formulario-login.php');
+    die();
+}
 require 'conexao/conexao.php';
 
 $feedback = filter_input(INPUT_POST, 'feedback', FILTER_SANITIZE_SPECIAL_CHARS);

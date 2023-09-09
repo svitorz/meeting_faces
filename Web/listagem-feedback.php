@@ -10,7 +10,7 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT descricao.*,CONCAT(usuario.nome) AS nome_usuario, CONCAT(moradores.nome) AS nome_morador
+$sql = "SELECT descricao.*,CONCAT(usuario.primeiro_nome) AS nome_usuario, CONCAT(moradores.primeiro_nome) AS nome_morador
             from descricao inner join moradores 
                 on descricao.id_morador = moradores.id_morador
                     inner join usuario
@@ -18,10 +18,11 @@ $sql = "SELECT descricao.*,CONCAT(usuario.nome) AS nome_usuario, CONCAT(moradore
                             WHERE descricao.id_permissao = 1";
 $stmt = $conn->query($sql);
 $stmt->execute();
-$row = $stmt->fetch();
-
+$count = $stmt->rowCount();
+$titulo_pagina = "Feedbacks para aprovação";
 require 'header.php';
 ?>
+<h2 class="text-center">Olá <?= nome_usuario() ?>, você tem <?= $count ?> feedbacks para aprovação.</h2>
 <table class="table table-striped table-hover">
     <thead>
         <tr>

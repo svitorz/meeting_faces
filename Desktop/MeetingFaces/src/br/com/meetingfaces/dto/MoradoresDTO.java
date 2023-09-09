@@ -1,39 +1,56 @@
 package br.com.meetingfaces.dto;
 
 public class MoradoresDTO {
-    String nome, cidade_atual, cidade_origem, nome_familiar,grau_parentesco;
-       int id_morador;
-
-    public String getNome() {
-        return nome;
+    public String getNome_familiar_proximo() {
+        return nome_familiar_proximo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_familiar_proximo(String nome_familiar_proximo) {
+        this.nome_familiar_proximo = nome_familiar_proximo;
     }
 
     public String getCidade_atual() {
         return cidade_atual;
     }
 
-    public void setCidade_atual(String cidade_atual) {
-        this.cidade_atual = cidade_atual;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public String getCidade_origem() {
-        return cidade_origem;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
-    public void setCidade_origem(String cidade_origem) {
-        this.cidade_origem = cidade_origem;
+    public String getNome_completo() {
+        return nome_completo;
     }
 
-    public String getNome_familiar() {
-        return nome_familiar;
+    public void setNome_completo(String nome_completo) {
+        this.nome_completo = nome_completo;
     }
 
-    public void setNome_familiar(String nome_familiar) {
-        this.nome_familiar = nome_familiar;
+    public String getCidade_natal() {
+        return cidade_natal;
+    }
+
+    public int getId_morador() {
+        return id_morador;
+    }
+
+    public int getId_permissao() {
+        return id_permissao;
+    }
+
+    public void setId_permissao(int id_permissao) {
+        this.id_permissao = id_permissao;
+    }
+
+    public void setId_morador(int id_morador) {
+        this.id_morador = id_morador;
+    }
+
+    public void setCidade_natal(String cidade_natal) {
+        this.cidade_natal = cidade_natal;
     }
 
     public String getGrau_parentesco() {
@@ -44,11 +61,17 @@ public class MoradoresDTO {
         this.grau_parentesco = grau_parentesco;
     }
 
-    public int getId_morador() {
-        return id_morador;
+    public String getData_nasc() {
+        return data_nasc;
     }
 
-    public void setId_morador(int id_morador) {
-        this.id_morador = id_morador;
+    public void setData_nasc(String data_nasc) {
+        this.data_nasc = data_nasc;
     }
+
+    public void setCidade_atual(String cidade_atual) {
+        this.cidade_atual = cidade_atual;
+    }
+    private int id_morador,id_permissao,id_usuario;
+    private String nome_completo,cidade_natal,cidade_atual,data_nasc,nome_familiar_proximo,grau_parentesco;
 }

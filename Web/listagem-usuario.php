@@ -10,10 +10,10 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT id_usuario,nome,id_permissao FROM usuario ORDER BY nome";
+$sql = "SELECT id_usuario,primeiro_nome,segundo_nome,id_permissao FROM usuario ORDER BY primeiro_nome";
 
 $stmt = $conn->query($sql);
-
+$titulo_pagina = "Listagem dos usuários cadastrados no sistema";
 require_once 'header.php';
 ?>
 <table class="table table-striped table-hover">
@@ -37,15 +37,24 @@ require_once 'header.php';
       ?>
         <tr>
           <th scope="row"> <?= $row["id_usuario"]?> </th>
-          <td><?= $row["nome"]?></td>
+          <td class="text-capitalize">
+            <a href="info-usuario.php?id_usuario=<?= $row['id_usuario'] ?> ">
+              <?= $row["primeiro_nome"];?> <?= $row["segundo_nome"];?> 
+            </a>
+          </td>
           <td>
-            <?php if($row['id_permissao']==3){
-                    echo 'Administrador';
-                  }elseif($row['id_permissao']==2){
-                    echo 'Cadastrador';
-                  }else{
-                    echo 'Usuário';
-                  }
+            <?php 
+            switch($row['id_permissao']){
+                case 1:
+                    echo "Usuário";
+                    break;
+                case 2:
+                    echo "Cadastrador";
+                    break;
+                case 3:
+                    echo "Administrador";
+                    break;
+            }
             ?>
           </td>
           <td>  

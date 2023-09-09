@@ -1,6 +1,8 @@
 <?php
 session_start();
 require 'logica.php';
+
+$titulo_pagina = "Faça login";
 require "header.php"; 
 ?>
 <div class="container-fluid my-5 py-5">

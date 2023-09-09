@@ -13,7 +13,8 @@ $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
     $row = $stmt->fetch();
     if(password_verify($senha, $row['senha'])){
         $_SESSION['id_usuario'] = $row['id_usuario'];
-        $_SESSION['nome'] = $row['nome'];
+        $_SESSION['nome'] = $row['primeiro_nome'];
+        $_SESSION['sobrenome'] = $row['segundo_nome'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['telefone'] = $row['telefone'];
         $_SESSION['data_nasc'] = $row['data_nasc'];

@@ -1,15 +1,21 @@
 <?php
 session_start();
 require 'logica.php';
-$titulo_pagina = "Pesquisa de pessoas";
+$titulo_pagina = "Pesquisa de pessoas com dados específicas";
 include 'header.php';
 ?>
 <div class="container-fluid px-5 py-3">
   <form action="listagem-pessoas-encontradas.php" method="post">
-    <div class="form-outline mb-4">
-      <label class="form-label" for="nome_completo">Nome</label>
-      <input type="text" id="nome_completo" name="nome_completo" class="form-control" placeholder="Ex: José Silva" />
-    </div>
+  <div class="row">
+        <div class="form-outline col mb-4">
+            <label class="form-label" for="primeiro_nome">Nome</label>
+            <input type="text" id="primeiro_nome" name="primeiro_nome" class="form-control" placeholder="Ex: José " />
+        </div>
+        <div class="form-outline col mb-4">
+            <label class="form-label" for="segundo_nome">Sobrenome</label>
+            <input type="text" id="segundo_nome" name="segundo_nome" class="form-control" placeholder="Ex:  Silva" />
+        </div>
+      </div>
     <div class="row mb-4">
       <div class="col-6">
         <div class="form-outline">

@@ -5,7 +5,8 @@ require 'logica.php';
 
 require 'conexao/conexao.php';
 
-$nome = filter_input(INPUT_POST, 'nome_usuario', FILTER_SANITIZE_SPECIAL_CHARS);
+$primeiro_nome = filter_input(INPUT_POST, 'primeiro_nome', FILTER_SANITIZE_SPECIAL_CHARS);
+$segundo_nome = filter_input(INPUT_POST, 'segundo_nome', FILTER_SANITIZE_SPECIAL_CHARS);
 $email = filter_input(INPUT_POST, 'email_usuario', FILTER_SANITIZE_EMAIL);
 $telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_SPECIAL_CHARS);
 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -28,9 +29,9 @@ if ($count >= 1) {
     header('Location: formulario-cadastro-usuario.php');
     exit();
 }
-$insert = "INSERT INTO usuario(nome, email, telefone,data_nasc, senha, ID_PERMISSAO) VALUES (?,?,?,?,?,?)";
+$insert = "INSERT INTO usuario(primeiro_nome, segundo_nome, email, telefone,data_nasc, senha, ID_PERMISSAO) VALUES (?,?,?,?,?,?,?)";
 $stmt = $conn->prepare($insert);
-$result = $stmt->execute([$nome, $email, $telefone,$data_nasc, $senha_hash,$permissao]);
+$result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone,$data_nasc, $senha_hash,$permissao]);
 if($result!==true){
         $_SESSION['erro'] = true;
     redireciona('formulario-login.php');

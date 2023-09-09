@@ -2,7 +2,6 @@
 session_start();
 
 require 'logica.php';
-//jquery mascara pra data, transformar atributo de data em String
 
 $nome = filter_input(INPUT_POST, 'nome_completo', FILTER_SANITIZE_SPECIAL_CHARS);
 $cidade_natal = filter_input(INPUT_POST, 'cidade_origem', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -78,15 +77,16 @@ $sql = "SELECT * FROM moradores $where";
 
 $stmt = $conn->query($sql);
 $stmt->execute();
-// var_dump($moradoresderua);
+
+$titulo_pagina = "Pessoas encontradas em nosso banco de dados";
 require 'header.php';
 
 while($row = $stmt->fetch()){
     ?>
 <div class="card py-4 my-3 m-5" style="width: 20rem;">
         <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/18765757-icone-de-perfil-de-usuario-em-estilo-simples-ilustracao-em-avatar-membro-no-fundo-isolado-conceito-de-negocio-de-sinal-de-permissao-humana-vetor.jpg" class="card-img-top" alt="..."/>
-    <div class="card-body">
-        <h5 class="card-title"><?= $row['nome']; ?></h5>
+    <div class="card-body text-center">
+        <h5 class="card-title"><?= $row['primeiro_nome']; ?></h5>
         <?php if (isset($row['$cidade_atual'])){
             ?>
             <p class="card-text">Encontra-se na cidade <?= $row['cidade_atual']; ?>.</p>

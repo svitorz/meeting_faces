@@ -1,11 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.meetingfaces.dto;
 
-public class UsuarioDTO { 
+public class UsuarioDTO {
+    /*
+    int: id_usuario(PK)
+    String: nome
+    String: telefone
+    date: data_nasc
+    String: email
+    String:senha
+    int: id_permissao (fk)
+    */
+    
+    private String nome,telefone,data_nasc,email,senha;
 
     public String getNome() {
         return nome;
@@ -21,6 +27,14 @@ public class UsuarioDTO {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getData_nasc() {
+        return data_nasc;
+    }
+
+    public void setData_nasc(String data_nasc) {
+        this.data_nasc = data_nasc;
     }
 
     public String getEmail() {
@@ -39,13 +53,20 @@ public class UsuarioDTO {
         this.senha = senha;
     }
 
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
     public int getId_permissao() {
         return id_permissao;
     }
 
     public void setId_permissao(int id_permissao) {
-        this.id_permissao = id_permissao;
+        this.id_permissao = 1;
     }
-	public String nome, telefone,email, senha;
-	public int id_permissao=3;
+    private int id_usuario,id_permissao;
 }

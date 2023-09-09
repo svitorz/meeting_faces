@@ -21,9 +21,9 @@ if(isset($aprovacao)&&isset($id)){
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
     }elseif($aprovacao==3){
-        $sql = "UPDATE descricao SET descricao = ? WHERE id_descricao = ?";
+        $sql = "UPDATE descricao SET id_permissao = ? WHERE id_descricao = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$descricao,$id]);
+        $stmt->execute([$aprovacao,$id]);
     }
     $result = $stmt->rowCount();
     if($result>0){
