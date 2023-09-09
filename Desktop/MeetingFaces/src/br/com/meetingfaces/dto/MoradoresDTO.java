@@ -1,6 +1,7 @@
 package br.com.meetingfaces.dto;
 
 public class MoradoresDTO {
+
     public String getNome_familiar_proximo() {
         return nome_familiar_proximo;
     }
@@ -19,14 +20,6 @@ public class MoradoresDTO {
 
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
-    }
-
-    public String getNome_completo() {
-        return nome_completo;
-    }
-
-    public void setNome_completo(String nome_completo) {
-        this.nome_completo = nome_completo;
     }
 
     public String getCidade_natal() {
@@ -72,6 +65,22 @@ public class MoradoresDTO {
     public void setCidade_atual(String cidade_atual) {
         this.cidade_atual = cidade_atual;
     }
-    private int id_morador,id_permissao,id_usuario;
-    private String nome_completo,cidade_natal,cidade_atual,data_nasc,nome_familiar_proximo,grau_parentesco;
+    private int id_morador, id_permissao, id_usuario;
+    private String primeiro_nome, segundo_nome, cidade_natal, cidade_atual, data_nasc, nome_familiar_proximo, grau_parentesco;
+
+    public String getPrimeiro_nome() {
+        return primeiro_nome;
+    }
+
+    public void setPrimeiro_nome(String primeiro_nome) {
+        this.primeiro_nome = primeiro_nome;
+    }
+
+    public String getSegundo_nome() {
+        return segundo_nome;
+    }
+
+    public void setSegundo_nome(String segundo_nome) {
+        this.segundo_nome = segundo_nome;
+    }
 }

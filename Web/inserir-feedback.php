@@ -19,7 +19,7 @@ $stmt = $conn->prepare($insert);
 $result = $stmt->execute([$id_usuario,$id_morador,$feedback,$id_permissao]);
 if($result==true){
     $_SESSION['sucesso'] = true;
-    header('Location: inicio.php');
+    header('Location: index.php');
     exit();
 }else{
     $_SESSION['erro'] = true;

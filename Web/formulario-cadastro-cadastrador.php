@@ -3,7 +3,7 @@ session_start();
 require 'logica.php';
 
 if(!isAdmin()){
-  redireciona('inicio.php');
+  redireciona('index.php');
   exit();
 }
 $titulo_pagina = "Cadastro de perfil Cadastrador";  

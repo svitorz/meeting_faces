@@ -90,6 +90,11 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cadastro");
+        fileMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileMenuActionPerformed(evt);
+            }
+        });
 
         jMenuItem1.setText("Cadastro");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,18 +129,26 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_sairBotaoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CadastroMrVIEW cadastroMR = new CadastroMrVIEW();
+        CadastroAdmVIEW cadastroAdmVIEW = new CadastroAdmVIEW();
 
-        this.desktopPane.add(cadastroMR);
-        cadastroMR.setVisible(true);
+        this.desktopPane.add(cadastroAdmVIEW);
+        cadastroAdmVIEW.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-       LoginAdmVIEW loginAdmView = new LoginAdmVIEW();
-       
-       this.desktopPane.add(loginAdmView);
-       loginAdmView.setVisible(true);
+//        LoginAdmVIEW loginAdmView = new LoginAdmVIEW();
+//
+//        this.desktopPane.add(loginAdmView);
+//        loginAdmView.setVisible(true);
+        CadastroAdmVIEW cadastroAdmVIEW = new CadastroAdmVIEW();
+
+        this.desktopPane.add(cadastroAdmVIEW);
+        cadastroAdmVIEW.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void fileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileMenuActionPerformed
+
+    }//GEN-LAST:event_fileMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,7 +157,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -171,13 +184,14 @@ public class PrincipalVIEW extends javax.swing.JFrame {
             }
         });
     }
-     private void sair(){
-        Object[] options = { "Sair", "Cancelar" };
-        if(JOptionPane.showOptionDialog(null, "Deseja Sair do Sistema", "Informação", 
-                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]) == 0){
+
+    private void sair() {
+        Object[] options = {"Sair", "Cancelar"};
+        if (JOptionPane.showOptionDialog(null, "Deseja Sair do Sistema", "Informação",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]) == 0) {
             System.exit(0);
-        } 
-    } 
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;

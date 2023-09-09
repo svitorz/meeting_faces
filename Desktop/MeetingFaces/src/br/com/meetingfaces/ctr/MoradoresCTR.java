@@ -1,34 +1,35 @@
 package br.com.meetingfaces.ctr;
 
-import br.com.meetingfaces.dto.MoradoresDTO;
 import br.com.meetingfaces.dao.MoradoresDAO;
-import br.com.meetingfaces.dao.ConexaoDAO;
+import br.com.meetingfaces.dto.MoradoresDTO;
 import br.com.meetingfaces.dto.UsuarioDTO;
 import java.sql.*;
 
 public class MoradoresCTR {
+
     MoradoresDAO moradoresDAO = new MoradoresDAO();
 
-    public MoradoresCTR(){
+    public MoradoresCTR() {
     }
 
     public String inserirMoradores(MoradoresDTO moradoresDTO, UsuarioDTO usuarioDTO) {
         try {
             //Chama o metodo que esta na classe DAO aguardando uma resposta (true ou false)
-            if (moradoresDAO.inserirMorador(moradoresDTO,usuarioDTO)) {
-                return "Funcionário Cadastrado com Sucesso!!!";
+            if (moradoresDAO.inserirMorador(moradoresDTO, usuarioDTO)) {
+                return "Morador Cadastrado com Sucesso!!!";
             } else {
-                return "Funcionário NÃO Cadastrado!!!";
+                return "Morador NÃO Cadastrado!!!";
             }
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            return "Funcionário NÃO Cadastrado!!!";
+            return "Morador NÃO Cadastrado!!!";
         }
     }//Fecha o método inserirFuncionario
+
     /**
-     * Método utilizado para controlar o acesso ao método alterarFuncionario da classe
-     * FuncionarioDAO
+     * Método utilizado para controlar o acesso ao método alterarFuncionario da
+     * classe FuncionarioDAO
      *
      * @param funcionarioDTO que vem da classe da página (VIEW)
      * @return String contendo a mensagem
@@ -37,21 +38,20 @@ public class MoradoresCTR {
         try {
             //Chama o metodo que esta na classe DAO aguardando uma resposta (true ou false)
             if (moradoresDAO.alterarMorador(moradoresDTO)) {
-                return "Funcionário Alterado com Sucesso!!!";
+                return "Morador Alterado com Sucesso!!!";
             } else {
-                return "Funcionario NÃO Alterado!!!";
+                return "Morador NÃO Alterado!!!";
             }
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            return "Funcionario NÃO Alterado!!!";
+            return "Morador NÃO Alterado!!!";
         }
     }//Fecha o método alterarFuncionario
 
-
     /**
-     * Método utilizado para controlar o acesso ao método excluirFuncionario da classe
-     * FuncionarioDAO
+     * Método utilizado para controlar o acesso ao método excluirFuncionario da
+     * classe FuncionarioDAO
      *
      * @param moradoresDTO que vem da classe da página (VIEW)
      * @return String contendo a mensagem
@@ -70,10 +70,9 @@ public class MoradoresCTR {
         }
     }//Fecha o método excluirFuncionario
 
-
     /**
-     * Método utilizado para controlar o acesso ao método consultarFuncionario da
-     * classe FuncionarioDAO
+     * Método utilizado para controlar o acesso ao método consultarFuncionario
+     * da classe FuncionarioDAO
      *
      * @param moradoresDTO, opcao que vem da classe da página (VIEW)
      * @param opcao que vem da classe da página (VIEW)

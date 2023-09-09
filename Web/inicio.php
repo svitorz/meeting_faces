@@ -214,7 +214,7 @@ unset($_SESSION['sucesso']);
         <h5 class="text-uppercase">Colaborações</h5>
         <p>
           Projeto elaborado,documentado e realizado por alunos do segundo ano de informática do Instituto Federal de São Paulo - Campus Votuporanga.
-          Acesse nosso repositório no <a href="github.com/svitorz/meeting_faces" class="link-dark">Github</a> 
+          Acesse nosso repositório no <a href="https://github.com/svitorz/meeting_faces" class="link-dark">Github</a> 
         </p>
       </div>
 

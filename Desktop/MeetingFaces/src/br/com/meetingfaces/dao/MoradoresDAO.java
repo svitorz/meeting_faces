@@ -2,17 +2,15 @@ package br.com.meetingfaces.dao;
 
 import br.com.meetingfaces.dto.MoradoresDTO;
 import br.com.meetingfaces.dto.UsuarioDTO;
-
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class MoradoresDAO {
-    public MoradoresDAO(){
+
+    public MoradoresDAO() {
     }
 
     //Classe que faz hash da senha inserida pelo usuario
-
-
     //Atributo do tipo ResultSet utilizado para realizar consultas
     private ResultSet rs = null;
     //Manipular o banco de dados
@@ -23,26 +21,26 @@ public class MoradoresDAO {
      * @param usuarioDTO que vem da classe PessoaCTR
      * @return Um boolean
      */
-    public boolean inserirMorador(MoradoresDTO moradoresDTO, UsuarioDTO usuarioDTO){
+    public boolean inserirMorador(MoradoresDTO moradoresDTO, UsuarioDTO usuarioDTO) {
         String comando = "";
-        int id_morador =0;
-        try{
+        int id_morador = 0;
+        try {
             //Inicia a conexão
             ConexaoDAO.ConectDB();
 
             //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
-            comando = "INSERT INTO usuario(nome, cidade_atual,"
-                    +"cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_usuario) VALUES ("
-                    +"'"+moradoresDTO.getNome_completo()+"', "
-                    +"'"+moradoresDTO.getCidade_atual()+"', "
-                    +"'"+moradoresDTO.getCidade_natal()+"', "
-                    +"'"+moradoresDTO.getData_nasc()+"', "
-                    +"'"+moradoresDTO.getNome_familiar_proximo()+"', "
-                    +"'"+moradoresDTO.getGrau_parentesco()+"', "
-                    +"'"+usuarioDTO.getId_usuario()+"', "+
-                    ")";
+            comando = "INSERT INTO moradores(primeiro_nome, segundo_nome, cidade_atual,"
+                    + "cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_usuario) VALUES ("
+                    + "'" + moradoresDTO.getPrimeiro_nome() + "', "
+                    + "'" + moradoresDTO.getSegundo_nome() + "', "
+                    + "'" + moradoresDTO.getCidade_atual() + "', "
+                    + "'" + moradoresDTO.getCidade_natal() + "', "
+                    + "'" + moradoresDTO.getData_nasc() + "', "
+                    + "'" + moradoresDTO.getNome_familiar_proximo() + "', "
+                    + "'" + moradoresDTO.getGrau_parentesco() + "', "
+                    + 1 + ")";
 
             System.out.println(comando);
             stmt.execute(comando.toUpperCase(), Statement.RETURN_GENERATED_KEYS);
@@ -53,15 +51,14 @@ public class MoradoresDAO {
             stmt.close();
             rs.close();
             return true;
-        }catch(Exception e){
-            System.out.println("Erro ao conectar ao banco de dados. "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro ao conectar ao banco de dados. " + e.getMessage());
             return false;
-        }finally {
+        } finally {
             //Chama o metodo da classe ConexaoDAO para fechar o banco de dados
             ConexaoDAO.CloseDB();
         }// fecha try,catch,finally
     }//fecha método
-
 
     /**
      * Método utilizado para alterar um objeto PessoaDTO no banco de dados
@@ -77,8 +74,9 @@ public class MoradoresDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
-            comando = "Update usuario set "
-                    + "nome = '" + moradoresDTO.getNome_completo() + "', "
+            comando = "Update moradores set "
+                    + "primeiro_nome = '" + moradoresDTO.getPrimeiro_nome() + "', "
+                    + "segundo_nome = '" + moradoresDTO.getSegundo_nome() + "', "
                     + "cidade_natal = '" + moradoresDTO.getCidade_natal() + "', "
                     + "cidade_atual = '" + moradoresDTO.getCidade_atual() + "', "
                     + "data_nasc  = '" + moradoresDTO.getData_nasc() + "', "
@@ -92,7 +90,7 @@ public class MoradoresDAO {
             return true;
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
-            System.out.println("Erro UsuarioDAO" +e.getMessage());
+            System.out.println("Erro UsuarioDAO" + e.getMessage());
             return false;
         } //Independente de dar erro ou não ele vai fechar o banco de dados.
         finally {
@@ -116,8 +114,8 @@ public class MoradoresDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
 
-            comando = "Delete from moradores "+
-                    "where id_morador = " + moradoresDTO.getId_morador();
+            comando = "Delete from moradores "
+                    + "where id_morador = " + moradoresDTO.getId_morador();
 
             stmt.execute(comando);
             ConexaoDAO.con.commit();
@@ -136,7 +134,9 @@ public class MoradoresDAO {
     }//Fecha o método excluirUsuario
 
     /**
-     * Método utilizado para consultar um objeto FuncionarioDTO no banco de dados
+     * Método utilizado para consultar um objeto FuncionarioDTO no banco de
+     * dados
+     *
      * @param moradoresDTO que vem da classe FuncionarioCTR
      * @param opcao que vem da classe FuncionarioCTR
      * @return Um ResultSet com os dados do funcionario
@@ -148,22 +148,22 @@ public class MoradoresDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
-            String comando="";
+            String comando = "";
 
-            switch(opcao){
+            switch (opcao) {
                 case 1: //Pesquisa por nome
-                    comando = "Select * " +
-                            "from moradores " +
-                            "where id_morador = id_morador " +
-                            "nome like '" + moradoresDTO.getNome_completo() + "%' " +
-                            "order by nome";
+                    comando = "Select * "
+                            + "from moradores "
+                            + "where id_morador = id_morador "
+                            + "nome like '" + moradoresDTO.getPrimeiro_nome() + "%' "
+                            + "order by nome";
                     break;
 
                 case 2: //Pesquisa por id
-                    comando = "Select * " +
-                            "from moradores " +
-                            "where" +
-                            "id_morador = " + moradoresDTO.getId_morador();
+                    comando = "Select * "
+                            + "from moradores "
+                            + "where"
+                            + "id_morador = " + moradoresDTO.getId_morador();
 
             }//fecha switch opcao
             //Executa o comando SQL no banco de Dados

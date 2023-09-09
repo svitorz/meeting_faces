@@ -1,6 +1,7 @@
 package br.com.meetingfaces.dto;
 
 public class UsuarioDTO {
+
     /*
     int: id_usuario(PK)
     String: nome
@@ -9,17 +10,25 @@ public class UsuarioDTO {
     String: email
     String:senha
     int: id_permissao (fk)
-    */
-    
-    private String nome,telefone,data_nasc,email,senha;
+     */
+    private String primeiro_nome, segundo_nome, telefone, data_nasc, email, senha;
 
-    public String getNome() {
-        return nome;
+    public String getPrimeiro_nome() {
+        return primeiro_nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPrimeiro_nome(String primeiro_nome) {
+        this.primeiro_nome = primeiro_nome;
     }
+
+    public String getSegundo_nome() {
+        return segundo_nome;
+    }
+
+    public void setSegundo_nome(String segundo_nome) {
+        this.segundo_nome = segundo_nome;
+    }
+    private int id_permissao;
 
     public String getTelefone() {
         return telefone;
@@ -58,7 +67,7 @@ public class UsuarioDTO {
     }
 
     public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+        this.id_usuario = 1;
     }
 
     public int getId_permissao() {
@@ -68,5 +77,5 @@ public class UsuarioDTO {
     public void setId_permissao(int id_permissao) {
         this.id_permissao = 1;
     }
-    private int id_usuario,id_permissao;
+    private int id_usuario;
 }

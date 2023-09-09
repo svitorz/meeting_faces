@@ -3,7 +3,7 @@ session_start();
 require 'logica.php';
 
 if(autenticado()){
-  redireciona('inicio.php');
+  redireciona('index.php');
   exit();
 }
 $titulo_pagina = "Insira seus dados para cadastro";
