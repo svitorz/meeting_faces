@@ -11,7 +11,17 @@ public class UsuarioDTO {
     String:senha
     int: id_permissao (fk)
      */
-    private String primeiro_nome, segundo_nome, telefone, data_nasc, email, senha;
+    private String primeiro_nome, segundo_nome, telefone, data_nasc, email;
+    private char[] senha;
+    private int id_permissao;
+
+    public int getId_permissao() {
+        return id_permissao;
+    }
+
+    public void setId_permissao(int id_permissao) {
+        this.id_permissao = id_permissao;
+    }
 
     public String getPrimeiro_nome() {
         return primeiro_nome;
@@ -28,7 +38,6 @@ public class UsuarioDTO {
     public void setSegundo_nome(String segundo_nome) {
         this.segundo_nome = segundo_nome;
     }
-    private int id_permissao;
 
     public String getTelefone() {
         return telefone;
@@ -54,11 +63,11 @@ public class UsuarioDTO {
         this.email = email;
     }
 
-    public String getSenha() {
+    public char[] getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
+    public void setSenha(char[] senha) {
         this.senha = senha;
     }
 
@@ -68,14 +77,6 @@ public class UsuarioDTO {
 
     public void setId_usuario(int id_usuario) {
         this.id_usuario = 1;
-    }
-
-    public int getId_permissao() {
-        return id_permissao;
-    }
-
-    public void setId_permissao(int id_permissao) {
-        this.id_permissao = 1;
     }
     private int id_usuario;
 }

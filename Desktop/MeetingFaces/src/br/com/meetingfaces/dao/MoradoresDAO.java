@@ -152,7 +152,7 @@ public class MoradoresDAO {
 
             switch (opcao) {
                 case 1: //Pesquisa por nome
-                    comando = "Select * "
+                    comando = "Select nome,id "
                             + "from moradores "
                             + "where id_morador = id_morador "
                             + "nome like '" + moradoresDTO.getPrimeiro_nome() + "%' "

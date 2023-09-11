@@ -112,9 +112,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,21 +127,15 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_sairBotaoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CadastroAdmVIEW cadastroAdmVIEW = new CadastroAdmVIEW();
-
-        this.desktopPane.add(cadastroAdmVIEW);
-        cadastroAdmVIEW.setVisible(true);
+        CadastroAdminVIEW cadastroVIEW = new CadastroAdminVIEW();
+        cadastroVIEW.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-//        LoginAdmVIEW loginAdmView = new LoginAdmVIEW();
-//
-//        this.desktopPane.add(loginAdmView);
-//        loginAdmView.setVisible(true);
-        CadastroAdmVIEW cadastroAdmVIEW = new CadastroAdmVIEW();
+        LoginAdmVIEW loginAdmVIEW = new LoginAdmVIEW();
 
-        this.desktopPane.add(cadastroAdmVIEW);
-        cadastroAdmVIEW.setVisible(true);
+        this.desktopPane.add(loginAdmVIEW);
+        loginAdmVIEW.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void fileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileMenuActionPerformed

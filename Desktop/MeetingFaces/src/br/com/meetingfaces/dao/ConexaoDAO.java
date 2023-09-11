@@ -16,7 +16,7 @@ public class ConexaoDAO {
             String senha = "postdba";
 
             //DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-            DriverManager.registerDriver(new org.postgresql.Driver());
+            DriverManager.registerDriver((Driver) new org.postgresql.Driver());
 
             //String url = "jdbc:mysql://localhost:3306/"+dsn;
             String url = "jdbc:postgresql://localhost:5432/" + dsn;

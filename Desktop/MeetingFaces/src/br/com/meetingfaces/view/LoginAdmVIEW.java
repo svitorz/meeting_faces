@@ -114,14 +114,12 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_senhaLoginInputActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-    RedirectVIEW redirectView = new RedirectVIEW();
-    
-    
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         PrincipalVIEW principalView = new PrincipalVIEW();
-        
+
         this.dispose();
 //        principalView.setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
