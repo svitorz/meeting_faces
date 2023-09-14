@@ -8,11 +8,12 @@ INSERT INTO permissao(descricao) VALUES ('Nenhuma'),('Parcial'),('Total');
 
 CREATE TABLE usuario(
 	id_usuario SERIAL PRIMARY KEY,
-	nome varchar(50),
+	primeiro_nome varchar(20),
+	segundo_nome varchar(20),
 	telefone varchar(15),
 	data_nasc date,
 	email varchar(90),
-	senha varchar(255) /* ,
+	senha varchar(255), /* 
 	 id_permissao int not null,  
 	CONSTRAINT fk_usuario_permissao FOREIGN KEY (id_permissao)
 	REFERENCES permissao(id_permissao) */
@@ -38,7 +39,7 @@ CREATE TABLE moradores(
 	grau_parentesco varchar(40),
 	ID_ADM int not null,
 	CONSTRAINT fk_ADM_morador FOREIGN KEY (ID_ADM)
-	REFERENCES ADMINISTRADOR(ID_ADM)
+	REFERENCES ADMINISTRADOR(ID_ADMINISTRADOR)
 );
 
 CREATE TABLE DESCRICAO(
