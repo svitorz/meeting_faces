@@ -15,7 +15,7 @@ $sql = "SELECT descricao.*,CONCAT(usuario.primeiro_nome) AS nome_usuario, CONCAT
                 on descricao.id_morador = moradores.id_morador
                     inner join usuario
                         on moradores.id_usuario=usuario.id_usuario
-                            WHERE descricao.id_permissao = 1";
+                            WHERE descricao.situacao LIKE '%Em analise&'";
 $stmt = $conn->query($sql);
 $stmt->execute();
 $count = $stmt->rowCount();

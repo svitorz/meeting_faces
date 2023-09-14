@@ -3,7 +3,7 @@ session_start();
 
 require 'logica.php';
 
-if(!isAdmin()&&!isCadastrador()){
+if(!isAdmin()){
     $_SESSION['restrito'] = true;
     redireciona();
     die();

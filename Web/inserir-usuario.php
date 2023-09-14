@@ -29,9 +29,9 @@ if ($count >= 1) {
     header('Location: formulario-cadastro-usuario.php');
     exit();
 }
-$insert = "INSERT INTO usuario(primeiro_nome, segundo_nome, email, telefone,data_nasc, senha, ID_PERMISSAO) VALUES (?,?,?,?,?,?,?)";
+$insert = "INSERT INTO usuario(primeiro_nome, segundo_nome, email, telefone,data_nasc, senha) VALUES (?,?,?,?,?,?)";
 $stmt = $conn->prepare($insert);
-$result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone,$data_nasc, $senha_hash,$permissao]);
+$result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone,$data_nasc, $senha_hash]);
 if($result!==true){
         $_SESSION['erro'] = true;
     redireciona('formulario-login.php');

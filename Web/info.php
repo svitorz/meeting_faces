@@ -158,7 +158,7 @@ require 'header.php';
                     <?php
                     }
                     ?>
-                    <?php if(isAdmin()||isCadastrador()){
+                    <?php if(isAdmin()){
                         ?>
                     <hr>
                     <div class="row">

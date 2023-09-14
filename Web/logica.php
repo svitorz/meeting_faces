@@ -34,13 +34,7 @@ function redireciona($pagina = null){
 }
 
 function isAdmin(){
-    if(isset($_SESSION['permissao']) && $_SESSION['permissao'] == 3){
-        return true;
-    }
-    return false;
-}
-function isCadastrador(){
-    if(isset($_SESSION['permissao']) && $_SESSION['permissao'] == 2){
+    if(isset($_SESSION['ADM']) && $_SESSION['ADM']){
         return true;
     }
     return false;

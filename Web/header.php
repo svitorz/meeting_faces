@@ -41,7 +41,7 @@
           <a href="logout.php" class="btn-dark btn me-2">Sair</a>
       </div>
       <?php }
-      if(isAdmin()||isCadastrador()){
+      if(isAdmin()){
         ?>
         <div class="d-flex">
           <a href="tela-operacional.php" class="btn-light btn me-2">Tela operacional</a>
