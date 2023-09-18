@@ -1,7 +1,6 @@
 package br.com.meetingfaces.dao;
 
 import br.com.meetingfaces.dto.AdministradorDTO;
-import br.com.meetingfaces.dto.UsuarioDTO;
 import java.sql.*;
 
 public class AdministradorDAO {

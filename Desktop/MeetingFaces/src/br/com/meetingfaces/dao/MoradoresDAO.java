@@ -1,7 +1,7 @@
 package br.com.meetingfaces.dao;
 
+import br.com.meetingfaces.dto.AdministradorDTO;
 import br.com.meetingfaces.dto.MoradoresDTO;
-import br.com.meetingfaces.dto.UsuarioDTO;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -21,7 +21,7 @@ public class MoradoresDAO {
      * @param usuarioDTO que vem da classe PessoaCTR
      * @return Um boolean
      */
-    public boolean inserirMorador(MoradoresDTO moradoresDTO, UsuarioDTO usuarioDTO) {
+    public boolean inserirMorador(MoradoresDTO moradoresDTO, AdministradorDTO administradorDTO) {
         String comando = "";
         int id_morador = 0;
         try {
@@ -32,14 +32,15 @@ public class MoradoresDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
             comando = "INSERT INTO moradores(primeiro_nome, segundo_nome, cidade_atual,"
-                    + "cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco) VALUES ("
+                    + "cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco, id_administrador) VALUES ("
                     + "'" + moradoresDTO.getPrimeiro_nome() + "', "
                     + "'" + moradoresDTO.getSegundo_nome() + "', "
                     + "'" + moradoresDTO.getCidade_atual() + "', "
                     + "'" + moradoresDTO.getCidade_natal() + "', "
                     + "'" + moradoresDTO.getData_nasc() + "', "
                     + "'" + moradoresDTO.getNome_familiar_proximo() + "', "
-                    + "'" + moradoresDTO.getGrau_parentesco() + "'"
+                    + "'" + moradoresDTO.getGrau_parentesco() + "',"
+                    + "'" + administradorDTO.getId_administrador() + "'"
                     + ")";
 
             System.out.println(comando);

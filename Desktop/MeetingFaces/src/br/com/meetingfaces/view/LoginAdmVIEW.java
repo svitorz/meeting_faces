@@ -119,7 +119,9 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_senhaActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-
+        if (verificaPreenchimento()) {
+            logar();
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -141,6 +143,21 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
         }
     }//Fecha método logar()
 
+    private boolean verificaPreenchimento() {
+        if (email.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null, "O campo Login deve ser preenchido");
+            email.requestFocus();
+            return false;
+        } else {
+            if ((senha.getPassword().equals(""))) {
+                JOptionPane.showMessageDialog(null, "O campo Senha deve ser preenchido");
+                senha.requestFocus();
+                return false;
+            } else {
+                return true;
+            }//Fecha else sen_fun
+        }//Fecha else log_fun
+    }//Fecha método verificaPreenchimento()
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnVoltar;

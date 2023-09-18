@@ -170,7 +170,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_navbarActionPerformed
 
     private void cadMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadMRActionPerformed
-        CadastroMrVIEW cadastroMrVIEW = new CadastroMrVIEW();
+        CadastroMoradorVIEW cadastroMrVIEW = new CadastroMoradorVIEW();
         cadastroMrVIEW.setVisible(true);
     }//GEN-LAST:event_cadMRActionPerformed
 

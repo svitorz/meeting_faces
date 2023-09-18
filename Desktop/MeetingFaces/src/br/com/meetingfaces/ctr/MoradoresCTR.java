@@ -1,8 +1,8 @@
 package br.com.meetingfaces.ctr;
 
 import br.com.meetingfaces.dao.MoradoresDAO;
+import br.com.meetingfaces.dto.AdministradorDTO;
 import br.com.meetingfaces.dto.MoradoresDTO;
-import br.com.meetingfaces.dto.UsuarioDTO;
 import java.sql.*;
 
 public class MoradoresCTR {
@@ -12,10 +12,10 @@ public class MoradoresCTR {
     public MoradoresCTR() {
     }
 
-    public String inserirMoradores(MoradoresDTO moradoresDTO, UsuarioDTO usuarioDTO) {
+    public String inserirMoradores(MoradoresDTO moradoresDTO, AdministradorDTO administradorDTO) {
         try {
             //Chama o metodo que esta na classe DAO aguardando uma resposta (true ou false)
-            if (moradoresDAO.inserirMorador(moradoresDTO, usuarioDTO)) {
+            if (moradoresDAO.inserirMorador(moradoresDTO, administradorDTO)) {
                 return "Morador Cadastrado com Sucesso!!!";
             } else {
                 return "Morador NÃO Cadastrado!!!";

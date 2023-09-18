@@ -8,8 +8,8 @@ package br.com.meetingfaces.view;
 import javax.swing.JOptionPane;
 
 import br.com.meetingfaces.ctr.MoradoresCTR;
+import br.com.meetingfaces.dto.AdministradorDTO;
 import br.com.meetingfaces.dto.MoradoresDTO;
-import br.com.meetingfaces.dto.UsuarioDTO;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +18,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
 
     MoradoresDTO moradoresDTO = new MoradoresDTO();
     MoradoresCTR moradoresCTR = new MoradoresCTR();
-    UsuarioDTO usuarioDTO = new UsuarioDTO();
+    AdministradorDTO administradorDTO = new AdministradorDTO();
 
     ResultSet rs;
     int gravar_alterar;
@@ -26,6 +26,12 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
 
     public CadastroMoradorVIEW() {
         initComponents();
+        //Chama todos os métodos liberaCampos
+        liberaCampos(false);
+        //Chama o método liberaBotoes
+        liberaBotoes(true, false, false, false, true);
+        //Atribui um modelo para manipular a tabela
+        //modelo_consulta_m = (DefaultTableModel) jtl_consultar_pes.getModel();
     }
 
     /**
@@ -57,10 +63,15 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        pesquisarInput = new javax.swing.JTextField();
+        pesquisa_nome_morador = new javax.swing.JTextField();
         submitSelectBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaSelect = new javax.swing.JTable();
+        btnCancelar = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -212,14 +223,14 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoGravar)
                     .addComponent(limparMR))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Pesquisar");
 
-        pesquisarInput.addActionListener(new java.awt.event.ActionListener() {
+        pesquisa_nome_morador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesquisarInputActionPerformed(evt);
+                pesquisa_nome_moradorActionPerformed(evt);
             }
         });
 
@@ -238,37 +249,101 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
                 "id", "nome"
             }
         ));
+        tabelaSelect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaSelectMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaSelect);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pesquisarInput, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(submitSelectBtn)
-                .addGap(73, 73, 73))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pesquisa_nome_morador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(submitSelectBtn)
+                        .addGap(35, 35, 35))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(pesquisarInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pesquisa_nome_morador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(submitSelectBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        btnCancelar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setAlignmentY(0.0F);
+        btnCancelar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnNovo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnNovo.setText("Novo");
+        btnNovo.setAlignmentY(0.0F);
+        btnNovo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNovo.setMaximumSize(new java.awt.Dimension(113, 35));
+        btnNovo.setMinimumSize(new java.awt.Dimension(113, 35));
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
+        btnSalvar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.setAlignmentY(0.0F);
+        btnSalvar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSalvar.setMaximumSize(new java.awt.Dimension(113, 35));
+        btnSalvar.setMinimumSize(new java.awt.Dimension(113, 35));
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.setAlignmentY(0.0F);
+        btnExcluir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnExcluir.setMaximumSize(new java.awt.Dimension(113, 35));
+        btnExcluir.setMinimumSize(new java.awt.Dimension(113, 35));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        btnSair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSair.setText("Sair");
+        btnSair.setAlignmentY(0.0F);
+        btnSair.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSair.setMaximumSize(new java.awt.Dimension(113, 35));
+        btnSair.setMinimumSize(new java.awt.Dimension(113, 35));
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -280,16 +355,36 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 13, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(103, 103, 103)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(92, 92, 92))
         );
 
         pack();
@@ -324,16 +419,67 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_cidadeAtualActionPerformed
 
     private void submitSelectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitSelectBtnActionPerformed
-        // TODO add your handling code here:
+        preencheTabela(pesquisa_nome_morador.getText().toUpperCase());        // TODO add your handling code here:
     }//GEN-LAST:event_submitSelectBtnActionPerformed
 
-    private void pesquisarInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarInputActionPerformed
+    private void pesquisa_nome_moradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisa_nome_moradorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pesquisarInputActionPerformed
+    }//GEN-LAST:event_pesquisa_nome_moradorActionPerformed
 
     private void limparMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparMRActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_limparMRActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpaCampos();
+        liberaCampos(false);
+        //modelo_jtl_consultar_pes.setNumRows(0);
+        liberaBotoes(true, false, false, false, true);
+        gravar_alterar = 0;
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        liberaCampos(true);
+        liberaBotoes(false, true, true, false, true);
+        gravar_alterar = 1;
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if (verificaPreenchimentoGeral()) {
+            if (gravar_alterar == 1) {
+                gravar();
+                gravar_alterar = 0;
+            } else {
+                if (gravar_alterar == 2) {
+                    alterar();
+                    //preencheTabela(pesquisa_nome_pes.getText().toUpperCase());
+                    gravar_alterar = 0;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro no Sistema!!!");
+                }
+            }
+            limpaCampos();
+            liberaCampos(false);
+            liberaBotoes(true, false, false, false, true);
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        excluir();
+        limpaCampos();
+        liberaCampos(false);
+        liberaBotoes(true, false, false, false, true);
+        //preencheTabela(pesquisa_nome_pes.getText().toUpperCase());
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void tabelaSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaSelectMouseClicked
+        preencheCampos(Integer.parseInt(String.valueOf(tabelaSelect.getValueAt(tabelaSelect.getSelectedRow(), 0))));
+        liberaBotoes(false, true, true, true, true);
+    }//GEN-LAST:event_tabelaSelectMouseClicked
 
     /**
      * @param args the command line arguments
@@ -381,20 +527,82 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
             moradoresDTO.setData_nasc(data_nasc.getText());
 
             JOptionPane.showMessageDialog(null,
-                    moradoresCTR.inserirMoradores(moradoresDTO, usuarioDTO));
+                    moradoresCTR.inserirMoradores(moradoresDTO, administradorDTO));
         } catch (Exception e) {
             System.out.println("Erro ao Gravar" + e.getMessage());
         }
     }//Fecha método gravar()
 
-    private void preencheTabela(String nome) {
+    private void excluir() {
+        if (JOptionPane.showConfirmDialog(null, "Deseja Realmente excluir o Funcionário?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null,
+                    moradoresCTR.excluirMoradores(moradoresDTO)
+            );
+        }
+    }//Fecha método excluir()
+
+    private void alterar() {
+        moradoresDTO.setPrimeiro_nome(nomeMorador.getText());
+        moradoresDTO.setSegundo_nome(sobrenomeMorador.getText());
+        moradoresDTO.setCidade_atual(cidadeAtual.getText());
+        moradoresDTO.setCidade_natal(cidadeNatal.getText());
+        moradoresDTO.setNome_familiar_proximo(nomeFamiliarProximo.getText());
+        moradoresDTO.setGrau_parentesco(grauParentesco.getText());
+        moradoresDTO.setData_nasc(data_nasc.getText());
+        JOptionPane.showMessageDialog(null,
+                moradoresCTR.alterarMoradores(moradoresDTO)
+        );
+    }//Fecha método alterar()
+
+    private boolean verificaPreenchimentoGeral() {
+        if (nomeMorador.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null, "O campo Nome deve ser preenchido");
+            nomeMorador.requestFocus();
+            return false;
+        } else {
+            if (sobrenomeMorador.getText().equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(null, "O campo Endereço deve ser preenchido");
+                sobrenomeMorador.requestFocus();
+                return false;
+            } else {
+                if (cidadeAtual.getText().equalsIgnoreCase("")) {
+                    JOptionPane.showMessageDialog(null, "O campo Número deve ser preenchido");
+                    cidadeAtual.requestFocus();
+                    return false;
+                } else {
+                    if (cidadeNatal.getText().equalsIgnoreCase("")) {
+                        JOptionPane.showMessageDialog(null, "O campo Bairro deve ser preenchido");
+                        cidadeNatal.requestFocus();
+                        return false;
+                    } else {
+                        if (nomeFamiliarProximo.getText().equalsIgnoreCase("")) {
+                            JOptionPane.showMessageDialog(null, "O campo Cidade deve ser preenchido");
+                            nomeFamiliarProximo.requestFocus();
+                            return false;
+                        } else {
+                            if (grauParentesco.getText().equalsIgnoreCase("")) {
+                                JOptionPane.showMessageDialog(null, "O campo CEP deve ser preenchido");
+                                grauParentesco.requestFocus();
+                                return false;
+                            }//Fecha else cid_pes
+                            else {
+                                return true;
+                            }
+                        }//Fecha else bai_pes
+                    }//Fecha else num_pes
+                }//Fecha else end_pes
+            }//Fecha else nom_pes
+        }//Fecha método verificaPreenchimentoGeral()
+    }
+
+    private void preencheTabela(String nomeMorador) {
         try {
             //Limpa todas as linhas
             modelo_consulta_m.setNumRows(0);
 
             //Enquanto tiver linhas - faça
             //funcionarioDTO.setNom_pes(nom_pes);
-            moradoresDTO.setPrimeiro_nome(nome);
+            moradoresDTO.setPrimeiro_nome(nomeMorador);
             rs = moradoresCTR.consultarMoradores(moradoresDTO, 1); //1 = é a pesquisa por nome na classe DAO
             while (rs.next()) {
                 modelo_consulta_m.addRow(new Object[]{
@@ -406,8 +614,66 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         }
     }//Fecha método preencheTabela(String nom_pes)
 
+    private void preencheCampos(int id_morador) {
+        try {
+            moradoresDTO.setId_morador(id_morador);
+            rs = moradoresCTR.consultarMoradores(moradoresDTO, 2); //2 = é a pesquisa no id na classe DAO
+            if (rs.next()) {
+                limpaCampos();
+
+                nomeMorador.setText(rs.getString("nomeMorador"));
+                sobrenomeMorador.setText(rs.getString("sobrenomeMorador"));
+                cidadeAtual.setText(rs.getString("cidadeAtual"));
+                cidadeNatal.setText(rs.getString("cidadeNatal"));
+                nomeFamiliarProximo.setText(rs.getString("nomeFamiliarProximo"));
+                grauParentesco.setText(rs.getString("grauParentesco"));
+
+                gravar_alterar = 2;
+                liberaCampos(true);
+            }
+        } catch (Exception erTab) {
+            System.out.println("Erro SQL: " + erTab);
+        }
+    }//Fecha método preencheCampos(int id_pes)
+
+    private void liberaCampos(boolean a) {
+        nomeMorador.setEnabled(a);
+        sobrenomeMorador.setEnabled(a);
+        nomeFamiliarProximo.setEnabled(a);
+        grauParentesco.setEnabled(a);
+        cidadeAtual.setEnabled(a);
+        cidadeNatal.setEnabled(a);
+        data_nasc.setEnabled(a);
+    }//Fecha método liberaCampos(boolean a)
+
+    /**
+     * Método utilizado para limpar os campos da tela.
+     */
+    private void limpaCampos() {
+        nomeMorador.setText("");
+        sobrenomeMorador.setText("");
+        nomeFamiliarProximo.setText("");
+        grauParentesco.setText("");
+        cidadeAtual.setText("");
+        cidadeNatal.setText("");
+        data_nasc.setText("");
+    }//Fecha método limpaCampos()
+
+    private void liberaBotoes(boolean a, boolean b, boolean c, boolean d, boolean e) {
+        btnNovo.setEnabled(a);
+        btnSalvar.setEnabled(b);
+        btnCancelar.setEnabled(c);
+        btnExcluir.setEnabled(d);
+        btnSair.setEnabled(e);
+    }//Fecha método liberaBotoes(boolean a, boolean b, boolean c, boolean d, boolean e)
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoGravar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField cidadeAtual;
     private javax.swing.JTextField cidadeNatal;
     private javax.swing.JTextField data_nasc;
@@ -427,7 +693,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
     private javax.swing.JButton limparMR;
     private javax.swing.JTextField nomeFamiliarProximo;
     private javax.swing.JTextField nomeMorador;
-    private javax.swing.JTextField pesquisarInput;
+    private javax.swing.JTextField pesquisa_nome_morador;
     private javax.swing.JTextField sobrenomeMorador;
     private javax.swing.JButton submitSelectBtn;
     private javax.swing.JTable tabelaSelect;
