@@ -3,10 +3,10 @@ session_start();
 
 require 'logica.php';
 
-// if(!isAdmin()){
-//   redireciona();
-//   die();
-// }
+if(!isAdmin()){
+  redireciona();
+  die();
+}
 
 
 require 'conexao/conexao.php';

@@ -3,6 +3,11 @@ session_start();
 
 require 'logica.php';
 
+if(!isAdmin()){
+  redireciona();
+  die();
+}
+
 require 'conexao/conexao.php';
 
 $primeiro_nome = filter_input(INPUT_POST, 'primeiro_nome', FILTER_SANITIZE_SPECIAL_CHARS);

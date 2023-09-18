@@ -25,6 +25,12 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -32,8 +38,21 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         sairBotao = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        navbar = new javax.swing.JMenu();
+        cadMR = new javax.swing.JMenuItem();
+        cadAdmin = new javax.swing.JMenuItem();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,23 +107,36 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         desktopPane.add(jPanel1);
         jPanel1.setBounds(120, 60, 630, 370);
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Cadastro");
-        fileMenu.addActionListener(new java.awt.event.ActionListener() {
+        navbar.setMnemonic('f');
+        navbar.setText("Cadastro");
+        navbar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fileMenuActionPerformed(evt);
+                navbarActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setText("Cadastro");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        cadMR.setText("Cadastro de moradores de rua");
+        cadMR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadMRMouseClicked(evt);
             }
         });
-        fileMenu.add(jMenuItem1);
+        cadMR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadMRActionPerformed(evt);
+            }
+        });
+        navbar.add(cadMR);
 
-        menuBar.add(fileMenu);
+        cadAdmin.setText("Cadastro de Admin");
+        cadAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadAdminActionPerformed(evt);
+            }
+        });
+        navbar.add(cadAdmin);
+
+        menuBar.add(navbar);
 
         setJMenuBar(menuBar);
 
@@ -126,11 +158,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         sair();
     }//GEN-LAST:event_sairBotaoActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CadastroAdminVIEW cadastroVIEW = new CadastroAdminVIEW();
-        cadastroVIEW.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         LoginAdmVIEW loginAdmVIEW = new LoginAdmVIEW();
 
@@ -138,9 +165,23 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         loginAdmVIEW.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void fileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileMenuActionPerformed
+    private void navbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navbarActionPerformed
 
-    }//GEN-LAST:event_fileMenuActionPerformed
+    }//GEN-LAST:event_navbarActionPerformed
+
+    private void cadMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadMRActionPerformed
+        CadastroMrVIEW cadastroMrVIEW = new CadastroMrVIEW();
+        cadastroMrVIEW.setVisible(true);
+    }//GEN-LAST:event_cadMRActionPerformed
+
+    private void cadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadAdminActionPerformed
+        CadastroAdminVIEW cadastroAdminVIEW = new CadastroAdminVIEW();
+        cadastroAdminVIEW.setVisible(true);
+    }//GEN-LAST:event_cadAdminActionPerformed
+
+    private void cadMRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadMRMouseClicked
+
+    }//GEN-LAST:event_cadMRMouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,13 +228,20 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JMenuItem cadAdmin;
+    private javax.swing.JMenuItem cadMR;
     private javax.swing.JTextArea campoTexto;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu navbar;
     private javax.swing.JButton sairBotao;
     // End of variables declaration//GEN-END:variables
 

@@ -5,11 +5,16 @@
  */
 package br.com.meetingfaces.view;
 
+import br.com.meetingfaces.ctr.AdministradorCTR;
+import br.com.meetingfaces.dao.AdministradorDAO;
+import br.com.meetingfaces.dto.AdministradorDTO;
+import javax.swing.JOptionPane;
+
 public class LoginAdmVIEW extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form LoginAdmVIEW
-     */
+    AdministradorDTO administradorDTO = new AdministradorDTO();
+    AdministradorCTR administradorCTR = new AdministradorCTR();
+
     public LoginAdmVIEW() {
         initComponents();
     }
@@ -25,8 +30,8 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
 
         emailLabel = new javax.swing.JLabel();
         senhaLabel = new javax.swing.JLabel();
-        senhaLoginInput = new javax.swing.JPasswordField();
-        emailLoginInput = new javax.swing.JTextField();
+        senha = new javax.swing.JPasswordField();
+        email = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
 
@@ -37,15 +42,15 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
 
         senhaLabel.setText("Senha:");
 
-        senhaLoginInput.addActionListener(new java.awt.event.ActionListener() {
+        senha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaLoginInputActionPerformed(evt);
+                senhaActionPerformed(evt);
             }
         });
 
-        emailLoginInput.addActionListener(new java.awt.event.ActionListener() {
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailLoginInputActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
 
@@ -80,8 +85,8 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
                             .addComponent(emailLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailLoginInput)
-                            .addComponent(senhaLoginInput, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))))
+                            .addComponent(email)
+                            .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))))
                 .addContainerGap(309, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,11 +95,11 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
                 .addGap(150, 150, 150)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailLoginInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(senhaLabel)
-                    .addComponent(senhaLoginInput, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
@@ -105,13 +110,13 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailLoginInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailLoginInputActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailLoginInputActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void senhaLoginInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaLoginInputActionPerformed
+    private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_senhaLoginInputActionPerformed
+    }//GEN-LAST:event_senhaActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
 
@@ -124,12 +129,24 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
 //        principalView.setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+    private void logar() {
+        administradorDTO.setEmail(email.getText());
+        administradorDTO.setSenha(senha.getPassword());
+        administradorDTO.setId_administrador(administradorCTR.logarAdministrador(administradorDTO));
+        if (administradorDTO.getId_administrador() > 0) {
+            this.dispose();
+            // new PrincipalVIEW(administradorDTO).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Login ou senha\nIncorreto!!!");
+        }
+    }//Fecha método logar()
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JTextField email;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JTextField emailLoginInput;
+    private javax.swing.JPasswordField senha;
     private javax.swing.JLabel senhaLabel;
-    private javax.swing.JPasswordField senhaLoginInput;
     // End of variables declaration//GEN-END:variables
 }

@@ -41,7 +41,7 @@ public class AdministradorDAO {
             //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
-            comando = "INSERT INTO usuario(primeiro_nome, segundo_nome, email,"
+            comando = "INSERT INTO ADMINISTRADOR(primeiro_nome, segundo_nome, email"
                     + ", senha) VALUES ("
                     + "'" + administradorDTO.getPrimeiro_nome() + "', "
                     + "'" + administradorDTO.getSegundo_nome() + "', "

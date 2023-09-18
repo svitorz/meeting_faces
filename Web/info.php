@@ -14,11 +14,17 @@ $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 require 'conexao/conexao.php';
 
 //CONCAT(myguests.firstname,' ',myguests.lastname) AS name, myguests.email, messages.message 
-$sql = "SELECT MORADOR.*, ADMINISTRADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMIN, 
-            ADMINISTRADOR.ID_ADMINISTRADOR AS ID_ADMINISTRADOR 
-                FROM MORADOR INNER JOIN ADMINISTRADOR 
-                ON MORADOR.id_administrador = ADMINISTRADOR.ID_ADMINISTRADOR 
-                WHERE id_morador = ?";
+$sql = "SELECT DESCRICAO.*,MORADOR.*, 
+            USUARIO.PRIMEIRO_NOME AS NOME_USUARIO, 
+                ADMINISTRADOR.PRIMEIRO_NOME AS NOME_ADMINISTRADOR,
+                    ADMINISTRADOR.ID_ADMINISTRADOR
+                        FROM MORADOR INNER JOIN DESCRICAO 
+                            ON MORADOR.ID_MORADOR = DESCRICAO.ID_MORADOR 
+                                INNER JOIN USUARIO 
+                                    ON DESCRICAO.ID_USUARIO = USUARIO.ID_USUARIO 
+                                        INNER JOIN ADMINISTRADOR 
+                                            ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
+                                                WHERE MORADOR.ID_MORADOR = ? AND DESCRICAO.SITUACAO LIKE '%APROVADO%'";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_morador]);
 $row = $stmt->fetch();
@@ -54,17 +60,13 @@ require 'header.php';
                 <div class="card-body p-0">
                     <ul class="list-group list-group-flush rounded-3">
                         <?php 
-                        while($rowFeedback = $stmt->fetch()){ 
-                        if(isset($rowFeedback['feedback_texto']) && $rowFeedback['feedback_texto']){
-                            if($rowFeedback['id_feedback']==3){
+                            if(isset($row['comentario']) && $row['comentario']){ 
                         ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <p class="mb-0"> <?= $rowFeedback['feedback_texto'] ?> </p>
-                        </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <p class="mb-0"> <?= $row['comentario'] ?> </p>
+                            </li>
                         <?php
-                                }
                             }
-                        }
                         ?>
                     </ul>
                 </div>
@@ -165,7 +167,7 @@ require 'header.php';
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted text-capitalize text-capitalize mb-0">
-                                <?= $row['primeiro_nome_admin']; ?>, id: <?= $row['id_administrador']; ?>
+                                <?= $row['nome_administrador']; ?>, id: <?= $row['id_administrador']; ?>
                             </p>
                         </div>
                     </div>

@@ -32,15 +32,15 @@ public class MoradoresDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
             comando = "INSERT INTO moradores(primeiro_nome, segundo_nome, cidade_atual,"
-                    + "cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_usuario) VALUES ("
+                    + "cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco) VALUES ("
                     + "'" + moradoresDTO.getPrimeiro_nome() + "', "
                     + "'" + moradoresDTO.getSegundo_nome() + "', "
                     + "'" + moradoresDTO.getCidade_atual() + "', "
                     + "'" + moradoresDTO.getCidade_natal() + "', "
                     + "'" + moradoresDTO.getData_nasc() + "', "
                     + "'" + moradoresDTO.getNome_familiar_proximo() + "', "
-                    + "'" + moradoresDTO.getGrau_parentesco() + "', "
-                    + 1 + ")";
+                    + "'" + moradoresDTO.getGrau_parentesco() + "'"
+                    + ")";
 
             System.out.println(comando);
             stmt.execute(comando.toUpperCase(), Statement.RETURN_GENERATED_KEYS);

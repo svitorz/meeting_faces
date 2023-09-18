@@ -1,7 +1,10 @@
 <?php
 session_start();
 require 'logica.php';
-
+if(autenticado()){
+  redireciona('inicio.php');
+  exit();
+}
 $titulo_pagina = "Faça login";
 require "header.php"; 
 ?>
