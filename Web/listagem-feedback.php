@@ -10,12 +10,12 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT descricao.*,CONCAT(usuario.primeiro_nome) AS nome_usuario,CONCAT(MORADOR.primeiro_nome) AS nome_morador
-            from descricao inner join MORADOR 
-                on descricao.id_morador = MORADOR.id_morador
-                    inner join usuario
-                        on DESCRICAO.id_usuario=usuario.id_usuario
-                            WHERE descricao.SITUACAO LIKE '%Em analise&'";
+$sql = "SELECT DESCRICAO.*, USUARIO.PRIMEIRO_NOME AS NOME_USUARIO, MORADOR.PRIMEIRO_NOME AS NOME_MORADOR 
+          FROM DESCRICAO INNER JOIN USUARIO 
+            ON DESCRICAO.ID_USUARIO = USUARIO.ID_USUARIO 
+              INNER JOIN MORADOR 
+                ON DESCRICAO.ID_MORADOR = MORADOR.ID_MORADOR 
+                  WHERE DESCRICAO.SITUACAO = 'Em análise'";
 $stmt = $conn->query($sql);
 $stmt->execute();
 $count = $stmt->rowCount();
@@ -39,7 +39,7 @@ require 'header.php';
       ?>
         <tr>
           <th scope="row"> <?= $row["id_descricao"]?> </th>
-          <td><?= $row["descricao"]?></td>
+          <td><?= $row["comentario"]?></td>
           <td> <a href="perfil-usuario.php?"></a> <?= $row["nome_usuario"]?>, ID: <?=$row['id_usuario']?></td>
           <td> <a href="info.php?id_morador=<?= $row["id_morador"]?>"><?= $row["nome_morador"]?>, ID: <?= $row["id_morador"]?> </a></td>
           <td>  
@@ -54,13 +54,13 @@ require 'header.php';
             <div class="input-group">
               <form action="aprovar-feedback.php" method="post">
                 <input type="hidden" name="id" value="<?=$row['id_descricao'];?>" />
-                <input type="hidden" name="descricao" value="<?=$row['descricao'];?>" />
+                <input type="hidden" name="descricao" value="<?=$row['comentario'];?>" />
                 <input type="hidden" name="aprovacao" value="2" />
                 <button type="submit" class="btn btn-sm btn-danger mx-2">Excluir</button>
               </form>
               <form action="aprovar-feedback.php" method="post">
                 <input type="hidden" name="id" value="<?=$row['id_descricao'];?>" />
-                <input type="hidden" name="descricao" value="<?=$row['descricao'];?>" />
+                <input type="hidden" name="descricao" value="<?=$row['comentario'];?>" />
                 <input type="hidden" name="aprovacao" value="3" />
                 <button type="submit" class="btn btn-sm btn-success">Aprovar</button>
               </form>

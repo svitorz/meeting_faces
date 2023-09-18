@@ -17,13 +17,13 @@ require 'conexao/conexao.php';
 
 if(isset($aprovacao)&&isset($id)){
     if($aprovacao==2){
-        $sql = "UPDATE descricao SET id_permissao = 2 WHERE id_descricao = ?";
+        $sql = "UPDATE descricao SET SITUACAO = 'REPROVADO' WHERE id_descricao = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
     }elseif($aprovacao==3){
-        $sql = "UPDATE descricao SET id_permissao = ? WHERE id_descricao = ?";
+        $sql = "UPDATE descricao SET SITUACAO = 'APROVADO' WHERE id_descricao = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$aprovacao,$id]);
+        $stmt->execute([$id]);
     }
     $result = $stmt->rowCount();
     if($result>0){
