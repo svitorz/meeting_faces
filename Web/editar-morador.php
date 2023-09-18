@@ -20,7 +20,7 @@ $data = str_replace("/", "-", $data_nasc);
 
 require 'conexao/conexao.php';
 
-$sql = "UPDATE moradores SET primeiro_nome = ?, segundo_nome = ?, cidade_atual = ?, cidade_natal = ?, data_nasc = ?, nome_familiar_proximo = ?, grau_parentesco = ? WHERE id_morador = ?";
+$sql = "UPDATE MORADOR SET primeiro_nome = ?, segundo_nome = ?, cidade_atual = ?, cidade_natal = ?, data_nasc = ?, nome_familiar_proximo = ?, grau_parentesco = ? WHERE id_morador = ?";
 
 $stmt = $conn->prepare($sql);
 $result = $stmt->execute([$primeiro_nome, $segundo_nome, $cidade_atual, $cidade_origem, $data_nasc, $nome_familiar, $grau_parentesco, $id_morador]);

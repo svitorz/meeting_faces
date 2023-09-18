@@ -1,7 +1,7 @@
 package br.com.meetingfaces.view;
 
-import br.com.meetingfaces.ctr.UsuarioCTR;
-import br.com.meetingfaces.dto.UsuarioDTO;
+import br.com.meetingfaces.ctr.AdministradorCTR;
+import br.com.meetingfaces.dto.AdministradorDTO;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
@@ -12,10 +12,10 @@ import javax.swing.text.MaskFormatter;
  */
 public class CadastroAdminVIEW extends javax.swing.JFrame {
 
-    UsuarioCTR usuarioCTR = new UsuarioCTR();
-    UsuarioDTO usuarioDTO = new UsuarioDTO();
-//    private JTextField data_nasc =  new JFormattedTextField(new JFormattedTextField("##/##/####"));
+    AdministradorDTO administradorDTO = new AdministradorDTO();
+    AdministradorCTR administradorCTR = new AdministradorCTR();
 
+    //    private JTextField data_nasc =  new JFormattedTextField(new JFormattedTextField("##/##/####"));
     public CadastroAdminVIEW() {
         initComponents();
     }
@@ -46,9 +46,6 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         submit = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        admSelect = new javax.swing.JRadioButton();
-        cadastranteSelect = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         pesquisarBtn = new javax.swing.JButton();
         pesquisarInput = new javax.swing.JTextField();
@@ -123,45 +120,6 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
         });
         getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, 124, 70));
 
-        buttonGroup1.add(admSelect);
-        admSelect.setText("Administrador");
-        admSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admSelectActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(cadastranteSelect);
-        cadastranteSelect.setText("Cadastrante");
-        cadastranteSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastranteSelectActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(admSelect)
-                    .addComponent(cadastranteSelect))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(admSelect)
-                .addGap(27, 27, 27)
-                .addComponent(cadastranteSelect)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 200, 110));
-
         jLabel8.setText("Consultar usuários");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 130, 70));
 
@@ -205,16 +163,8 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_data_nascActionPerformed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        gravar(usuarioDTO);        // TODO add your handling code here:
+        gravar(administradorDTO);        // TODO add your handling code here:
     }//GEN-LAST:event_submitActionPerformed
-
-    private void admSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admSelectActionPerformed
-        usuarioDTO.setId_permissao(3);
-    }//GEN-LAST:event_admSelectActionPerformed
-
-    private void cadastranteSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastranteSelectActionPerformed
-        usuarioDTO.setId_permissao(2);
-    }//GEN-LAST:event_cadastranteSelectActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -256,24 +206,23 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
         });
     }
 
-    private void gravar(UsuarioDTO usuarioDTO) {
+    private void gravar(AdministradorDAO administradorDAO) {
         try {
-            usuarioDTO.setPrimeiro_nome(primeiro_nome.getText());
-            usuarioDTO.setSegundo_nome(segundo_nome.getText());
-            usuarioDTO.setEmail(email.getText());
-            usuarioDTO.setTelefone(telefone.getText());
-            usuarioDTO.setData_nasc(data_nasc.getText());
-            usuarioDTO.setSenha(senha.getPassword());
+            administradorDTO.setPrimeiro_nome(primeiro_nome.getText());
+            administradorDTO.setSegundo_nome(segundo_nome.getText());
+            administradorDTO.setEmail(email.getText());
+            administradorDTO.setTelefone(telefone.getText());
+            administradorDTO.setData_nasc(data_nasc.getText());
+            administradorDTO.setSenha(senha.getPassword());
 
             JOptionPane.showMessageDialog(null,
-                    usuarioCTR.inserirUsuario(usuarioDTO));
+                    administradorCTR.inserirAdmin(administradorDAO));
         } catch (Exception e) {
             System.out.println("Erro ao Gravar" + e.getMessage());
         }
     }//Fecha método gravar()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton admSelect;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -282,7 +231,6 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.ButtonGroup buttonGroup8;
-    private javax.swing.JRadioButton cadastranteSelect;
     private javax.swing.JTextField data_nasc;
     private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
@@ -293,7 +241,6 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton pesquisarBtn;

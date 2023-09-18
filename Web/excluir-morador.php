@@ -15,7 +15,7 @@ require 'conexao/conexao.php';
 
 $id_morador = filter_input(INPUT_GET, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
 
-$sql = "DELETE FROM moradores WHERE id_morador = ?";
+$sql = "DELETE FROM MORADOR WHERE id_morador = ?";
 $stmt = $conn->prepare($sql);
 $result = $stmt->execute([$id_morador]);
 if($result){

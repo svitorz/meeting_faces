@@ -29,23 +29,23 @@ if(isAdmin()){
                     <li class="nav-link mb-5">
                         <a class="nav-link" href="listagem-pessoas.php">
                             <span class="btn btn-dark">
-                                Listagem de moradores de rua cadastrados
+                                Listagem de MORADOR de rua cadastrados
                             </span>
                         </a>
                     </li>
-                    <li class="nav-link mb-5">
+                    <!-- <li class="nav-link mb-5">
                         <a class="nav-link" href="listagem-usuario.php">
                             <span class="btn btn-dark">
                                 Listagem de usuários cadastrados
                             </span>
                         </a>
+                    </li> -->
                         <li class="nav-link mb-5">
                         <a class="nav-link" href="formulario-cadastro-cadastrador.php">
                             <span class="btn btn-dark">
                                 Cadastrar novo cadastrador
                             </span>
                         </a>
-                    </li>
                     </li>
                     </li>
                     <li class="nav-link mb-5">

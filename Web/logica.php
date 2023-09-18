@@ -17,6 +17,9 @@ function email_usuario(){
 }
 
 function id_usuario(){
+    if(isset($_SESSION['ADM']) && $_SESSION['ADM']){
+        return $_SESSION['id_administrador'];
+    }
     return $_SESSION['id_usuario'];
 }
 function telefone_usuario(){

@@ -15,7 +15,7 @@ $cidade_atual = filter_input(INPUT_POST, 'cidade_atual', FILTER_SANITIZE_SPECIAL
 $data_nasc = filter_input(INPUT_POST, 'data_nasc', FILTER_SANITIZE_SPECIAL_CHARS);
 $nome_familiar = filter_input(INPUT_POST, 'nome_familiar', FILTER_SANITIZE_SPECIAL_CHARS);
 $grau_parentesco = filter_input(INPUT_POST, 'grau_parentesco', FILTER_SANITIZE_SPECIAL_CHARS);
-$id_usuario = $_SESSION['id_usuario'];
+$id_administrador = filter_input(INPUT_POST, 'id_administrador', FILTER_SANITIZE_SPECIAL_CHARS);
 $data = str_replace("/", "-", $data_nasc);
 $data_nasc = filter_input(INPUT_POST, 'data_nasc', FILTER_SANITIZE_SPECIAL_CHARS);
 //transforma em string a data atual do sistema
@@ -24,8 +24,10 @@ strval($ano_atual = date('d/m/Y'));
 if(strcmp($data_nasc,$ano_atual)>=0){
     $data_nasc = null;
 }
-$sql = "INSERT INTO moradores(primeiro_nome,segundo_nome, cidade_atual, cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_usuario) VALUES (:primeiro_nome, :segundo_nome, :cidade_atual, :cidade_origem, :data, :nome_familiar, :grau_parentesco, :id_usuario)";
+$sql = "INSERT INTO MORADOR(primeiro_nome,segundo_nome, cidade_atual, cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_administrador) VALUES (:primeiro_nome, :segundo_nome, :cidade_atual, :cidade_origem, :data, :nome_familiar, :grau_parentesco, :ID_ADMINISTRADOR)";
+
 $stmt = $conn->prepare($sql);
+
 $result = $stmt->execute([
     ':primeiro_nome' => $primeiro_nome,
     ':segundo_nome' => $segundo_nome,
@@ -34,7 +36,7 @@ $result = $stmt->execute([
     ':data' => $data,
     ':nome_familiar' => $nome_familiar,
     ':grau_parentesco' => $grau_parentesco,
-    ':id_usuario' => $id_usuario
+    ':ID_ADMINISTRADOR' => $id_administrador
 ]);
 if($result){
     $_SESSION['sucesso'] = true;

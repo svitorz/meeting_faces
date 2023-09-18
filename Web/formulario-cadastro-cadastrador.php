@@ -1,12 +1,12 @@
 <?php
 session_start();
 require 'logica.php';
-
+/*
 if(!isAdmin()){
   redireciona('index.php');
   exit();
 }
-
+*/
 $titulo_pagina = "Cadastro de perfil Cadastrador";  
 include 'header.php';
 ?>

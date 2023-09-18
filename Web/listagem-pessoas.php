@@ -3,12 +3,12 @@ session_start();
 require 'logica.php';
 
 
-$titulo_pagina = "Listagem de todos os moradores cadastrados no sistema";
+$titulo_pagina = "Listagem de todos os MORADOR cadastrados no sistema";
 require_once 'header.php';
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT id_morador,primeiro_nome,cidade_atual FROM moradores ORDER BY primeiro_nome";
+$sql = "SELECT id_morador,primeiro_nome,cidade_atual FROM MORADOR ORDER BY primeiro_nome";
 $stmt = $conn->query($sql);
 
 if(isset($_SESSION['sucesso']) && $_SESSION['sucesso']){

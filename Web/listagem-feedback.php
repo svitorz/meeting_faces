@@ -10,12 +10,12 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT descricao.*,CONCAT(usuario.primeiro_nome) AS nome_usuario, CONCAT(moradores.primeiro_nome) AS nome_morador
-            from descricao inner join moradores 
-                on descricao.id_morador = moradores.id_morador
+$sql = "SELECT descricao.*,CONCAT(usuario.primeiro_nome) AS nome_usuario,CONCAT(MORADOR.primeiro_nome) AS nome_morador
+            from descricao inner join MORADOR 
+                on descricao.id_morador = MORADOR.id_morador
                     inner join usuario
-                        on moradores.id_usuario=usuario.id_usuario
-                            WHERE descricao.situacao LIKE '%Em analise&'";
+                        on DESCRICAO.id_usuario=usuario.id_usuario
+                            WHERE descricao.SITUACAO LIKE '%Em analise&'";
 $stmt = $conn->query($sql);
 $stmt->execute();
 $count = $stmt->rowCount();

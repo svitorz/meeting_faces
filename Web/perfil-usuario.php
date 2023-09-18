@@ -82,27 +82,6 @@ require 'header.php';
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Telefone</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= telefone_usuario(); ?>
-                            </p>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <p class="mb-0">Data de nascimento</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <p class="text-muted mb-0">
-                                <?= date('d-m-Y', strtotime(data_nasc())); ?>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

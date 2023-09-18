@@ -2,10 +2,11 @@
 session_start();
 
 require 'logica.php';
-if(!isAdmin()){
-  redireciona();
-  die();
-}
+
+// if(!isAdmin()){
+//   redireciona();
+//   die();
+// }
 
 
 require 'conexao/conexao.php';
@@ -29,7 +30,7 @@ if ($count >= 1) {
 $insert = "INSERT INTO ADMINISTRADOR(primeiro_nome,segundo_nome, email, senha) VALUES (?,?,?,?)";
 $stmt = $conn->prepare($insert);
 $result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $senha_hash]);
-if($result!==true){
+if($result!=true){
         $_SESSION['erro'] = true;
     redireciona('formulario-login.php');
     exit();

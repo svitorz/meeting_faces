@@ -10,7 +10,7 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT id_usuario,primeiro_nome,segundo_nome,id_permissao FROM usuario ORDER BY primeiro_nome";
+$sql = "SELECT id_usuario,primeiro_nome,segundo_nome FROM usuario ORDER BY primeiro_nome";
 
 $stmt = $conn->query($sql);
 $titulo_pagina = "Listagem dos usuários cadastrados no sistema";
@@ -21,7 +21,6 @@ require_once 'header.php';
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Nome </th>
-          <th scope="col">Tipo de usuário:</th>
           <?php
           if(isAdmin()){
           ?> 
@@ -42,24 +41,9 @@ require_once 'header.php';
               <?= $row["primeiro_nome"];?> <?= $row["segundo_nome"];?> 
             </a>
           </td>
-          <td>
-            <?php 
-            switch($row['id_permissao']){
-                case 1:
-                    echo "Usuário";
-                    break;
-                case 2:
-                    echo "Cadastrador";
-                    break;
-                case 3:
-                    echo "Administrador";
-                    break;
-            }
-            ?>
-          </td>
           <td>  
             <?php 
-            if(isAdmin()&&$row['id_permissao']!=3){
+            if(isAdmin()){
             ?>
             <a href="excluir-usuario.php?id_usuario=<?=$row['id_usuario'];?>" onclick="if(!confirm('Deseja excluir?')) return false;" class=" btn btn-sm btn-danger">
               <span data-feather="trash-2"></span>

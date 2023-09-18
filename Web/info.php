@@ -14,13 +14,11 @@ $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 require 'conexao/conexao.php';
 
 //CONCAT(myguests.firstname,' ',myguests.lastname) AS name, myguests.email, messages.message 
-$sql = "select moradores.*,CONCAT(usuario.primeiro_nome) AS primeiro_nome_usuario,usuario.id_usuario,descricao.descricao AS feedback_texto, descricao.id_permissao AS id_feedback
-            from usuario inner join moradores 
-                on usuario.id_usuario = moradores.id_usuario 
-                    left join descricao
-                        on moradores.id_morador=descricao.id_morador
-                            where moradores.id_morador=?
-                            and descricao.id_permissao=3";
+$sql = "SELECT MORADOR.*, ADMINISTRADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMIN, 
+            ADMINISTRADOR.ID_ADMINISTRADOR AS ID_ADMINISTRADOR 
+                FROM MORADOR INNER JOIN ADMINISTRADOR 
+                ON MORADOR.id_administrador = ADMINISTRADOR.ID_ADMINISTRADOR 
+                WHERE id_morador = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_morador]);
 $row = $stmt->fetch();
@@ -167,7 +165,7 @@ require 'header.php';
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted text-capitalize text-capitalize mb-0">
-                                <?= $row['primeiro_nome_usuario']; ?>, id: <?= $row['id_usuario']; ?>
+                                <?= $row['primeiro_nome_admin']; ?>, id: <?= $row['id_administrador']; ?>
                             </p>
                         </div>
                     </div>

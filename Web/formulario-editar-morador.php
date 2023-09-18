@@ -10,7 +10,7 @@ $id_morador = filter_input(INPUT_GET, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT * FROM moradores WHERE id_morador = ?";
+$sql = "SELECT * FROM MORADOR WHERE id_morador = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_morador]);
 $row = $stmt->fetch();

@@ -7,7 +7,7 @@ if(!isAdmin()){
   die();
 }
 
-$titulo_pagina = "Cadastro de moradores de rua";
+$titulo_pagina = "Cadastro de MORADOR de rua";
 include 'header.php'; 
 ?>
 <h5 class="text-center">Nenhum campo é obrigatório, porém insira a maior quantidade de informações possível, caso queira deixar uma observação, vá até a página de <a href="formulario-feedback.php">Feedback</a>.</h5>
@@ -71,6 +71,7 @@ include 'header.php';
             </div>
         </div>
       </div>
+      <input type="hidden" name="id_administrador" id="id_administrador" value="<?= $_SESSION['id_administrador']; ?>">
       <button type="submit" class="btn btn-primary btn-block mb-4">Cadastrar</button>
     </form>
 </div>

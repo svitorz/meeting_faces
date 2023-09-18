@@ -73,7 +73,7 @@ if(isset($data)&&!empty($data)){
     }
 }
 
-$sql = "SELECT * FROM moradores $where";
+$sql = "SELECT * FROM MORADOR $where";
 
 $stmt = $conn->query($sql);
 $stmt->execute();
@@ -93,12 +93,12 @@ while($row = $stmt->fetch()){
         <?php
         }
         ?>
-        <a href="info.php?id=<?=$row['id_morador'];?>" class="btn btn-primary my-1">Informações</a>
-        <a href="formulario-feedback.php" class="btn btn-success">Adicionar feedback</a>
+        <a href="info.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-primary my-1">Informações</a>
+        <a href="formulario-feedback.php?id_morador<?=$row['id_morador']?>" class="btn btn-success">Adicionar feedback</a>
         <?php
         if(isAdmin()){
                     ?>
-                <a href="formulaieditar-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-warning mx-2 mb-2">Editar registro</a>
+                <a href="formulario-editar-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-warning mx-2 mb-2">Editar registro</a>
                 <a href="excluir-morador.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-danger mx-2 mb-2" onclick="if(!confirm('Deseja excluir?')) return false;">Excluir registro</a>
                 <?php
                 }
