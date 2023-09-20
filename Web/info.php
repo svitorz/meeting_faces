@@ -14,27 +14,22 @@ $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 require 'conexao/conexao.php';
 
 //CONCAT(myguests.firstname,' ',myguests.lastname) AS name, myguests.email, messages.message 
-$sql = "SELECT DESCRICAO.*,MORADOR.*, 
-            USUARIO.PRIMEIRO_NOME AS NOME_USUARIO, 
+$sql = "SELECT MORADOR.*,  
                 ADMINISTRADOR.PRIMEIRO_NOME AS NOME_ADMINISTRADOR,
                     ADMINISTRADOR.ID_ADMINISTRADOR
-                        FROM MORADOR INNER JOIN DESCRICAO 
-                            ON MORADOR.ID_MORADOR = DESCRICAO.ID_MORADOR 
-                                INNER JOIN USUARIO 
-                                    ON DESCRICAO.ID_USUARIO = USUARIO.ID_USUARIO 
-                                        INNER JOIN ADMINISTRADOR 
-                                            ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
-                                                WHERE MORADOR.ID_MORADOR = ? AND DESCRICAO.SITUACAO LIKE '%APROVADO%'";
+                        FROM MORADOR INNER JOIN ADMINISTRADOR 
+                            ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
+                                WHERE MORADOR.ID_MORADOR = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_morador]);
 $row = $stmt->fetch();
-$titulo_pagina = "Perfil de ".$row['primeiro_nome']; 
+$titulo_pagina = "Perfil de <span class='text-capitalize'>".$row['primeiro_nome']."</span>"; 
 require 'header.php'; 
     ?>
 <section class="p-5" style="background-color: #eee;">
     <div class="row">
         <div class="col-lg-4">
-            <div class="card mb-4">
+            <div class="card text-capitalize mb-4">
                 <div class="card-body text-center">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                         class="rounded-circle img-fluid" style="width: 150px;">
@@ -56,7 +51,7 @@ require 'header.php';
                     </div>
                 </div>
             </div>
-            <div class="card mb-4 mb-lg-0">
+            <div class="card text-capitalize mb-4 mb-lg-0">
                 <div class="card-body p-0">
                     <ul class="list-group list-group-flush rounded-3">
                         <?php 
@@ -73,7 +68,7 @@ require 'header.php';
             </div>
         </div>
         <div class="col-lg-8">
-            <div class="card mb-4">
+            <div class="card text-capitalize mb-4">
                 <div class="card-body">
                     <?php
                     if(isset($row['primeiro_nome']) && $row['primeiro_nome']){

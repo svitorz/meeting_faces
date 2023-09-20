@@ -10,28 +10,7 @@ require 'conexao/conexao.php';
 
 $sql = "SELECT id_morador,primeiro_nome,cidade_atual FROM MORADOR ORDER BY primeiro_nome";
 $stmt = $conn->query($sql);
-
-if(isset($_SESSION['sucesso']) && $_SESSION['sucesso']){
 ?>
-    <div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
-      <strong>Formulário enviado com sucesso!</strong> Os dados foram registrados com sucesso!
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php
-    unset($_SESSION['sucesso']);
-    }
-
-if(isset($_SESSION['erro']) && $_SESSION['erro']){
-?>
-    <div class="alert alert-warning alert-dismissible fade show fixed-bottom" role="alert">
-      <strong>Formulário não enviado!</strong> Erro ao gravar dados!
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php
-    unset($_SESSION['erro']);
-    }
-    ?>
-    
 <div class="row p-5">
     <?php 
     while($row = $stmt->fetch()){

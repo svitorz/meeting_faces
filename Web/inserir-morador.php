@@ -24,7 +24,7 @@ strval($ano_atual = date('d/m/Y'));
 if(strcmp($data_nasc,$ano_atual)>=0){
     $data_nasc = null;
 }
-$sql = "INSERT INTO MORADOR(primeiro_nome,segundo_nome, cidade_atual, cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_administrador) VALUES (:primeiro_nome, :segundo_nome, :cidade_atual, :cidade_origem, :data, :nome_familiar, :grau_parentesco, :ID_ADMINISTRADOR)";
+strtoupper($sql = "INSERT INTO MORADOR(primeiro_nome,segundo_nome, cidade_atual, cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_administrador) VALUES (:primeiro_nome, :segundo_nome, :cidade_atual, :cidade_origem, :data, :nome_familiar, :grau_parentesco, :ID_ADMINISTRADOR)");
 
 $stmt = $conn->prepare($sql);
 

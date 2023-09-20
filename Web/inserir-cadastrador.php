@@ -18,7 +18,7 @@ $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
 $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
 
-$sql = "SELECT ID_ADMINISTRADOR FROM ADMINISTRADOR WHERE email = ?";
+strtoupper($sql = "SELECT ID_ADMINISTRADOR FROM ADMINISTRADOR WHERE email = ?");
 $stmt = $conn->prepare($sql);
 $stmt->execute([$email]);
 $count = $stmt->rowCount();

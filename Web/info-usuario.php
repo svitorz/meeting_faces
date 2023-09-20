@@ -24,7 +24,7 @@ require 'header.php';
 <section class="p-5" style="background-color: #eee;">
     <div class="row">
         <div class="col-lg-4">
-            <div class="card mb-4">
+            <div class="card text-capitalize mb-4">
                 <div class="card-body text-center">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                         class="rounded-circle img-fluid" style="width: 150px;">
@@ -33,7 +33,7 @@ require 'header.php';
                     </h5>
                 </div>
             </div>
-            <div class="card mb-4 mb-lg-0">
+            <div class="card text-capitalize mb-4 mb-lg-0">
                 <div class="card-body p-0">
                     <ul class="list-group list-group-flush rounded-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -61,7 +61,7 @@ require 'header.php';
             </div>
         </div>
         <div class="col-lg-8">
-            <div class="card mb-4">
+            <div class="card text-capitalize mb-4">
                 <div class="card-body">
                     <?php
                     if(isset($row['primeiro_nome']) && $row['primeiro_nome']){

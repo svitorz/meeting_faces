@@ -83,7 +83,7 @@ require 'header.php';
 
 while($row = $stmt->fetch()){
     ?>
-<div class="card py-4 my-3 m-5" style="width: 20rem;">
+<div class="card text-capitalize py-4 my-3 m-5" style="width: 20rem;">
         <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/18765757-icone-de-perfil-de-usuario-em-estilo-simples-ilustracao-em-avatar-membro-no-fundo-isolado-conceito-de-negocio-de-sinal-de-permissao-humana-vetor.jpg" class="card-img-top" alt="..."/>
     <div class="card-body text-center">
         <h5 class="card-title"><?= $row['primeiro_nome']; ?></h5>

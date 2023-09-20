@@ -14,7 +14,7 @@ $id_morador = filter_input(INPUT_POST, 'id_morador', FILTER_SANITIZE_NUMBER_INT)
 $situacao = "Em análise"; 
 
 
-$insert = "INSERT INTO DESCRICAO(ID_USUARIO, ID_MORADOR, COMENTARIO, SITUACAO) VALUES (?,?,?,?)";
+strtoupper($insert = "INSERT INTO DESCRICAO(ID_USUARIO, ID_MORADOR, COMENTARIO, SITUACAO) VALUES (?,?,?,?)");
 $stmt = $conn->prepare($insert);
 $result = $stmt->execute([$id_usuario,$id_morador,$feedback,$situacao]);
 if($result==true){

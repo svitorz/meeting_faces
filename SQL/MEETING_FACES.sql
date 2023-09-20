@@ -20,15 +20,15 @@ CREATE TABLE ADMINISTRADOR(
 	CONSTRAINT UNIQUEKEY_ADM_EMAIL UNIQUE (EMAIL)
 );
 
-CREATE TABLE morador(
-	id_morador SERIAL,
-	primeiro_nome varchar(45),
-	segundo_nome varchar(45),
-	cidade_atual varchar(30),
-	cidade_natal varchar(30),
-	data_nasc varchar(10),
-	nome_familiar_proximo varchar(50),
-	grau_parentesco varchar(40),
+CREATE TABLE MORADOR(
+	ID_MORADOR SERIAL,
+	PRIMEIRO_NOME varchar(45),
+	SEGUNDO_NOME varchar(45),
+	CIDADE_ATUAL varchar(30),
+	CIDADE_NATAL varchar(30),
+	DATA_NASC varchar(10),
+	NOME_FAMILIAR_PROXIMO varchar(50),
+	GRAU_PARENTESCO varchar(40),
 	ID_ADMINISTRADOR int not null,
 	CONSTRAINT PK_MORADOR PRIMARY KEY (ID_MORADOR),
 	
@@ -49,4 +49,19 @@ CREATE TABLE DESCRICAO(
 	
 	CONSTRAINT fk_descricao_morador FOREIGN KEY (id_morador)
 		REFERENCES morador(id_morador)
-);	
+);
+SELECT * FROM MORADOR;
+SELECT * FROM USUARIO;
+SELECT * FROM ADMINISTRADOR;
+SELECT * FROM DESCRICAO;
+SELECT DESCRICAO.*,MORADOR.*, 
+            USUARIO.PRIMEIRO_NOME AS NOME_USUARIO, 
+                ADMINISTRADOR.PRIMEIRO_NOME AS NOME_ADMINISTRADOR,
+                    ADMINISTRADOR.ID_ADMINISTRADOR
+                        FROM MORADOR INNER JOIN DESCRICAO 
+                            ON MORADOR.ID_MORADOR = DESCRICAO.ID_MORADOR 
+                                INNER JOIN USUARIO 
+                                    ON DESCRICAO.ID_USUARIO = USUARIO.ID_USUARIO 
+                                        INNER JOIN ADMINISTRADOR 
+                                            ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
+                                                WHERE MORADOR.ID_MORADOR = 1 AND DESCRICAO.SITUACAO LIKE '%APROVADO%';

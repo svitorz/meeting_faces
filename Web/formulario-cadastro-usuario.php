@@ -38,27 +38,6 @@ include 'header.php';
         }
     }
 </script>
-<?php 
-if(isset($_SESSION['erro'])&&$_SESSION['erro']){
-  ?>
-  <div class="alert alert-warning" role="alert">
-    <h4>Erro ao realizar cadastro.</h4>
-    <p>Verifique se os dados estão corretos ou se você está cadastrado.</p>
-  </div>
-  <?php
-}
-?>
-<?php 
-if(isset($_SESSION['usuario_existe']) && $_SESSION['usuario_existe']){
-  ?>
-  <div class="alert alert-warning" role="alert">
-    <h4>O email informado já existe.</h4>
-    <p>Verifique se você já possui uma conta ou se o email informado está correto.</p>
-  </div>
-  <?php
-}
-unset($_SESSION['usuario_existe']);
-?>
 <div class="container-fluid px-5 py-3">
     <form action="inserir-usuario.php" method="post">
     <div class="row">

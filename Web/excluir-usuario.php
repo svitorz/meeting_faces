@@ -22,11 +22,11 @@ $result = $stmt->execute([$id_usuario]);
 if($result){
     $_SESSION['sucesso'] = true;
     $_SESSION['erro'] = false;
-    header('Location: listagem-usuario.php');
+    redireciona();
     exit();
 }else {
     $_SESSION['sucesso'] = false;
     $_SESSION['erro'] = true;
-    header('Location: listagem-usuario.php');
+    redireciona();
     exit();
 }

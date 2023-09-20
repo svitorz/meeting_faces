@@ -18,7 +18,7 @@ require 'header.php';
                 <ul>
                     <li class="nav-link mb-5">
                         <a class="nav-link" href="formulario-cadastro-moradores.php">
-                            <span class="btn btn-dark">
+                            <span class="btn btn-dark text-uppercase">
                                 Cadastrar novo morador de rua
                             </span>
                         </a>
@@ -28,21 +28,21 @@ if(isAdmin()){
 ?>
                     <li class="nav-link mb-5">
                         <a class="nav-link" href="listagem-pessoas.php">
-                            <span class="btn btn-dark">
-                                Listagem de MORADOR de rua cadastrados
+                            <span class="btn btn-dark text-uppercase">
+                                Listagem de morador de rua cadastrados
                             </span>
                         </a>
                     </li>
                     <!-- <li class="nav-link mb-5">
                         <a class="nav-link" href="listagem-usuario.php">
-                            <span class="btn btn-dark">
+                            <span class="btn btn-dark text-uppercase">
                                 Listagem de usuários cadastrados
                             </span>
                         </a>
                     </li> -->
                         <li class="nav-link mb-5">
                         <a class="nav-link" href="formulario-cadastro-cadastrador.php">
-                            <span class="btn btn-dark">
+                            <span class="btn btn-dark text-uppercase">
                                 Cadastrar novo cadastrador
                             </span>
                         </a>
@@ -50,7 +50,7 @@ if(isAdmin()){
                     </li>
                     <li class="nav-link mb-5">
                         <a class="nav-link" href="listagem-feedback.php">
-                            <span class="btn btn-dark">
+                            <span class="btn btn-dark text-uppercase">
                                 Aprovação de feedbacks
                             </span>
                         </a>
@@ -69,17 +69,6 @@ if(isAdmin()){
             Olá <span class="text-capitalize"> <?= nome_usuario(); ?></span>, seja bem vindo!    
             Você está registrado como <?php if(isAdmin()){echo 'administrador'; }else{ echo  'cadastrante';} ?>
         </p>
-        <?php 
-        if(isset($_SESSION['cadastrado']) && $_SESSION['cadastrado']){
-            ?>
-            <div class="alert alert-success">
-                <h4>Cadastro realizado com sucesso!</h4>
-                <p>Os dados foram gravados, verifique os as pessoas cadastradas <a href="listagem-pessoas.php"> aqui </a>.</p>
-            </div>
-        <?php
-        unset($_SESSION['cadastrado']);
-            }
-        ?>
         </div>
     </div>
 </div>

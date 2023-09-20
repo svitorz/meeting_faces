@@ -53,5 +53,43 @@
   </div>
 </nav>
 <?php 
-  echo "<h1 class='text-center py-3'>".$titulo_pagina."</h1>" 
+  echo "<h1 class='text-center py-3'>".$titulo_pagina."</h1>" ;
+  if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
+    ?>
+    <div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
+      <strong>Formulário enviado com sucesso!</strong> Os dados foram registrados com sucesso!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['sucesso']);
+    }
+    if(isset($_SESSION['restrito'])&&$_SESSION['restrito']){
+    ?>
+    <div class="alert alert-danger alert-dismissible fade show fixed-bottom" role="alert">
+      <strong>Você está tentando acessar conteúdo restrito</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['restrito']);
+    }
+    if(isset($_SESSION['usuario_existe']) && $_SESSION['usuario_existe']){
+      ?>
+      <div class="alert alert-warning" role="alert">
+        <h4>O email informado já existe.</h4>
+        <p>Verifique se você já possui uma conta ou se o email informado está correto.</p>
+      </div>
+      <?php
+    }
+    unset($_SESSION['usuario_existe']);
+    
+    if(isset($_SESSION['erro'])&&$_SESSION['erro']){
+      ?>
+      <div class="alert alert-warning" role="alert">
+        <h4>Erro ao realizar cadastro.</h4>
+        <p>Verifique se os dados estão corretos ou se você está cadastrado.</p>
+      </div>
+      <?php
+    }
+
+
 ?>

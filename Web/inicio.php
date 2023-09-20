@@ -4,15 +4,6 @@ session_start();
 require 'logica.php';
 $titulo_pagina = null;
 require_once 'header.php';
-if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
-?>
-<div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
-  <strong>Formulário enviado com sucesso!</strong> Os dados foram registrados com sucesso!
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-<?php
-unset($_SESSION['sucesso']);
-}
 ?>
 <section id="header" class="container-fluid py-5" style="height: 100vh;">
     <header class="py-5 my-5">
@@ -32,7 +23,7 @@ unset($_SESSION['sucesso']);
     <div class="container-fluid py-5">
         <div class="text-center">
             <h3>
-                População em situação de rua supera 281,4 mil pessoas no Brasil.
+                A população em situação de rua supera 281,4 mil pessoas no Brasil.
             </h3>
             <p>
                 A população em situação de rua no Brasil cresceu 38% entre 2019 e
@@ -53,10 +44,10 @@ unset($_SESSION['sucesso']);
                 </span>
                     <header>
                         <h3>
-                            Alcoolismo
+                            Discriminação e Estigma
                         </h3> 
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita illum consequuntur atque optio nisi, numquam neque sunt aperiam veniam eum iusto, similique explicabo harum nostrum modi quibusdam vero eaque. Id.
+                            A estigmatização social é um grande desafio enfrentado por aqueles que vivem nas ruas. Muitas vezes são vítimas de discriminação, preconceito e até mesmo violência por parte da sociedade em geral. Isso torna ainda mais difícil para eles saírem da situação de rua e reintegrarem-se à sociedade.
                         </p>
                     </header>
                 </div>
@@ -70,10 +61,10 @@ unset($_SESSION['sucesso']);
                 </span>
                     <header>
                         <h3>
-                            Alcoolismo
+                            Vulnerabilidade a Crimes e Abusos
                         </h3> 
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita illum consequuntur atque optio nisi, numquam neque sunt aperiam veniam eum iusto, similique explicabo harum nostrum modi quibusdam vero eaque. Id.
+                            A vida nas ruas torna as pessoas mais vulneráveis a crimes, incluindo agressões físicas, assaltos e exploração sexual. A falta de segurança pessoal é uma preocupação constante para aqueles que vivem nas ruas.
                         </p>
                     </header>
                 </div>
@@ -87,10 +78,10 @@ unset($_SESSION['sucesso']);
                 </span>
                     <header>
                         <h3>
-                            Alcoolismo
+                            Falta de Acesso a Serviços Básicos
                         </h3> 
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita illum consequuntur atque optio nisi, numquam neque sunt aperiam veniam eum iusto, similique explicabo harum nostrum modi quibusdam vero eaque. Id.
+                            A população de rua muitas vezes não tem acesso a serviços básicos, como alimentação regular, água potável, saneamento, educação e emprego. Essa falta de acesso dificulta a possibilidade de retomar suas vidas e sair da situação de rua.
                         </p>
                     </header>
                 </div>
@@ -116,15 +107,11 @@ unset($_SESSION['sucesso']);
             <div class="col-4">
             <h4>Arquitetura hostil</h4>
             <p>
-                A arquitetura hostil, como se convencionou chamar, é um
-                conjunto de dispositivos construtivos que têm como objetivo
-                impedir a permanência de pessoas, especialmente daquelas em
-                situação de rua, em bancos de praças, espaços residuais em
-                fachadas e demais áreas livres do espaço público.
+                A arquitetura hostil, também conhecida como "arquitetura defensiva" ou "arquitetura anti-pessoas", é um fenômeno urbano controverso que envolve o planejamento e o design de espaços públicos e edifícios de maneira a desencorajar ou impossibilitar o uso por certos grupos de pessoas, muitas vezes, aqueles em situação de rua ou em busca de abrigo temporário. Essas medidas incluem a instalação de bancos desconfortáveis, piso anti-dormência, e até mesmo espinhos em locais estratégicos. Embora seja defendida como uma abordagem para a segurança e ordenamento urbano, a arquitetura hostil também gera críticas por agravar a segregação social e prejudicar o senso de pertencimento e humanidade nas cidades. Este texto explorará mais a fundo essa prática controversa e suas implicações na vida urbana.
             </p>
-            <footer>
+            <!-- <footer>
                 <a href="#" class="button scrolly">Recomendação de leitura</a>
-              </footer>
+            </footer> -->
             </div>
             <div class="col-8">
                 <img src="https://projetobatente.com.br/wp-content/uploads/2018/01/arquitetura-hostil-headshot.jpg"
@@ -144,60 +131,24 @@ unset($_SESSION['sucesso']);
       <div class="container">
         <div class="row">
           <div class="col-4 col-12-narrow">
-            <h3>Diam vivamus turpis lorem sodales lectus ornare</h3>
             <p>
-              Gravida dis placerat lectus ante vel nunc euismod est turpis
-              sodales. Diam tempor dui lacinia eget ornare varius gravida.
-              Gravida dis placerat lectus ante vel nunc euismod est turpis
-              sodales. Diam tempor dui lacinia accumsan vivamus augue cubilia
-              vivamus nisi eu eget ornare varius gravida euismod. Gravida dis
-              lorem ipsum dolor placerat magna tempus feugiat.
+                É crucial que a sociedade brasileira reconheça a população em situação de rua como cidadãos vulneráveis que merecem apoio e dignidade. É necessário um esforço conjunto para fornecer moradia adequada, serviços de saúde mental, acesso à educação e oportunidades de emprego para ajudar essas pessoas a se reintegrarem na sociedade. Além disso, é importante combater o estigma e a discriminação que perpetuam o ciclo de exclusão social.
             </p>
             <p>
-              Lectus ante vel nunc euismod est turpis sodales. Diam tempor dui
-              lacinia accumsan vivamus augue cubilia vivamus nisi eu eget
-              ornare varius gravida dolore euismod lorem ipsum dolor sit amet
-              consequat. vivamus nisi eu eget ornare varius gravida dolore
-              euismod lorem ipsum dolor sit amet consequat. vivamus nisi eu
-              eget ornare et magna.
+                A questão da população em situação de rua não é apenas um desafio social, mas também um teste para a humanidade e a compaixão de uma sociedade. Resolver essa questão requer ação imediata e uma abordagem holística que considere as múltiplas dimensões desse problema.   
             </p>
           </div>
           <div class="col-4 col-12-narrow">
             <p>
-              Gravida dis placerat lectus ante vel nunc euismod est turpis
-              sodales. Diam tempor dui lacinia eget ornare varius gravida.
-              Gravida dis placerat lectus ante vel nunc euismod est turpis
-              sodales. Diam tempor dui lacinia accumsan vivamus augue cubilia
-              vivamus nisi eu eget ornare varius gravida euismod. Gravida dis
-              lorem ipsum dolor placerat magna tempus feugiat.
+                A população em situação de rua no Brasil é um tema complexo e desafiador que requer atenção urgente. De acordo com dados do Instituto de Pesquisa Econômica Aplicada (IPEA), estimativas apontam que cerca de 222 mil pessoas vivem nas ruas das cidades brasileiras, mas esse número pode ser ainda maior devido à dificuldade em quantificar de maneira precisa essa população.
             </p>
             <p>
-              Lectus ante vel nunc euismod est turpis sodales. Diam tempor dui
-              lacinia accumsan vivamus augue cubilia vivamus nisi eu eget
-              ornare varius gravida dolore euismod lorem ipsum dolor sit amet
-              consequat eget ornare varius gravida euismod. Gravida dis lorem
-              ipsum dolor placerat magna tempus feugiat magna tempus lorem.
-            </p>
-            <p>
-              Lectus ante vel nunc euismod est turpis sodales. Diam tempor dui
-              lacinia accumsan vivamus augue cubilia.
+                Uma mudança fundamental na abordagem à população em situação de rua no Brasil está em andamento, com um foco crescente na humanização das políticas públicas e dos serviços prestados. Em vez de medidas repressivas ou discriminatórias, as autoridades e organizações estão buscando soluções que respeitem a dignidade e os direitos humanos dessas pessoas. Isso inclui a criação de abrigos mais acolhedores, o fornecimento de assistência médica e psicológica, bem como programas de capacitação para ajudar aqueles que desejam sair da rua a reconstruírem suas vidas. Essa abordagem centrada nas pessoas é um passo importante na direção certa.
             </p>
           </div>
           <div class="col-4 col-12-narrow">
             <p>
-              Placerat lectus ante vel nunc euismod est turpis sodales. Diam
-              tempor dui lacinia eget ornare varius gravida. Gravida dis
-              placerat lectus ante vel nunc euismod est turpis sodales. Diam
-              tempor dui lacinia accumsan vivamus augue cubilia vivamus nisi
-              eu eget ornare varius gravida euismod. Gravida dis lorem ipsum
-              dolor placerat magna tempus feugiat. Lectus ante vel nunc
-              euismod est turpis sodales. Diam tempor dui lacinia dolore.
-            </p>
-            <p>
-              Accumsan vivamus augue cubilia vivamus nisi eu eget ornare
-              varius gravida dolore euismod lorem ipsum dolor sit amet
-              conseismod lorem ipsum dolor sit amet consequat lorem ipsum
-              consequat feugiat sed tempus euismod feugiat veroeros.
+                Além do papel do governo, a sociedade civil desempenha um papel crucial na assistência à população em situação de rua. Organizações não governamentais, grupos de voluntários e indivíduos engajados estão trabalhando incansavelmente para fornecer comida, roupas, cuidados médicos e apoio emocional a essas pessoas vulneráveis. O trabalho desses heróis anônimos é essencial para preencher as lacunas deixadas pelas políticas públicas e demonstra a solidariedade presente na sociedade brasileira.    
             </p>
             <footer>
               <a href="#fourth" class="button scrolly">Ipsum ornare lorem dolor</a>
