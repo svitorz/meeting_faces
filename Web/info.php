@@ -55,13 +55,19 @@ require 'header.php';
                 <div class="card-body p-0">
                     <ul class="list-group list-group-flush rounded-3">
                         <?php 
-                            if(isset($row['comentario']) && $row['comentario']){ 
+                        $sql = "SELECT * FROM DESCRICAO WHERE ID_MORADOR = ? AND SITUACAO='APROVADO'";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute([$id_morador]);
+
+                        while($rowDescricao = $stmt->fetch()){         
+                                if(isset($rowDescricao['comentario']) && $rowDescricao['comentario']){ 
                         ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class="mb-0"> <?= $row['comentario'] ?> </p>
+                                <p class="mb-0"> <?= $rowDescricao['comentario'] ?> </p>
                             </li>
                         <?php
                             }
+                        }
                         ?>
                     </ul>
                 </div>
@@ -83,7 +89,7 @@ require 'header.php';
                                     print_r($row['primeiro_nome']);
                                     echo "<span class='px-1' />";
                                     if(isset($row['segundo_nome']) && $row['segundo_nome'])
-                                    { print_r($row['segundo_nome']); }
+                                    { echo $row['segundo_nome'] ; }
                                     ?>
                                 </p>
                             </div>

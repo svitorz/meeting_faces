@@ -53,7 +53,13 @@
   </div>
 </nav>
 <?php 
-  echo "<h1 class='text-center py-3'>".$titulo_pagina."</h1>" ;
+  if($titulo_pagina!=null){ 
+    echo "<h1 class='text-center py-3'>".$titulo_pagina."</h1>";
+    } else {
+    ?>
+    <?php  
+    }
+
   if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
     ?>
     <div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
