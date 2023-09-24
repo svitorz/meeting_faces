@@ -27,19 +27,12 @@ require 'header.php';
 if(isAdmin()){
 ?>
                     <li class="nav-link mb-5">
-                        <a class="nav-link" href="listagem-pessoas.php">
-                            <span class="btn btn-dark text-uppercase">
-                                Listagem de morador de rua cadastrados
-                            </span>
-                        </a>
-                    </li>
-                    <!-- <li class="nav-link mb-5">
                         <a class="nav-link" href="listagem-usuario.php">
                             <span class="btn btn-dark text-uppercase">
                                 Listagem de usuários cadastrados
                             </span>
                         </a>
-                    </li> -->
+                    </li> 
                         <li class="nav-link mb-5">
                         <a class="nav-link" href="formulario-cadastro-cadastrador.php">
                             <span class="btn btn-dark text-uppercase">

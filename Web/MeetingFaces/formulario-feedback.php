@@ -3,6 +3,8 @@ session_start();
 
 require 'logica.php';
 
+
+//Permite que apenas usuários autenticados acessem o formulário de feedback
 if(!autenticado()){
     $_SESSION['restrito'] = true;
     redireciona('formulario-login.php');

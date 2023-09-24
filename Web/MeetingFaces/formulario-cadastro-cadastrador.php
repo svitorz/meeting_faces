@@ -1,14 +1,19 @@
 <?php
 session_start();
+
 require 'logica.php';
+
 if(!isAdmin()){
   redireciona('index.php');
   exit();
 }
+
 $titulo_pagina = "Cadastro de perfil Cadastrador";  
+
 include 'header.php';
 ?>
 <script>
+    //mascára para o campo de telefone
     const handlePhone = (event) => {
         let input = event.target
         input.value = phoneMask(input.value)
@@ -21,6 +26,8 @@ include 'header.php';
       value = value.replace(/(\d)(\d{4})$/,"$1-$2")
       return value
     }
+
+    //Verifica se as senhas são iguais
     function verifica_senhas() {
         var senha = document.getElementById("senha");
         var confsenha = document.getElementById("confsenha");

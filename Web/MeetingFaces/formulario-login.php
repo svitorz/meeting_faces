@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'logica.php';
+//Se o usuário já está autenticado, não pode fazer login novamente
 if(autenticado()){
   redireciona('inicio.php');
   exit();

@@ -43,14 +43,6 @@ require 'header.php';
           <td> <a href="perfil-usuario.php?"></a> <?= $row["nome_usuario"]?>, ID: <?=$row['id_usuario']?></td>
           <td> <a href="info.php?id_morador=<?= $row["id_morador"]?>"><?= $row["nome_morador"]?>, ID: <?= $row["id_morador"]?> </a></td>
           <td>  
-            <!-- <a href="aprovar-feedback.php?id=<?=$row['id_descricao'];?>&aprovacao=2" onclick="if(!confirm('Deseja excluir?')) return false;" class=" btn btn-sm btn-danger">
-              <span data-feather="trash-2"></span>
-                Excluir 
-            </a>
-            <a href="aprovar-feedback.php?id=<?=$row['id_descricao'];?>&aprovacao=3" class=" btn btn-sm btn-success">
-              <span data-feather="trash-2"></span>
-                Aprovar 
-            </a> -->
             <div class="input-group">
               <form action="aprovar-feedback.php" method="post">
                 <input type="hidden" name="id" value="<?=$row['id_descricao'];?>" />

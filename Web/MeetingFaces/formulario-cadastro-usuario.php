@@ -2,12 +2,16 @@
 session_start();
 require 'logica.php';
 
+//Necessário saber se o usuário já está autenticado, pois se estiver, 
+//não é permitido entrar no formulário de cadastro de usuários
 if(autenticado()){
   redireciona('index.php');
   exit();
 }
+
 $titulo_pagina = "Insira seus dados para cadastro";
 include 'header.php';
+
 ?>
 <script>
     const handlePhone = (event) => {

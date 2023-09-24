@@ -2,9 +2,9 @@
 session_start();
 
 require 'logica.php';
-
-//Necessária a implementação de uma medida de segurança que impessa os deletes pela url
-
+//verifica se é admin
+//Ainda não foi implementada a opção do usuário excluir, nem editar a própria conta,
+//devido a segurança na alteração de senha, então por hora, somente administradores podem excluir usuários
 
 if(!isAdmin()){
     redireciona();

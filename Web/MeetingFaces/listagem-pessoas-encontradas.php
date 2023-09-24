@@ -33,7 +33,7 @@ if(isset($cidade_natal)&&!empty($cidade_natal)){
     if(!empty($where)){
         $where .= " AND cidade_natal LIKE '%$cidade_natal%' ";
     }else{
-        $where = " WHERE cidade_natal LIKE '%$cidade_natal%' ";
+        $where = "WHERE cidade_natal LIKE '%$cidade_natal%' ";
     }
 }
 
@@ -42,7 +42,7 @@ if(isset($nome_familiar)&&!empty($nome_familiar)){
     if(!empty($where)){
         $where .= " AND nome_familiar_proximo LIKE '%$nome_familiar%' ";
     }else{
-        $where = " WHERE nome_familiar_proximo LIKE '%$nome_familiar%' ";
+        $where = "WHERE nome_familiar_proximo LIKE '%$nome_familiar%' ";
     }
 }
 
@@ -51,7 +51,7 @@ if(isset($grau_parentesco)&&!empty($grau_parentesco)){
     if(!empty($where)){
         $where .= " AND grau_parentesco LIKE '%$grau_parentesco%' ";
     }else{
-        $where = " WHERE grau_parentesco LIKE '%$grau_parentesco%' ";
+        $where = "WHERE grau_parentesco LIKE '%$grau_parentesco%' ";
     }
 }
 
@@ -60,7 +60,7 @@ if(isset($cidade_natal)&&!empty($cidade_natal)){
     if(!empty($where)){
         $where .= " AND cidade_natal LIKE '%$cidade_natal%' ";
     }else{
-        $where = " WHERE cidade_natal LIKE '%$cidade_natal%' ";
+        $where = "WHERE cidade_natal LIKE '%$cidade_natal%' ";
     }
 }
 
@@ -69,7 +69,7 @@ if(isset($data)&&!empty($data)){
     if(!empty($where)){
         $where .= " AND data_nasc LIKE '%$data%' ";
     }else{
-        $where = " WHERE data_nasc LIKE '%$data%' ";
+        $where = "WHERE data_nasc LIKE '%$data%' ";
     }
 }
 

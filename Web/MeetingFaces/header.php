@@ -28,11 +28,13 @@
         </li>
       </ul>
       <?php if(!autenticado()){ ?>
+        <!-- caso a sessão nao tenha sido iniciada, são exibidos os botoes de login e registro-->
       <div class="d-flex">
           <a href="formulario-cadastro-usuario.php" class="btn-dark btn me-2">Cadastrar-se</a>
           <a href="formulario-login.php" class="btn-outline-dark btn me-2">Entrar</a>
       </div>
       <?php } else { ?>
+        <!-- caso a sessão tenha sido iniciada, é exibido o botão de perfil e sair -->
       <div class="d-flex">
           <a href="perfil-usuario.php" class="btn btn-outline-dark me-2"> 
           <i class="fa-solid fa-user"></i>
@@ -41,6 +43,8 @@
           <a href="logout.php" class="btn-dark btn me-2">Sair</a>
       </div>
       <?php }
+      //Caso o usuário seja administrador, é exibido o botão da tela operacional,
+      //onde pode realizar alterações de cadastro e aprovação de feedbacks
       if(isAdmin()){
         ?>
         <div class="d-flex">
@@ -54,13 +58,17 @@
 </nav>
 <?php 
   if($titulo_pagina!=null){ 
+    //Caso a variável $titulo_pagina tenha sido definida, é exibido o título da página
+    //Necessário pois a pagina de inicio não possui titulo, então a variável é nula
     echo "<h1 class='text-center py-3'>".$titulo_pagina."</h1>";
     } else {
     ?>
     <?php  
     }
-
+    //As mensagens ficam no header como forma de economizar código, pois podem ser exibidas
+    //em qualquer tela, como na de inicio, de formulario de cadastro, de login, etc
   if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
+    //Mensagem de sucesso de qualquer operação dentro do sistema
     ?>
     <div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
       <strong>Formulário enviado com sucesso!</strong> Os dados foram registrados com sucesso!
@@ -70,6 +78,7 @@
     unset($_SESSION['sucesso']);
     }
     if(isset($_SESSION['restrito'])&&$_SESSION['restrito']){
+      //Mensagem de tentativa de acesso a conteúdo restrito
     ?>
     <div class="alert alert-danger alert-dismissible fade show fixed-bottom" role="alert">
       <strong>Você está tentando acessar conteúdo restrito</strong>
@@ -79,6 +88,7 @@
     unset($_SESSION['restrito']);
     }
     if(isset($_SESSION['usuario_existe']) && $_SESSION['usuario_existe']){
+      //Mensagem exibida caso o usuário tente se cadastrar com um email já utilizado no banco
       ?>
       <div class="alert alert-warning" role="alert">
         <h4>O email informado já existe.</h4>
@@ -89,6 +99,7 @@
     unset($_SESSION['usuario_existe']);
     
     if(isset($_SESSION['erro'])&&$_SESSION['erro']){
+      //Mensagem exibida caso ocorra algum erro em operações
       ?>
       <div class="alert alert-warning" role="alert">
         <h4>Erro ao realizar cadastro.</h4>
