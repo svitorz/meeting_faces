@@ -97,14 +97,14 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
                     .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senhaLabel)
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
                     .addComponent(btnVoltar))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,10 +133,11 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
 
     private void logar() {
         administradorDTO.setEmail(email.getText());
-        administradorDTO.setSenha(senha.getPassword());
+        administradorDTO.setSenha(senha.getText());
         administradorDTO.setId_administrador(administradorCTR.logarAdministrador(administradorDTO));
         if (administradorDTO.getId_administrador() > 0) {
-            this.dispose();
+            TelaInicalVIEW telaInicalVIEW = new TelaInicalVIEW();
+            telaInicalVIEW.setVisible(true);
             // new PrincipalVIEW(administradorDTO).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Login ou senha\nIncorreto!!!");
