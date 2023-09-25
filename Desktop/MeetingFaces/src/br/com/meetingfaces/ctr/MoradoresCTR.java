@@ -31,7 +31,7 @@ public class MoradoresCTR {
      * Método utilizado para controlar o acesso ao método alterarFuncionario da
      * classe FuncionarioDAO
      *
-     * @param funcionarioDTO que vem da classe da página (VIEW)
+     * @param moradoresDTO que vem da classe da página (VIEW)
      * @return String contendo a mensagem
      */
     public String alterarMoradores(MoradoresDTO moradoresDTO) {

@@ -26,26 +26,17 @@ public class AdministradorDAO {
         try {
             //Inicia a conexão
             ConexaoDAO.ConectDB();
-            /*
-            Atributos do adm no bd
-            ID_ADMINISTRADOR SERIAL,
-            PRIMEIRO_NOME VARCHAR(20),
-            SEGUNDO_NOME VARCHAR(20),
-            EMAIL VARCHAR(100),
-            SENHA VARCHAR(255),
-            CONSTRAINT PK_ADMINISTRADOR PRIMARY KEY (ID_ADMINISTRADOR),
-            CONSTRAINT UNIQUEKEY_ADM_EMAIL UNIQUE (EMAIL)
-             */
 
             //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
-            comando = "INSERT INTO ADMINISTRADOR(primeiro_nome, segundo_nome, email"
+            comando = "Insert into administrador(primeiro_nome, segundo_nome, email"
                     + ", senha) VALUES ("
                     + "'" + administradorDTO.getPrimeiro_nome() + "', "
                     + "'" + administradorDTO.getSegundo_nome() + "', "
                     + "'" + administradorDTO.getEmail() + "', "
-                    + "'" + administradorDTO.getSenha() + "')";
+                    + "'" + administradorDTO.getSenha() + "'"
+                    + ");";
             System.out.println(comando);
             stmt.execute(comando.toUpperCase(), Statement.RETURN_GENERATED_KEYS);
             rs = stmt.getGeneratedKeys();
@@ -56,6 +47,7 @@ public class AdministradorDAO {
             stmt.close();
             rs.close();
             return true;
+
         } catch (Exception e) {
             System.out.println("Erro ao conectar ao banco de dados. " + e.getMessage());
             return false;
@@ -79,7 +71,7 @@ public class AdministradorDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
-            comando = "Update usuario set "
+            comando = "Update administrador set "
                     + "primeiro_nome = '" + administradorDTO.getPrimeiro_nome() + "', "
                     + "segundo_nome = '" + administradorDTO.getSegundo_nome() + "', "
                     + "email = '" + administradorDTO.getEmail() + "', "
@@ -116,7 +108,7 @@ public class AdministradorDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
 
-            comando = "Delete from Pessoa "
+            comando = "Delete from administrador "
                     + "where id_administrador = " + administradorDTO.getId_administrador();
 
             stmt.execute(comando);
@@ -148,14 +140,14 @@ public class AdministradorDAO {
                 case 1: //Pesquisa por nome
                     comando = "Select * "
                             + "from ADMINISTRADOR "
-                            + "where nome '%" + administradorDTO.getPrimeiro_nome() + "%' "
+                            + "where primeiro_nome '%" + administradorDTO.getPrimeiro_nome() + "%' "
                             + "order by primeiro_nome";
                     break;
 
                 case 2: //Pesquisa por id
                     comando = "Select * "
                             + "from ADMINISTRADOR "
-                            + "where id_usuario = " + administradorDTO.getId_administrador();
+                            + "where id_administrador = " + administradorDTO.getId_administrador();
 
             }//fecha switch opcao
             //Executa o comando SQL no banco de Dados
@@ -173,7 +165,7 @@ public class AdministradorDAO {
     /**
      * Método utilizado para logar um objeto FuncionarioDTO no sistema
      *
-     * @param usuarioDTO, opcao que vem da classe PessoaCTR
+     * @param administradorDTO, opcao que vem da classe PessoaCTR
      * @return Um int 1-Logado 2-Não Logado
      */
     public int logarAdmin(AdministradorDTO administradorDTO) {
@@ -183,16 +175,16 @@ public class AdministradorDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
-            String comando = "Select nome,id "
-                    + "from usuario "
+            String comando = "Select primeiro_nome,id_administrador "
+                    + "from administrador "
                     + "where email = '" + administradorDTO.getEmail() + "'"
                     + " and senha = '" + administradorDTO.getSenha() + "'";
-
+            System.out.println(comando);
             //Executa o comando SQL no banco de Dados
             rs = null;
             rs = stmt.executeQuery(comando);
             if (rs.next()) {
-                return rs.getInt("id_usuario");
+                return rs.getInt("id_administrador");
             } else {
                 return 0;
             }

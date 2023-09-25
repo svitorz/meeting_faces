@@ -7,10 +7,11 @@ import java.sql.Statement;
 
 public class MoradoresDAO {
 
+    AdministradorDTO administradorDTO = new AdministradorDTO();
+
     public MoradoresDAO() {
     }
 
-    //Classe que faz hash da senha inserida pelo usuario
     //Atributo do tipo ResultSet utilizado para realizar consultas
     private ResultSet rs = null;
     //Manipular o banco de dados
@@ -18,7 +19,7 @@ public class MoradoresDAO {
 
     /* Método para inserir morador
      *
-     * @param usuarioDTO que vem da classe PessoaCTR
+     * @param mroadorDTO,administradorDTO que vem da classe moradorDTO
      * @return Um boolean
      */
     public boolean inserirMorador(MoradoresDTO moradoresDTO, AdministradorDTO administradorDTO) {
@@ -31,7 +32,7 @@ public class MoradoresDAO {
             //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
-            comando = "INSERT INTO moradores(primeiro_nome, segundo_nome, cidade_atual,"
+            comando = "INSERT INTO morador(primeiro_nome, segundo_nome, cidade_atual,"
                     + "cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco, id_administrador) VALUES ("
                     + "'" + moradoresDTO.getPrimeiro_nome() + "', "
                     + "'" + moradoresDTO.getSegundo_nome() + "', "
@@ -75,7 +76,7 @@ public class MoradoresDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
-            comando = "Update moradores set "
+            comando = "Update morador set "
                     + "primeiro_nome = '" + moradoresDTO.getPrimeiro_nome() + "', "
                     + "segundo_nome = '" + moradoresDTO.getSegundo_nome() + "', "
                     + "cidade_natal = '" + moradoresDTO.getCidade_natal() + "', "
@@ -98,7 +99,7 @@ public class MoradoresDAO {
             //Chama o metodo da classe ConexaoDAO para fechar o banco de dados
             ConexaoDAO.CloseDB();
         }
-    }//Fecha o método alterarUsuario
+    }//Fecha o método alterarMorador
 
     /**
      * Método utilizado para excluir um objeto PessoaDTO no banco de dados
@@ -115,7 +116,7 @@ public class MoradoresDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
 
-            comando = "Delete from moradores "
+            comando = "Delete from morador "
                     + "where id_morador = " + moradoresDTO.getId_morador();
 
             stmt.execute(comando);
@@ -154,7 +155,7 @@ public class MoradoresDAO {
             switch (opcao) {
                 case 1: //Pesquisa por nome
                     comando = "Select nome,id "
-                            + "from moradores "
+                            + "from morador "
                             + "where id_morador = id_morador "
                             + "nome like '" + moradoresDTO.getPrimeiro_nome() + "%' "
                             + "order by nome";

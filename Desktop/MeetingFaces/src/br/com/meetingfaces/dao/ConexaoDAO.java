@@ -11,7 +11,7 @@ public class ConexaoDAO {
 
     public static void ConectDB() {
         try {
-            String dsn = "meetingfaces_teste";
+            String dsn = "dbmeeting_faces";
             String user = "postgres";
             String senha = "postdba";
 

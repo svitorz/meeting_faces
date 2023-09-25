@@ -91,7 +91,7 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
                 submitActionPerformed(evt);
             }
         });
-        getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 124, 70));
+        getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 124, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -109,7 +109,7 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_emailActionPerformed
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        gravar(administradorDTO, administradorDAO);        // TODO add your handling code here:
+        gravar();
     }//GEN-LAST:event_submitActionPerformed
 
     public static void main(String args[]) {
@@ -152,13 +152,12 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
         });
     }
 
-    private void gravar(AdministradorDTO administradorDTO, AdministradorDAO administradorDAO) {
+    private void gravar() {
         try {
             administradorDTO.setPrimeiro_nome(primeiro_nome.getText());
             administradorDTO.setSegundo_nome(segundo_nome.getText());
-            administradorDTO.setEmail(email.getText()
-            );
-            administradorDTO.setSenha(senha.getPassword());
+            administradorDTO.setEmail(email.getText());
+            administradorDTO.setSenha(senha.getText());
 
             JOptionPane.showMessageDialog(null,
                     administradorCTR.inserirAdmin(administradorDAO));

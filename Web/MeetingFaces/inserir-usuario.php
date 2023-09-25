@@ -31,7 +31,7 @@ if ($count >= 1) {
 $insert = "INSERT INTO usuario(primeiro_nome, segundo_nome, email, telefone,data_nasc, senha) VALUES (?,?,?,?,?,?)";
 $stmt = $conn->prepare($insert);
 $result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone,$data_nasc, $senha_hash]);
-if($result==true){
+if($result==true){  
     $_SESSION['sucesso'] = true;
     redireciona('formulario-login.php');
     exit();

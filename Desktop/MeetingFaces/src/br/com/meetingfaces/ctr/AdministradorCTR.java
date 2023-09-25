@@ -56,14 +56,14 @@ public class AdministradorCTR {
     public String excluirAdmin(AdministradorDTO administradorDTO) {
         try {
             if (administradorDAO.excluirAdministrador(administradorDTO)) {
-                return "Usuario Excluido com Sucesso!!!";
+                return "Administrador Excluido com Sucesso!!!";
             } else {
-                return "Usuario NÃO Excluido!!!";
+                return "Administrador NÃO Excluido!!!";
             }
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            return "Usuario NÃO Excluido!!!";
+            return "Administrador NÃO Excluido!!!";
         }
     }//Fecha o método excluirFuncionario
 
