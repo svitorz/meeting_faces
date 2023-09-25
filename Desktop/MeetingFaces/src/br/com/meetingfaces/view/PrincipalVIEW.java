@@ -37,10 +37,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         campoTexto = new javax.swing.JTextArea();
         sairBotao = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        navbar = new javax.swing.JMenu();
-        cadMR = new javax.swing.JMenuItem();
-        cadAdmin = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -77,6 +75,13 @@ public class PrincipalVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnRegister.setText("Cadastre-se");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,11 +91,15 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(204, Short.MAX_VALUE)
+                .addContainerGap(173, Short.MAX_VALUE)
+                .addComponent(btnRegister)
+                .addGap(67, 67, 67)
                 .addComponent(btnLogin)
-                .addGap(85, 85, 85)
+                .addGap(226, 226, 226))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(266, 266, 266)
                 .addComponent(sairBotao)
-                .addGap(223, 223, 223))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,44 +108,15 @@ public class PrincipalVIEW extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sairBotao)
-                    .addComponent(btnLogin))
-                .addContainerGap(133, Short.MAX_VALUE))
+                    .addComponent(btnLogin)
+                    .addComponent(btnRegister))
+                .addGap(38, 38, 38)
+                .addComponent(sairBotao)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         desktopPane.add(jPanel1);
-        jPanel1.setBounds(120, 60, 630, 370);
-
-        navbar.setMnemonic('f');
-        navbar.setText("Cadastro");
-        navbar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                navbarActionPerformed(evt);
-            }
-        });
-
-        cadMR.setText("Cadastro de moradores de rua");
-        cadMR.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cadMRMouseClicked(evt);
-            }
-        });
-        cadMR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadMRActionPerformed(evt);
-            }
-        });
-        navbar.add(cadMR);
-
-        cadAdmin.setText("Cadastro de Admin");
-        cadAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadAdminActionPerformed(evt);
-            }
-        });
-        navbar.add(cadAdmin);
-
-        menuBar.add(navbar);
+        jPanel1.setBounds(150, 150, 630, 370);
 
         setJMenuBar(menuBar);
 
@@ -144,11 +124,15 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,23 +149,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         loginAdmVIEW.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void navbarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_navbarActionPerformed
-
-    }//GEN-LAST:event_navbarActionPerformed
-
-    private void cadMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadMRActionPerformed
-        CadastroMoradorVIEW cadastroMrVIEW = new CadastroMoradorVIEW();
-        cadastroMrVIEW.setVisible(true);
-    }//GEN-LAST:event_cadMRActionPerformed
-
-    private void cadAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadAdminActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         CadastroAdminVIEW cadastroAdminVIEW = new CadastroAdminVIEW();
         cadastroAdminVIEW.setVisible(true);
-    }//GEN-LAST:event_cadAdminActionPerformed
-
-    private void cadMRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadMRMouseClicked
-
-    }//GEN-LAST:event_cadMRMouseClicked
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,8 +199,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
-    private javax.swing.JMenuItem cadAdmin;
-    private javax.swing.JMenuItem cadMR;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JTextArea campoTexto;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu jMenu1;
@@ -241,7 +211,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu navbar;
     private javax.swing.JButton sairBotao;
     // End of variables declaration//GEN-END:variables
 

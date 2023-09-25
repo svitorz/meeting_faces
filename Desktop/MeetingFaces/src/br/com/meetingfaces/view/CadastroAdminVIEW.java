@@ -44,51 +44,46 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         submit = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        pesquisarBtn = new javax.swing.JButton();
-        pesquisarInput = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Primeiro nome");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, 20));
-        getContentPane().add(senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 200, 60));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, 20));
+        getContentPane().add(senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 200, 60));
 
         primeiro_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 primeiro_nomeActionPerformed(evt);
             }
         });
-        getContentPane().add(primeiro_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 200, 60));
+        getContentPane().add(primeiro_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 200, 60));
 
         segundo_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 segundo_nomeActionPerformed(evt);
             }
         });
-        getContentPane().add(segundo_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 200, 60));
+        getContentPane().add(segundo_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 200, 60));
 
         jLabel2.setText("Segundo nome");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, 20));
 
         jLabel3.setText("Email");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, 20));
 
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
             }
         });
-        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 200, 60));
+        getContentPane().add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 200, 60));
 
         jLabel6.setText("Telefone");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 474, -1, 0));
 
         jLabel7.setText("Senha");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 280, -1, 20));
 
         submit.setText("Gravar");
         submit.addActionListener(new java.awt.event.ActionListener() {
@@ -96,26 +91,7 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
                 submitActionPerformed(evt);
             }
         });
-        getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 124, 70));
-
-        jLabel8.setText("Consultar usuários");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 130, 70));
-
-        pesquisarBtn.setText("Pesquisar");
-        getContentPane().add(pesquisarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, 40));
-        getContentPane().add(pesquisarInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 260, 40));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Nome"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 510, 280));
+        getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 124, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,11 +182,6 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton pesquisarBtn;
-    private javax.swing.JTextField pesquisarInput;
     private javax.swing.JTextField primeiro_nome;
     private javax.swing.JTextField segundo_nome;
     private javax.swing.JPasswordField senha;

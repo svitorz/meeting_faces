@@ -1,5 +1,4 @@
 <?php
-
 function autenticado(){
     if(isset($_SESSION['email'])){
         return true;
@@ -9,7 +8,8 @@ function autenticado(){
 }
 
 function nome_usuario(){
-    return $_SESSION['nome'];
+    $nome_completo = $_SESSION['primeiro_nome'] . $_SESSION['segundo_nome'];
+    return $nome_completo;
 }
 
 function email_usuario(){

@@ -40,7 +40,7 @@ require 'header.php';
         <tr>
           <th scope="row"> <?= $row["id_descricao"]?> </th>
           <td><?= $row["comentario"]?></td>
-          <td> <a href="perfil-usuario.php?"></a> <?= $row["nome_usuario"]?>, ID: <?=$row['id_usuario']?></td>
+          <td> <a href="info-usuario.php?id_usuario=<?= $row["id_usuario"]?>" class="link-dark"><?= $row["nome_usuario"]?>, ID: <?=$row['id_usuario']?> </a> </td>
           <td> <a href="info.php?id_morador=<?= $row["id_morador"]?>"><?= $row["nome_morador"]?>, ID: <?= $row["id_morador"]?> </a></td>
           <td>  
             <div class="input-group">

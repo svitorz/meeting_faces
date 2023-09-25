@@ -16,7 +16,7 @@ $id_usuario = filter_input(INPUT_GET, 'id_usuario',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+$sql = "SELECT * FROM USUARIO WHERE id_usuario = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_usuario]);
 $row = $stmt->fetch();
@@ -76,23 +76,28 @@ require 'header.php';
                             <div class="col-sm-9">
                                 <p class="text-muted text-capitalize mb-0">
                                     <?php
-                                    print_r($row['primeiro_nome']);
-                                    echo "<span class='px-1' />";
-                                    if(isset($row['segundo_nome']) && $row['segundo_nome'])
-                                    { print_r($row['segundo_nome']); }
-                                    ?>
+                                     print_r($row['primeiro_nome']);
+                                     echo "<span class='px-1' />";
+                    }
+                                     if(isset($row['segundo_nome']))
+                                     {
+                                         ?>
+                                         <?= $row['segundo_nome']; ?>
+                                     <?php 
+                                     }else {
+                                         ?>
+                                         <?php
+                                     }
+                                     ?>
                                 </p>
                             </div>
                         </div>
                     <?php
-                    }
-                    ?>
-                    <?php 
                     if(isset($row['telefone']) && $row['telefone']){
-                        ?>
+                       ?>
                     <hr>
                     <div class="row">
-                        <div class="col-sm-3">
+                       <div class="col-sm-3">
                             <p class="mb-0">Telefone:</p>
                         </div>
                         <div class="col-sm-9">
