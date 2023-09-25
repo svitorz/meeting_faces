@@ -151,6 +151,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         CadastroAdminVIEW cadastroAdminVIEW = new CadastroAdminVIEW();
+
+        this.desktopPane.add(cadastroAdminVIEW);
         cadastroAdminVIEW.setVisible(true);
     }//GEN-LAST:event_btnRegisterActionPerformed
 

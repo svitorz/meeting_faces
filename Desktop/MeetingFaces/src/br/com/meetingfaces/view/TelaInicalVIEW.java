@@ -5,6 +5,8 @@
  */
 package br.com.meetingfaces.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author vitor
@@ -148,6 +150,14 @@ public class TelaInicalVIEW extends javax.swing.JFrame {
                 new TelaInicalVIEW().setVisible(true);
             }
         });
+    }
+
+    private void sair() {
+        Object[] options = {"Sair", "Cancelar"};
+        if (JOptionPane.showOptionDialog(null, "Deseja Sair do Sistema", "Informação",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]) == 0) {
+            System.exit(0);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

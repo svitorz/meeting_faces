@@ -125,10 +125,8 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        PrincipalVIEW principalView = new PrincipalVIEW();
 
         this.dispose();
-//        principalView.setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void logar() {

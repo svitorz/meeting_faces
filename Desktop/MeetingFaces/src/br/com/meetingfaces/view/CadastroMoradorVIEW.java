@@ -533,7 +533,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         } catch (Exception erTab) {
             System.out.println("Erro SQL: " + erTab);
         }
-    }//Fecha método preencheTabela(String nom_pes)
+    }//Fecha método preencheTabela
 
     private void preencheCampos(int id_morador) {
         try {

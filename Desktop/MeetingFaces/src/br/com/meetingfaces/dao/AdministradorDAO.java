@@ -9,7 +9,6 @@ public class AdministradorDAO {
     public AdministradorDAO() {
     }
 
-    //Classe que faz hash da senha inserida pelo usuario
     //Atributo do tipo ResultSet utilizado para realizar consultas
     private ResultSet rs = null;
     //Manipular o banco de dados
