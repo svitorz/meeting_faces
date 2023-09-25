@@ -30,22 +30,18 @@ public class AdministradorDAO {
             //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
-            comando = "Insert into administrador(primeiro_nome, segundo_nome, email"
-                    + ", senha) VALUES ("
+            comando = "INSERT INTO administrador(primeiro_nome, segundo_nome, email"
+                    + ", senha) VALUES("
                     + "'" + administradorDTO.getPrimeiro_nome() + "', "
                     + "'" + administradorDTO.getSegundo_nome() + "', "
                     + "'" + administradorDTO.getEmail() + "', "
                     + "'" + administradorDTO.getSenha() + "'"
                     + ");";
             System.out.println(comando);
-            stmt.execute(comando.toUpperCase(), Statement.RETURN_GENERATED_KEYS);
-            rs = stmt.getGeneratedKeys();
-            rs.next();
-            id_administrador = rs.getInt(id_administrador);
+            stmt.execute(comando.toUpperCase());
             ConexaoDAO.con.commit();
             //fecha statement
             stmt.close();
-            rs.close();
             return true;
 
         } catch (Exception e) {
@@ -183,12 +179,10 @@ public class AdministradorDAO {
             //Executa o comando SQL no banco de Dados
             rs = null;
             rs = stmt.executeQuery(comando);
-            if (rs.next()) {
-                return rs.getInt("id_administrador");
-            } else {
-                return 0;
-            }
-
+            rs.next();
+            administradorDTO.setId_administrador(rs.getInt("id_administrador"));
+            System.out.println(administradorDTO.getId_administrador());
+            return 1;
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
             System.out.println(e.getMessage());

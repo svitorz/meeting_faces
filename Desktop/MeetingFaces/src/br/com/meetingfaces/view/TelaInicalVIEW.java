@@ -27,20 +27,43 @@ public class TelaInicalVIEW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        crudMorador = new javax.swing.JButton();
+        aprovDesc = new javax.swing.JButton();
+        listAdm = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        sairBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Cadastrar/editar/excluir moradores de rua");
+        crudMorador.setText("Cadastrar/editar/excluir moradores de rua");
+        crudMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crudMoradorActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Aprovação de descrições");
+        aprovDesc.setText("Aprovação de descrições");
+        aprovDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aprovDescActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Listagem de administradores");
+        listAdm.setText("Listagem de administradores");
+        listAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listAdmActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Seleciona qual operação deseja realizar");
+
+        sairBotao.setText("Sair");
+        sairBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairBotaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,10 +72,11 @@ public class TelaInicalVIEW extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(269, 269, 269)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(listAdm)
+                    .addComponent(sairBotao)
+                    .addComponent(aprovDesc)
+                    .addComponent(crudMorador)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(306, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -61,16 +85,35 @@ public class TelaInicalVIEW extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
-                .addComponent(jButton1)
-                .addGap(39, 39, 39)
-                .addComponent(jButton2)
-                .addGap(42, 42, 42)
-                .addComponent(jButton3)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addComponent(crudMorador)
+                .addGap(35, 35, 35)
+                .addComponent(listAdm)
+                .addGap(43, 43, 43)
+                .addComponent(aprovDesc)
+                .addGap(41, 41, 41)
+                .addComponent(sairBotao)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void crudMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudMoradorActionPerformed
+        CadastroMoradorVIEW cadastroMoradorVIEW = new CadastroMoradorVIEW();
+        cadastroMoradorVIEW.setVisible(true);
+    }//GEN-LAST:event_crudMoradorActionPerformed
+
+    private void aprovDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprovDescActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aprovDescActionPerformed
+
+    private void listAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAdmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listAdmActionPerformed
+
+    private void sairBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairBotaoActionPerformed
+        sair();
+    }//GEN-LAST:event_sairBotaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,9 +151,10 @@ public class TelaInicalVIEW extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton aprovDesc;
+    private javax.swing.JButton crudMorador;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton listAdm;
+    private javax.swing.JButton sairBotao;
     // End of variables declaration//GEN-END:variables
 }

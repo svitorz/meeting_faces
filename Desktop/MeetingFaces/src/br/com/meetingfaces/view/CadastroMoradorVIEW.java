@@ -26,7 +26,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         //Chama o método liberaBotoes
         liberaBotoes(true, false, false, false, true);
         //Atribui um modelo para manipular a tabela
-        //modelo_consulta_m = (DefaultTableModel) jtl_consultar_pes.getModel();
+        modelo_consulta_m = (DefaultTableModel) tabelaSelect.getModel();
     }
 
     /**
@@ -47,8 +47,6 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         data_nasc = new javax.swing.JTextField();
         cidadeNatal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        botaoGravar = new javax.swing.JButton();
-        limparMR = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         labelSobrenome = new javax.swing.JLabel();
         sobrenomeMorador = new javax.swing.JTextField();
@@ -93,20 +91,6 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Cidade origem:");
-
-        botaoGravar.setText("Cadastrar");
-        botaoGravar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoGravarActionPerformed(evt);
-            }
-        });
-
-        limparMR.setText("Limpar");
-        limparMR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limparMRActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Nome de um familiar próximo");
 
@@ -176,11 +160,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
                                 .addComponent(cidadeAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(botaoGravar)
-                        .addGap(18, 18, 18)
-                        .addComponent(limparMR)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -214,11 +194,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cidadeAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoGravar)
-                    .addComponent(limparMR))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Pesquisar");
@@ -397,10 +373,6 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_data_nascActionPerformed
 
-    private void botaoGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGravarActionPerformed
-        gravar();        // TODO add your handling code here:
-    }//GEN-LAST:event_botaoGravarActionPerformed
-
     private void sobrenomeMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenomeMoradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sobrenomeMoradorActionPerformed
@@ -414,16 +386,12 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_cidadeAtualActionPerformed
 
     private void submitSelectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitSelectBtnActionPerformed
-        preencheTabela(pesquisa_nome_morador.getText().toUpperCase());        // TODO add your handling code here:
+        preencheTabela(pesquisa_nome_morador.getText().toUpperCase());
     }//GEN-LAST:event_submitSelectBtnActionPerformed
 
     private void pesquisa_nome_moradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisa_nome_moradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pesquisa_nome_moradorActionPerformed
-
-    private void limparMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparMRActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_limparMRActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         limpaCampos();
@@ -440,23 +408,22 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if (verificaPreenchimentoGeral()) {
-            if (gravar_alterar == 1) {
-                gravar();
+
+        if (gravar_alterar == 1) {
+            gravar();
+            gravar_alterar = 0;
+        } else {
+            if (gravar_alterar == 2) {
+                alterar();
+                //preencheTabela(pesquisa_nome_pes.getText().toUpperCase());
                 gravar_alterar = 0;
             } else {
-                if (gravar_alterar == 2) {
-                    alterar();
-                    //preencheTabela(pesquisa_nome_pes.getText().toUpperCase());
-                    gravar_alterar = 0;
-                } else {
-                    JOptionPane.showMessageDialog(null, "Erro no Sistema!!!");
-                }
+                JOptionPane.showMessageDialog(null, "Erro no Sistema!!!");
             }
-            limpaCampos();
-            liberaCampos(false);
-            liberaBotoes(true, false, false, false, true);
         }
+        limpaCampos();
+        liberaCampos(false);
+        liberaBotoes(true, false, false, false, true);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -549,47 +516,6 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         );
     }//Fecha método alterar()
 
-    private boolean verificaPreenchimentoGeral() {
-        if (nomeMorador.getText().equalsIgnoreCase("")) {
-            JOptionPane.showMessageDialog(null, "O campo Nome deve ser preenchido");
-            nomeMorador.requestFocus();
-            return false;
-        } else {
-            if (sobrenomeMorador.getText().equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(null, "O campo Endereço deve ser preenchido");
-                sobrenomeMorador.requestFocus();
-                return false;
-            } else {
-                if (cidadeAtual.getText().equalsIgnoreCase("")) {
-                    JOptionPane.showMessageDialog(null, "O campo Número deve ser preenchido");
-                    cidadeAtual.requestFocus();
-                    return false;
-                } else {
-                    if (cidadeNatal.getText().equalsIgnoreCase("")) {
-                        JOptionPane.showMessageDialog(null, "O campo Bairro deve ser preenchido");
-                        cidadeNatal.requestFocus();
-                        return false;
-                    } else {
-                        if (nomeFamiliarProximo.getText().equalsIgnoreCase("")) {
-                            JOptionPane.showMessageDialog(null, "O campo Cidade deve ser preenchido");
-                            nomeFamiliarProximo.requestFocus();
-                            return false;
-                        } else {
-                            if (grauParentesco.getText().equalsIgnoreCase("")) {
-                                JOptionPane.showMessageDialog(null, "O campo CEP deve ser preenchido");
-                                grauParentesco.requestFocus();
-                                return false;
-                            }//Fecha else cid_pes
-                            else {
-                                return true;
-                            }
-                        }//Fecha else bai_pes
-                    }//Fecha else num_pes
-                }//Fecha else end_pes
-            }//Fecha else nom_pes
-        }//Fecha método verificaPreenchimentoGeral()
-    }
-
     private void preencheTabela(String nomeMorador) {
         try {
             //Limpa todas as linhas
@@ -616,12 +542,13 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
             if (rs.next()) {
                 limpaCampos();
 
-                nomeMorador.setText(rs.getString("nomeMorador"));
-                sobrenomeMorador.setText(rs.getString("sobrenomeMorador"));
-                cidadeAtual.setText(rs.getString("cidadeAtual"));
-                cidadeNatal.setText(rs.getString("cidadeNatal"));
-                nomeFamiliarProximo.setText(rs.getString("nomeFamiliarProximo"));
-                grauParentesco.setText(rs.getString("grauParentesco"));
+                nomeMorador.setText(rs.getString("primeiro_nome"));
+                sobrenomeMorador.setText(rs.getString("segundo_nome"));
+                cidadeAtual.setText(rs.getString("cidade_atual"));
+                cidadeNatal.setText(rs.getString("cidade_natal"));
+                nomeFamiliarProximo.setText(rs.getString("nome_familiar_proximo"));
+                grauParentesco.setText(rs.getString("grau_parentesco"));
+                data_nasc.setText(rs.getString("data_nasc"));
 
                 gravar_alterar = 2;
                 liberaCampos(true);
@@ -663,7 +590,6 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
     }//Fecha método liberaBotoes(boolean a, boolean b, boolean c, boolean d, boolean e)
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoGravar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
@@ -685,7 +611,6 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel labelData_nasc;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelSobrenome;
-    private javax.swing.JButton limparMR;
     private javax.swing.JTextField nomeFamiliarProximo;
     private javax.swing.JTextField nomeMorador;
     private javax.swing.JTextField pesquisa_nome_morador;

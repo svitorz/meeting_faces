@@ -44,6 +44,7 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         submit = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,6 +94,19 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
         });
         getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 124, 70));
 
+        btnSair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSair.setText("Cancelar");
+        btnSair.setAlignmentY(0.0F);
+        btnSair.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSair.setMaximumSize(new java.awt.Dimension(113, 35));
+        btnSair.setMinimumSize(new java.awt.Dimension(113, 35));
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 110, 70));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,6 +125,10 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         gravar();
     }//GEN-LAST:event_submitActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -160,13 +178,14 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
             administradorDTO.setSenha(senha.getText());
 
             JOptionPane.showMessageDialog(null,
-                    administradorCTR.inserirAdmin(administradorDAO));
+                    administradorCTR.inserirAdmin(administradorDTO));
         } catch (Exception e) {
             System.out.println("Erro ao Gravar" + e.getMessage());
         }
     }//Fecha método gravar()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSair;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;

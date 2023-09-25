@@ -9,8 +9,7 @@
             <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dto/UsuarioDTO.java</file>
         </group>
         <group name="Meeting_Locadora">
-            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dao/AdministradorDAO.java</file>
-            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/CadastroAdminVIEW.java</file>
+            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/CadastroMoradorVIEW.java</file>
         </group>
     </open-files>
 </project-private>

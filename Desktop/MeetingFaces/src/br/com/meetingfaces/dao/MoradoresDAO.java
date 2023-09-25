@@ -45,7 +45,8 @@ public class MoradoresDAO {
                     + ")";
 
             System.out.println(comando);
-            stmt.execute(comando.toUpperCase(), Statement.RETURN_GENERATED_KEYS);
+            System.out.println(administradorDTO.getId_administrador());
+            stmt.execute(comando, Statement.RETURN_GENERATED_KEYS);
             rs = stmt.getGeneratedKeys();
             rs.next();
             ConexaoDAO.con.commit();
@@ -77,22 +78,23 @@ public class MoradoresDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
             comando = "Update morador set "
-                    + "primeiro_nome = '" + moradoresDTO.getPrimeiro_nome() + "', "
+                    + "(primeiro_nome = '" + moradoresDTO.getPrimeiro_nome() + "', "
                     + "segundo_nome = '" + moradoresDTO.getSegundo_nome() + "', "
                     + "cidade_natal = '" + moradoresDTO.getCidade_natal() + "', "
                     + "cidade_atual = '" + moradoresDTO.getCidade_atual() + "', "
                     + "data_nasc  = '" + moradoresDTO.getData_nasc() + "', "
-                    + "nome_familiar = " + moradoresDTO.getNome_familiar_proximo() + "'"
-                    + "grau_parentesco = " + moradoresDTO.getGrau_parentesco() + "'";
+                    + "nome_familiar = '" + moradoresDTO.getNome_familiar_proximo() + "'"
+                    + "grau_parentesco = '" + moradoresDTO.getGrau_parentesco() + "');";
 
-            stmt.execute(comando.toUpperCase());
+            stmt.execute(comando);
             ConexaoDAO.con.commit();
             //Fecha o statement
+            System.out.println(comando);
             stmt.close();
             return true;
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
-            System.out.println("Erro UsuarioDAO" + e.getMessage());
+            System.out.println("Erro MoradorDAO" + e.getMessage());
             return false;
         } //Independente de dar erro ou não ele vai fechar o banco de dados.
         finally {
@@ -154,22 +156,22 @@ public class MoradoresDAO {
 
             switch (opcao) {
                 case 1: //Pesquisa por nome
-                    comando = "Select nome,id "
+                    comando = "Select primeiro_nome,id_morador "
                             + "from morador "
-                            + "where id_morador = id_morador "
-                            + "nome like '" + moradoresDTO.getPrimeiro_nome() + "%' "
-                            + "order by nome";
+                            + " WHERE primeiro_nome ILIKE '%" + moradoresDTO.getPrimeiro_nome() + "%' "
+                            + "order by primeiro_nome";
                     break;
 
                 case 2: //Pesquisa por id
-                    comando = "Select * "
-                            + "from moradores "
-                            + "where"
+                    comando = "SELECT * "
+                            + "FROM morador "
+                            + "WHERE "
                             + "id_morador = " + moradoresDTO.getId_morador();
 
             }//fecha switch opcao
             //Executa o comando SQL no banco de Dados
-            rs = stmt.executeQuery(comando.toUpperCase());
+            System.out.println(comando);
+            rs = stmt.executeQuery(comando);
 
             return rs;
 

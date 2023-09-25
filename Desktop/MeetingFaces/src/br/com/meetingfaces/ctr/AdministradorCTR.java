@@ -9,7 +9,7 @@ public class AdministradorCTR {
     AdministradorDAO administradorDAO = new AdministradorDAO();
     AdministradorDTO administradorDTO = new AdministradorDTO();
 
-    public String inserirAdmin(AdministradorDAO administradorDAO) {
+    public String inserirAdmin(AdministradorDTO administradorDTO) {
         try {
             //Chama o metodo que esta na classe DAO aguardando uma resposta (true ou false)
             if ((boolean) administradorDAO.inserirAdministrador(administradorDTO)) {
