@@ -46,7 +46,7 @@ require_once 'header.php';
             if(isAdmin()){
             ?>
             <a href="excluir-usuario.php?id_usuario=<?=$row['id_usuario'];?>" onclick="if(!confirm('Deseja excluir?')) return false;" class=" btn btn-sm btn-danger">
-              <span data-feather="trash-2"></span>
+            <i class="fa-solid fa-trash"></i>
                 Excluir 
             </a>
           </td>

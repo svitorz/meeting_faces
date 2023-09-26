@@ -13,6 +13,14 @@ $titulo_pagina = "Insira seus dados para cadastro";
 include 'header.php';
 
 ?>
+<!-- Link JQUERY via CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#data_nasc").mask("00/00/0000")
+    })
+</script>
 <script>
     const handlePhone = (event) => {
         let input = event.target
@@ -26,6 +34,7 @@ include 'header.php';
       value = value.replace(/(\d)(\d{4})$/,"$1-$2")
       return value
     }
+    
     function verifica_senhas() {
         var senha = document.getElementById("senha");
         var confsenha = document.getElementById("confsenha");
@@ -42,6 +51,8 @@ include 'header.php';
         }
     }
 </script>
+
+
 <div class="container-fluid px-5 py-3">
     <form action="inserir-usuario.php" method="post">
     <div class="row">
@@ -64,8 +75,7 @@ include 'header.php';
       </div>
       <div class="form-outline mb-4">
           <label class="form-label" for="data_nasc">Data de nascimento</label>
-          <!-- <input type="text" id="data_nasc" name="data_nasc" class="form-control" required /> -->
-          <input type="text" class="form-control" id="data_nasc" name="data_nasc" placeholder="Ex.: dd/mm/aaaa" data-mask="00/00/0000" maxlength="10" autocomplete="off"/> 
+          <input type="text" class="form-control" id="data_nasc" name="data_nasc" placeholder="Ex.: dd/mm/aaaa" /> 
       </div>
       <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
