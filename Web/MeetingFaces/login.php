@@ -7,6 +7,7 @@ require 'conexao/conexao.php';
 
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
+try{
     $sql = "SELECT * FROM usuario WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$email]);
@@ -34,8 +35,9 @@ $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
             $_SESSION['ADM'] = TRUE;
             $_SESSION['USUARIO'] = FALSE;
             redireciona();
-        }else{
-            redireciona('formulario-login.php');
         }
     }
+} catch(Exception $e){
+        redireciona('formulario-login.php');
+}
 ?>
