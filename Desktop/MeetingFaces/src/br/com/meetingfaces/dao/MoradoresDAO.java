@@ -22,7 +22,7 @@ public class MoradoresDAO {
      * @param mroadorDTO,administradorDTO que vem da classe moradorDTO
      * @return Um boolean
      */
-    public boolean inserirMorador(MoradoresDTO moradoresDTO, AdministradorDTO administradorDTO) {
+    public boolean inserirMorador(MoradoresDTO moradoresDTO) {
         String comando = "";
         int id_morador = 0;
         try {
@@ -41,11 +41,10 @@ public class MoradoresDAO {
                     + "'" + moradoresDTO.getData_nasc() + "', "
                     + "'" + moradoresDTO.getNome_familiar_proximo() + "', "
                     + "'" + moradoresDTO.getGrau_parentesco() + "',"
-                    + "'" + administradorDTO.getId_administrador() + "'"
-                    + ")";
+                    + moradoresDTO.getId_usuario()
+                    + ");";
 
             System.out.println(comando);
-            System.out.println(administradorDTO.getId_administrador());
             stmt.execute(comando, Statement.RETURN_GENERATED_KEYS);
             rs = stmt.getGeneratedKeys();
             rs.next();

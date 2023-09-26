@@ -487,9 +487,10 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
             moradoresDTO.setNome_familiar_proximo(nomeFamiliarProximo.getText());
             moradoresDTO.setGrau_parentesco(grauParentesco.getText());
             moradoresDTO.setData_nasc(data_nasc.getText());
+            moradoresDTO.setId_usuario(administradorDTO.getId_administrador());
 
             JOptionPane.showMessageDialog(null,
-                    moradoresCTR.inserirMoradores(moradoresDTO, administradorDTO));
+                    moradoresCTR.inserirMoradores(moradoresDTO, administradorDTO.getId_administrador()));
         } catch (Exception e) {
             System.out.println("Erro ao Gravar" + e.getMessage());
         }

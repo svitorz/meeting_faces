@@ -30,14 +30,6 @@ public class MoradoresDTO {
         return id_morador;
     }
 
-    public int getId_permissao() {
-        return id_permissao;
-    }
-
-    public void setId_permissao(int id_permissao) {
-        this.id_permissao = id_permissao;
-    }
-
     public void setId_morador(int id_morador) {
         this.id_morador = id_morador;
     }
@@ -65,7 +57,7 @@ public class MoradoresDTO {
     public void setCidade_atual(String cidade_atual) {
         this.cidade_atual = cidade_atual;
     }
-    private int id_morador, id_permissao, id_usuario;
+    private int id_morador, id_usuario;
     private String primeiro_nome, segundo_nome, cidade_natal, cidade_atual, data_nasc, nome_familiar_proximo, grau_parentesco;
 
     public String getPrimeiro_nome() {

@@ -170,7 +170,7 @@ public class AdministradorDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
-            String comando = "Select primeiro_nome,id_administrador "
+            String comando = "Select id_administrador "
                     + "from administrador "
                     + "where email = '" + administradorDTO.getEmail() + "'"
                     + " and senha = '" + administradorDTO.getSenha() + "'";
@@ -179,9 +179,8 @@ public class AdministradorDAO {
             rs = null;
             rs = stmt.executeQuery(comando);
             rs.next();
-            administradorDTO.setId_administrador(rs.getInt("id_administrador"));
-            System.out.println(administradorDTO.getId_administrador());
-            return 1;
+//            System.out.println(administradorDTO.getId_administrador());
+            return rs.getInt("id_administrador");
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
             System.out.println(e.getMessage());
