@@ -12,10 +12,10 @@ public class MoradoresCTR {
     public MoradoresCTR() {
     }
 
-    public String inserirMoradores(MoradoresDTO moradoresDTO, int id_adm) {
+    public String inserirMoradores(MoradoresDTO moradoresDTO) {
         try {
             //Chama o metodo que esta na classe DAO aguardando uma resposta (true ou false)
-            if (moradoresDAO.inserirMorador(moradoresDTO, id_adm)) {
+            if (moradoresDAO.inserirMorador(moradoresDTO)) {
                 return "Morador Cadastrado com Sucesso!!!";
             } else {
                 return "Morador NÃO Cadastrado!!!";

@@ -179,8 +179,9 @@ public class AdministradorDAO {
             rs = null;
             rs = stmt.executeQuery(comando);
             rs.next();
+//            /rs.getInt("id_administrador")
 //            System.out.println(administradorDTO.getId_administrador());
-            return rs.getInt("id_administrador");
+            return;
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
             System.out.println(e.getMessage());

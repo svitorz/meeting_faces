@@ -490,7 +490,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
             moradoresDTO.setId_usuario(administradorDTO.getId_administrador());
 
             JOptionPane.showMessageDialog(null,
-                    moradoresCTR.inserirMoradores(moradoresDTO, administradorDTO.getId_administrador()));
+                    moradoresCTR.inserirMoradores(moradoresDTO));
         } catch (Exception e) {
             System.out.println("Erro ao Gravar" + e.getMessage());
         }
