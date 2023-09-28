@@ -8,13 +8,6 @@
             <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/ctr/UsuarioCTR.java</file>
             <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dto/UsuarioDTO.java</file>
         </group>
-        <group name="Meeting_Locadora">
-            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/CadastroMoradorVIEW.java</file>
-            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dao/AdministradorDAO.java</file>
-            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/LoginAdmVIEW.java</file>
-            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/ctr/MoradoresCTR.java</file>
-            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dao/MoradoresDAO.java</file>
-            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/ctr/AdministradorCTR.java</file>
-        </group>
+        <group name="Meeting_Locadora"/>
     </open-files>
 </project-private>

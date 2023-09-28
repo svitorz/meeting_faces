@@ -85,7 +85,6 @@ public class AdministradorCTR {
     }//Fecha o método consultarFuncionario
 
     public int logarAdministrador(AdministradorDTO administradorDTO) {
-
         return administradorDAO.logarAdmin(administradorDTO);
 
     }//Fecha o método logarFuncionario

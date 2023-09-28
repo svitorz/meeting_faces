@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import br.com.meetingfaces.ctr.MoradoresCTR;
 import br.com.meetingfaces.dto.AdministradorDTO;
+import br.com.meetingfaces.ctr.AdministradorCTR;
 import br.com.meetingfaces.dto.MoradoresDTO;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -13,6 +14,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
 
     MoradoresDTO moradoresDTO = new MoradoresDTO();
     MoradoresCTR moradoresCTR = new MoradoresCTR();
+    AdministradorCTR administradorCTR = new AdministradorCTR();
     AdministradorDTO administradorDTO = new AdministradorDTO();
 
     ResultSet rs;
@@ -487,10 +489,8 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
             moradoresDTO.setNome_familiar_proximo(nomeFamiliarProximo.getText());
             moradoresDTO.setGrau_parentesco(grauParentesco.getText());
             moradoresDTO.setData_nasc(data_nasc.getText());
-            moradoresDTO.setId_usuario(administradorDTO.getId_administrador());
-
             JOptionPane.showMessageDialog(null,
-                    moradoresCTR.inserirMoradores(moradoresDTO));
+                    moradoresCTR.inserirMoradores(moradoresDTO, administradorDTO));
         } catch (Exception e) {
             System.out.println("Erro ao Gravar" + e.getMessage());
         }

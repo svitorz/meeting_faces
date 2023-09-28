@@ -1,13 +1,12 @@
 package br.com.meetingfaces.dao;
 
-import br.com.meetingfaces.dto.AdministradorDTO;
+import br.com.meetingfaces.ctr.AdministradorCTR;
 import br.com.meetingfaces.dto.MoradoresDTO;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import br.com.meetingfaces.dto.AdministradorDTO;
 
 public class MoradoresDAO {
-
-    AdministradorDTO administradorDTO = new AdministradorDTO();
 
     public MoradoresDAO() {
     }
@@ -22,7 +21,7 @@ public class MoradoresDAO {
      * @param mroadorDTO,administradorDTO que vem da classe moradorDTO
      * @return Um boolean
      */
-    public boolean inserirMorador(MoradoresDTO moradoresDTO) {
+    public boolean inserirMorador(MoradoresDTO moradoresDTO, AdministradorDTO administradorDTO) {
         String comando = "";
         int id_morador = 0;
         try {
@@ -41,9 +40,9 @@ public class MoradoresDAO {
                     + "'" + moradoresDTO.getData_nasc() + "', "
                     + "'" + moradoresDTO.getNome_familiar_proximo() + "', "
                     + "'" + moradoresDTO.getGrau_parentesco() + "',"
-                    + moradoresDTO.getId_usuario()
+                    + administradorDTO.getId_administrador()
                     + ");";
-
+            System.out.println("insert moradores dao");
             System.out.println(comando);
             stmt.execute(comando, Statement.RETURN_GENERATED_KEYS);
             rs = stmt.getGeneratedKeys();
