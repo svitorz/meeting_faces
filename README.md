@@ -1,6 +1,6 @@
 <h1>Meeting Faces</h1>
 <h2>O Meeting Faces é um projeto pensado para auxiliar moradores de rua a encontrarem seus familiares.</h2>
-<>O projeto foi planejado para ajudar instituições/organizações de apoio a pessoas em situaçao de rua a encontrarem os familiares de seus assistidos. De que forma? </p>
+<p>O projeto foi planejado para ajudar instituições/organizações de apoio a pessoas em situaçao de rua a encontrarem os familiares de seus assistidos. De que forma? </p>
 <p>A idéia é cadastrar essas pessoas em situação de rua para que estes dados fiquem disponpiveis na web, para que pessoas de qualquer lugar do mundo possam encontra-lás</p>
 <h3>Nosso funcionamento:</h3>
 <p>Toda aplicação desenvolvida em PHP (disponível na web), é voltada para que usuários possam pesquisar/procurar por pessoas em situação de rua, sendo disponibilizado então, uma tela que em termos técncicos, contém um SELECT *, ou seja, ela imprime todos as pessoas cadastradas no banco. Por outro lado, há um formulário, para que sejam pesquisadas informações específicas de cada pessoa, assim pode ser encontrado alguém no nosso banco com apenas uma ou duas informações inseridas no form (se o morador também ter essas informações cadastradas em seu perfil).</p>
