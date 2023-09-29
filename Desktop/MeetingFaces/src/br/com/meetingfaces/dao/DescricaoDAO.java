@@ -39,7 +39,7 @@ public class DescricaoDAO {
             //Comando SQL que sera executado no banco de dados
             String comando = "";
 
-            comando = "SELECT DESCRICAO.*,USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO,\n"
+            comando = "SELECT DESCRICAO.COMENTARIO,DESCRICAO.ID_DESCRICAO,USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO,\n"
                     + "	MORADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_MORADOR \n"
                     + "		FROM DESCRICAO \n"
                     + "				INNER JOIN USUARIO ON\n"
