@@ -33,9 +33,10 @@ public class AdministradorDAO {
                     + ", senha) VALUES("
                     + "'" + administradorDTO.getPrimeiro_nome() + "', "
                     + "'" + administradorDTO.getSegundo_nome() + "', "
-                    + "'" + administradorDTO.getEmail() + "', "
-                    + "'" + administradorDTO.getSenha() + "'"
+                    + "'" + administradorDTO.getEmail() + "', crypt("
+                    + "'" + administradorDTO.getSenha() + "', gen_salt('bf'))"
                     + ");";
+//            123', gen_salt('bf'))
             System.out.println(comando);
             stmt.execute(comando.toUpperCase());
             ConexaoDAO.con.commit();
@@ -173,7 +174,8 @@ public class AdministradorDAO {
             String comando = "Select id_administrador "
                     + "from administrador "
                     + "where email = '" + administradorDTO.getEmail() + "'"
-                    + " and senha = '" + administradorDTO.getSenha() + "'";
+                    + " and senha = crypt('" + administradorDTO.getSenha() + "', senha)";
+//            crypt('wrongpassword', password)
             System.out.println(comando);
             //Executa o comando SQL no banco de Dados
             rs = null;

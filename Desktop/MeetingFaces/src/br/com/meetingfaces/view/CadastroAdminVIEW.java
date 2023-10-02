@@ -177,8 +177,11 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
             administradorDTO.setEmail(email.getText());
             administradorDTO.setSenha(senha.getText());
 
-            JOptionPane.showMessageDialog(null,
-                    administradorCTR.inserirAdmin(administradorDTO));
+            if (administradorDAO.inserirAdministrador(administradorDTO)) {
+                CadastroMoradorVIEW cadastroMoradorVIEW = new CadastroMoradorVIEW();
+                cadastroMoradorVIEW.setVisible(true);
+            }
+
         } catch (Exception e) {
             System.out.println("Erro ao Gravar" + e.getMessage());
         }
