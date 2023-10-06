@@ -2,7 +2,7 @@ package br.com.meetingfaces.dto;
 
 public class AdministradorDTO {
 
-    private int id_administrador;
+    private int id_administrador, id_login;
     private String primeiro_nome, segundo_nome, email, senha;
 
     public String getSenha() {
@@ -44,4 +44,13 @@ public class AdministradorDTO {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public int getId_login() {
+        return id_login;
+    }
+
+    public void setId_login(int id_login) {
+        this.id_login = id_login;
+    }
+
 }

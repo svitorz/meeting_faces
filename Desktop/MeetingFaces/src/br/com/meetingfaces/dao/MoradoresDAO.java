@@ -40,7 +40,7 @@ public class MoradoresDAO {
                     + "'" + moradoresDTO.getData_nasc() + "', "
                     + "'" + moradoresDTO.getNome_familiar_proximo() + "', "
                     + "'" + moradoresDTO.getGrau_parentesco() + "',"
-                    + administradorDTO.getId_administrador()
+                    + administradorDTO.getId_login()
                     + ");";
             System.out.println("insert moradores dao");
             System.out.println(comando);

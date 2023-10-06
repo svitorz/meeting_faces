@@ -43,7 +43,6 @@ public class AdministradorDAO {
             //fecha statement
             stmt.close();
             return true;
-
         } catch (Exception e) {
             System.out.println("Erro ao conectar ao banco de dados. " + e.getMessage());
             return false;
@@ -144,6 +143,8 @@ public class AdministradorDAO {
                     comando = "Select * "
                             + "from ADMINISTRADOR "
                             + "where id_administrador = " + administradorDTO.getId_administrador();
+                case 3:
+                    comando = "SELECT PRIMEIRO_NOME,SEGUNDO_NOME,EMAIL,ID_ADMINISTRADOR FROM ADMINISTRADOR;";
 
             }//fecha switch opcao
             //Executa o comando SQL no banco de Dados
@@ -164,7 +165,7 @@ public class AdministradorDAO {
      * @param administradorDTO, opcao que vem da classe PessoaCTR
      * @return Um int 1-Logado 2-Não Logado
      */
-    public int logarAdmin(AdministradorDTO administradorDTO) {
+    public boolean logarAdmin(AdministradorDTO administradorDTO) {
         try {
             //Chama o metodo que esta na classe ConexaoDAO para abrir o banco de dados
             ConexaoDAO.ConectDB();
@@ -175,20 +176,18 @@ public class AdministradorDAO {
                     + "from administrador "
                     + "where email = '" + administradorDTO.getEmail() + "'"
                     + " and senha = crypt('" + administradorDTO.getSenha() + "', senha)";
-//            crypt('wrongpassword', password)
             System.out.println(comando);
             //Executa o comando SQL no banco de Dados
             rs = null;
             rs = stmt.executeQuery(comando);
             rs.next();
-            administradorDTO.setId_administrador(rs.getInt("id_administrador"));
+            administradorDTO.setId_login(rs.getInt("id_administrador"));
 
-//            System.out.println(administradorDTO.getId_administrador());
-            return rs.getInt("id_administrador");
+            return true;
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            return 0;
+            return false;
         } finally {
             ConexaoDAO.CloseDB();
         }

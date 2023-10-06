@@ -92,7 +92,7 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
                 submitActionPerformed(evt);
             }
         });
-        getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 124, 70));
+        getContentPane().add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 380, 124, 70));
 
         btnSair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSair.setText("Cancelar");
@@ -105,7 +105,7 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 110, 70));
+        getContentPane().add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 380, 110, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,7 +177,8 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
             administradorDTO.setEmail(email.getText());
             administradorDTO.setSenha(senha.getText());
 
-            if (administradorDAO.inserirAdministrador(administradorDTO)) {
+            if (administradorDAO.inserirAdministrador(administradorDTO) == true) {
+                dispose();
                 LoginAdmVIEW loginAdminVIEW = new LoginAdmVIEW();
                 loginAdminVIEW.setVisible(true);
             }

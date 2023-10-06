@@ -84,8 +84,11 @@ public class AdministradorCTR {
         return rs;
     }//Fecha o método consultarFuncionario
 
-    public int logarAdministrador(AdministradorDTO administradorDTO) {
-        return administradorDAO.logarAdmin(administradorDTO);
-
+    public String logarAdministrador(AdministradorDTO administradorDTO) {
+        if (!administradorDAO.logarAdmin(administradorDTO)) {
+            return "Login não realizado!";
+        } else {
+            return "Login realizado com sucesso!";
+        }
     }//Fecha o método logarFuncionario
 }

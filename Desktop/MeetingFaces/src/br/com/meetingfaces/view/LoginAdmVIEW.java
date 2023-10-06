@@ -132,10 +132,9 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
     private void logar() {
         administradorDTO.setEmail(email.getText());
         administradorDTO.setSenha(senha.getText());
-        administradorDTO.setId_administrador(administradorCTR.logarAdministrador(administradorDTO));
         if (administradorDTO.getId_administrador() > 0) {
-            CadastroMoradorVIEW cadastroMoradorVIEW = new CadastroMoradorVIEW();
-            cadastroMoradorVIEW.setVisible(true);
+            TelaInicalVIEW telaInicalVIEW = new TelaInicalVIEW();
+            telaInicalVIEW.setVisible(true);
             // new PrincipalVIEW(administradorDTO).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Login ou senha\nIncorreto!!!");
