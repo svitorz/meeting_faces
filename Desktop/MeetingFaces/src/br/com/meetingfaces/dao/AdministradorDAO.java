@@ -1,5 +1,6 @@
 package br.com.meetingfaces.dao;
 
+import br.com.meetingfaces.ctr.AdministradorCTR;
 import br.com.meetingfaces.dto.AdministradorDTO;
 import java.sql.*;
 
@@ -36,7 +37,7 @@ public class AdministradorDAO {
                     + "'" + administradorDTO.getEmail() + "', crypt("
                     + "'" + administradorDTO.getSenha() + "', gen_salt('bf',8))"
                     + ");";
-//            123', gen_salt('bf'))
+
             System.out.println(comando);
             stmt.execute(comando.toUpperCase());
             ConexaoDAO.con.commit();
@@ -180,7 +181,6 @@ public class AdministradorDAO {
             rs = null;
             rs = stmt.executeQuery(comando);
             if (rs.next()) {
-                administradorDTO.setId_login(rs.getInt("id_administrador"));
                 return rs.getInt("id_administrador");
             } else {
                 return 0;

@@ -133,9 +133,13 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
     private void logar() {
         administradorDTO.setEmail(email.getText());
         administradorDTO.setSenha(senha.getText());
+        administradorDTO.setId_login(administradorCTR.logarAdministrador(administradorDTO));
         if (administradorDTO.getId_login() > 0) {
-            TelaInicalVIEW telaInicalVIEW = new TelaInicalVIEW();
+            this.dispose();
+            TelaInicalVIEW telaInicalVIEW = new TelaInicalVIEW(administradorDTO.getId_login());
             telaInicalVIEW.setVisible(true);
+//            CadastroMoradorVIEW cadastroMoradorVIEW = new CadastroMoradorVIEW();
+//            cadastroMoradorVIEW.setVisible(true);
         } else {
             System.out.println("Erro");
         }

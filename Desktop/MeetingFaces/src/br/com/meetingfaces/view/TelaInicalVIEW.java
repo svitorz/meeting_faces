@@ -5,6 +5,7 @@
  */
 package br.com.meetingfaces.view;
 
+import br.com.meetingfaces.dto.AdministradorDTO;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,11 +14,15 @@ import javax.swing.JOptionPane;
  */
 public class TelaInicalVIEW extends javax.swing.JFrame {
 
+    AdministradorDTO administradorDTO = new AdministradorDTO();
+    int id_login;
+
     /**
      * Creates new form TelaInicalVIEW
      */
-    public TelaInicalVIEW() {
+    public TelaInicalVIEW(int id_login) {
         initComponents();
+        this.id_login = id_login;
     }
 
     /**
@@ -101,15 +106,22 @@ public class TelaInicalVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crudMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudMoradorActionPerformed
-
+        this.dispose();
+        CadastroMoradorVIEW cadMorVIEW = new CadastroMoradorVIEW(id_login);
+        cadMorVIEW.setVisible(true);
     }//GEN-LAST:event_crudMoradorActionPerformed
 
     private void aprovDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprovDescActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        DescricaoVIEW descricaoVIEW = new DescricaoVIEW();
+
+        descricaoVIEW.setVisible(true);
     }//GEN-LAST:event_aprovDescActionPerformed
 
     private void listAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAdmActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        SelectAdminVIEW selectAdminVIEW = new SelectAdminVIEW();
+        selectAdminVIEW.setVisible(true);
     }//GEN-LAST:event_listAdmActionPerformed
 
     private void sairBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairBotaoActionPerformed
@@ -119,38 +131,37 @@ public class TelaInicalVIEW extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaInicalVIEW().setVisible(true);
-            }
-        });
-    }
-
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(TelaInicalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(TelaInicalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(TelaInicalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(TelaInicalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TelaInicalVIEW().setVisible(true);
+//            }
+//        });
+//    }
     private void sair() {
         Object[] options = {"Sair", "Cancelar"};
         if (JOptionPane.showOptionDialog(null, "Deseja Sair do Sistema", "Informação",

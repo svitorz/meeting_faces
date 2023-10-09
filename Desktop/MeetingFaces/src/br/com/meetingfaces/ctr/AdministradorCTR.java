@@ -71,7 +71,7 @@ public class AdministradorCTR {
      * Método utilizado para controlar o acesso ao método consultarFuncionario
      * da classe FuncionarioDAO
      *
-     * @param moradoresDTO, opcao que vem da classe da página (VIEW)
+     * @param administradorDTO, opcao que vem da classe da página (VIEW)
      * @param opcao que vem da classe da página (VIEW)
      * @return ResultSet com os dados do funcionario
      */

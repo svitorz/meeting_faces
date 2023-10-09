@@ -1,6 +1,6 @@
 package br.com.meetingfaces.dao;
 
-import br.com.meetingfaces.ctr.AdministradorCTR;
+import br.com.meetingfaces.dto.AdministradorDTO;
 import br.com.meetingfaces.dto.MoradoresDTO;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -27,7 +27,6 @@ public class MoradoresDAO {
         try {
             //Inicia a conexão
             ConexaoDAO.ConectDB();
-
             //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
@@ -42,7 +41,7 @@ public class MoradoresDAO {
                     + "'" + moradoresDTO.getGrau_parentesco() + "',"
                     + administradorDTO.getId_login()
                     + ");";
-            System.out.println("insert moradores dao");
+
             System.out.println(comando);
             stmt.execute(comando, Statement.RETURN_GENERATED_KEYS);
             rs = stmt.getGeneratedKeys();
@@ -76,18 +75,18 @@ public class MoradoresDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
             comando = "Update morador set "
-                    + "(primeiro_nome = '" + moradoresDTO.getPrimeiro_nome() + "', "
+                    + "primeiro_nome = '" + moradoresDTO.getPrimeiro_nome() + "', "
                     + "segundo_nome = '" + moradoresDTO.getSegundo_nome() + "', "
                     + "cidade_natal = '" + moradoresDTO.getCidade_natal() + "', "
                     + "cidade_atual = '" + moradoresDTO.getCidade_atual() + "', "
                     + "data_nasc  = '" + moradoresDTO.getData_nasc() + "', "
-                    + "nome_familiar = '" + moradoresDTO.getNome_familiar_proximo() + "'"
-                    + "grau_parentesco = '" + moradoresDTO.getGrau_parentesco() + "');";
+                    + "nome_familiar_proximo = '" + moradoresDTO.getNome_familiar_proximo() + "', "
+                    + "grau_parentesco = '" + moradoresDTO.getGrau_parentesco() + "';";
 
+            System.out.println(comando);
             stmt.execute(comando);
             ConexaoDAO.con.commit();
             //Fecha o statement
-            System.out.println(comando);
             stmt.close();
             return true;
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
@@ -164,7 +163,7 @@ public class MoradoresDAO {
                     comando = "SELECT * "
                             + "FROM morador "
                             + "WHERE "
-                            + "id_morador = " + moradoresDTO.getId_morador();
+                            + "id_morador = " + moradoresDTO.getId_morador() + ";";
 
             }//fecha switch opcao
             //Executa o comando SQL no banco de Dados
