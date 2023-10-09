@@ -17,8 +17,6 @@ strval($ano_atual = date('d/m/Y'));
 if(strcmp($data_nasc,$ano_atual)>=0){
     $data_nasc = null;
 }
-$senha_hash = password_hash($senha, PASSWORD_BCRYPT);
-
 $sql = "SELECT id_usuario FROM usuario WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$email]);
@@ -28,9 +26,9 @@ if ($count >= 1) {
     header('Location: formulario-cadastro-usuario.php');
     exit();
 }
-$insert = "INSERT INTO usuario(primeiro_nome, segundo_nome, email, telefone,data_nasc, senha) VALUES (?,?,?,?,?,?)";
+$insert = "INSERT INTO usuario(primeiro_nome, segundo_nome, email, telefone,data_nasc, senha) VALUES (?,?,?,?,?,crypt(?, gen_salt('bf',8)))";
 $stmt = $conn->prepare($insert);
-$result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone,$data_nasc, $senha_hash]);
+$result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone,$data_nasc, $senha]);
 if($result==true){  
     $_SESSION['sucesso'] = true;
     redireciona('formulario-login.php');

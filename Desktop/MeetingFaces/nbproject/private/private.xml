@@ -5,6 +5,12 @@
         <group>
             <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dao/AdministradorDAO.java</file>
         </group>
-        <group name="Meeting_Locadora"/>
+        <group name="Meeting_Locadora">
+            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/TelaInicalVIEW.java</file>
+            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dao/AdministradorDAO.java</file>
+            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/LoginAdmVIEW.java</file>
+            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dao/MoradoresDAO.java</file>
+            <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/ctr/AdministradorCTR.java</file>
+        </group>
     </open-files>
 </project-private>

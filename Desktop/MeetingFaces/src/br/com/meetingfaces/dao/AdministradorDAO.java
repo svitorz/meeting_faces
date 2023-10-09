@@ -34,7 +34,7 @@ public class AdministradorDAO {
                     + "'" + administradorDTO.getPrimeiro_nome() + "', "
                     + "'" + administradorDTO.getSegundo_nome() + "', "
                     + "'" + administradorDTO.getEmail() + "', crypt("
-                    + "'" + administradorDTO.getSenha() + "', gen_salt('bf'))"
+                    + "'" + administradorDTO.getSenha() + "', gen_salt('bf',8))"
                     + ");";
 //            123', gen_salt('bf'))
             System.out.println(comando);
@@ -165,7 +165,7 @@ public class AdministradorDAO {
      * @param administradorDTO, opcao que vem da classe PessoaCTR
      * @return Um int 1-Logado 2-Não Logado
      */
-    public boolean logarAdmin(AdministradorDTO administradorDTO) {
+    public int logarAdmin(AdministradorDTO administradorDTO) {
         try {
             //Chama o metodo que esta na classe ConexaoDAO para abrir o banco de dados
             ConexaoDAO.ConectDB();
@@ -174,20 +174,22 @@ public class AdministradorDAO {
             //Comando SQL que sera executado no banco de dados
             String comando = "Select id_administrador "
                     + "from administrador "
-                    + "where email = '" + administradorDTO.getEmail() + "'"
+                    + "where email ilike '%" + administradorDTO.getEmail() + "%'"
                     + " and senha = crypt('" + administradorDTO.getSenha() + "', senha)";
-            System.out.println(comando);
             //Executa o comando SQL no banco de Dados
             rs = null;
             rs = stmt.executeQuery(comando);
-            rs.next();
-            administradorDTO.setId_login(rs.getInt("id_administrador"));
+            if (rs.next()) {
+                administradorDTO.setId_login(rs.getInt("id_administrador"));
+                return rs.getInt("id_administrador");
+            } else {
+                return 0;
+            }
 
-            return true;
         } //Caso tenha algum erro no codigo acima é enviado uma mensagem no console com o que esta acontecendo.
         catch (Exception e) {
             System.out.println(e.getMessage());
-            return false;
+            return 0;
         } finally {
             ConexaoDAO.CloseDB();
         }

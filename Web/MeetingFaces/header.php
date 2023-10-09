@@ -102,8 +102,7 @@
       //Mensagem exibida caso ocorra algum erro em operações
       ?>
       <div class="alert alert-warning" role="alert">
-        <h4>Erro ao realizar cadastro.</h4>
-        <p>Verifique se os dados estão corretos ou se você está cadastrado.</p>
+        <h4>Erro ao realizar operação.</h4>
       </div>
       <?php
     }

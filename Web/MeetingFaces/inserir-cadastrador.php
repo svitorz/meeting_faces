@@ -16,8 +16,6 @@ $segundo_nome = filter_input(INPUT_POST, 'segundo_nome', FILTER_SANITIZE_SPECIAL
 $email = filter_input(INPUT_POST, 'email_usuario', FILTER_SANITIZE_EMAIL);
 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
-$senha_hash = password_hash($senha, PASSWORD_BCRYPT);
-
 try{
     strtoupper($sql = "SELECT ID_ADMINISTRADOR FROM ADMINISTRADOR WHERE email = ?");
     $stmt = $conn->prepare($sql);
@@ -28,9 +26,9 @@ try{
         header('Location: formulario-cadastro-usuario.php');
         exit();
     }
-    $insert = "INSERT INTO ADMINISTRADOR(primeiro_nome,segundo_nome, email, senha) VALUES (?,?,?,?)";
+    $insert = "INSERT INTO ADMINISTRADOR(primeiro_nome,segundo_nome, email, senha) VALUES (?,?,?, crypt(?, gen_salt('bf',8)))";
     $stmt = $conn->prepare($insert);
-    $result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $senha_hash]);
+    $result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $senha]);
     if($result==true){
         $_SESSION['sucesso'] = true;
             redireciona();

@@ -14,6 +14,7 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
 
     AdministradorDTO administradorDTO = new AdministradorDTO();
     AdministradorCTR administradorCTR = new AdministradorCTR();
+    AdministradorDAO administradorDAO = new AdministradorDAO();
 
     public LoginAdmVIEW() {
         initComponents();
@@ -132,12 +133,11 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
     private void logar() {
         administradorDTO.setEmail(email.getText());
         administradorDTO.setSenha(senha.getText());
-        if (administradorDTO.getId_administrador() > 0) {
+        if (administradorDTO.getId_login() > 0) {
             TelaInicalVIEW telaInicalVIEW = new TelaInicalVIEW();
             telaInicalVIEW.setVisible(true);
-            // new PrincipalVIEW(administradorDTO).setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Login ou senha\nIncorreto!!!");
+            System.out.println("Erro");
         }
     }//Fecha método logar()
 
