@@ -106,20 +106,19 @@ public class TelaInicalVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crudMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudMoradorActionPerformed
-        this.dispose();
+
         CadastroMoradorVIEW cadMorVIEW = new CadastroMoradorVIEW(id_login);
         cadMorVIEW.setVisible(true);
     }//GEN-LAST:event_crudMoradorActionPerformed
 
     private void aprovDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aprovDescActionPerformed
-        this.dispose();
         DescricaoVIEW descricaoVIEW = new DescricaoVIEW();
 
         descricaoVIEW.setVisible(true);
     }//GEN-LAST:event_aprovDescActionPerformed
 
     private void listAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAdmActionPerformed
-        this.dispose();
+
         SelectAdminVIEW selectAdminVIEW = new SelectAdminVIEW();
         selectAdminVIEW.setVisible(true);
     }//GEN-LAST:event_listAdmActionPerformed

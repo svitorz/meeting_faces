@@ -178,9 +178,7 @@ public class CadastroAdminVIEW extends javax.swing.JFrame {
             administradorDTO.setSenha(senha.getText());
 
             if (administradorDAO.inserirAdministrador(administradorDTO) == true) {
-                dispose();
-                LoginAdmVIEW loginAdminVIEW = new LoginAdmVIEW();
-                loginAdminVIEW.setVisible(true);
+                this.dispose();
             }
 
         } catch (Exception e) {

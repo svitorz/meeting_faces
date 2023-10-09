@@ -40,6 +40,7 @@ public class DescricaoVIEW extends javax.swing.JFrame {
         Reprovarbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabela_Desc = new javax.swing.JTable();
+        voltarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +76,13 @@ public class DescricaoVIEW extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabela_Desc);
 
+        voltarBtn.setText("Voltar");
+        voltarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,13 +90,15 @@ public class DescricaoVIEW extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(AprovarBtn)
-                        .addGap(105, 105, 105)
-                        .addComponent(Reprovarbtn))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(voltarBtn)
+                            .addComponent(AprovarBtn))
+                        .addGap(105, 105, 105)
+                        .addComponent(Reprovarbtn)))
                 .addContainerGap(422, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,7 +110,9 @@ public class DescricaoVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AprovarBtn)
                     .addComponent(Reprovarbtn))
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(voltarBtn)
+                .addGap(64, 64, 64))
         );
 
         pack();
@@ -117,6 +129,10 @@ public class DescricaoVIEW extends javax.swing.JFrame {
     private void ReprovarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReprovarbtnActionPerformed
         reprovar();
     }//GEN-LAST:event_ReprovarbtnActionPerformed
+
+    private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,5 +208,6 @@ public class DescricaoVIEW extends javax.swing.JFrame {
     private javax.swing.JButton Reprovarbtn;
     private javax.swing.JTable Tabela_Desc;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
 }

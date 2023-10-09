@@ -80,7 +80,7 @@ public class AdministradorCTR {
         ResultSet rs = null;
 
         //O atributo rs recebe a consulta realizada pelo método da classe DAO
-        // rs = usuarioDAO.;
+        rs = administradorDAO.consultarAdministrador(administradorDTO, opcao);
         return rs;
     }//Fecha o método consultarFuncionario
 
