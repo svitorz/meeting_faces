@@ -18,7 +18,7 @@ public class AdministradorDAO {
     /* Método para inserir administrador do sistema
     *
     * @param administradorDTO que vem da classe administradorCTR
-    * @return Um boolean
+    * @return Um booleanv
      */
     public boolean inserirAdministrador(AdministradorDTO administradorDTO) {
         String comando = "";

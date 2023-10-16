@@ -8,8 +8,8 @@ function autenticado(){
 }
 
 function nome_usuario(){
-    $nome_completo = $_SESSION['primeiro_nome'] . $_SESSION['segundo_nome'];
-    return $nome_completo;
+    $nome_completo = $_SESSION['primeiro_nome'] ." " . $_SESSION['segundo_nome'];
+    return $nome_completo = ucfirst(strtolower($nome_completo));
 }
 
 function email_usuario(){

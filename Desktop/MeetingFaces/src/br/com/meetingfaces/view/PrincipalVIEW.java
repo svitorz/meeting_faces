@@ -143,7 +143,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_sairBotaoActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        this.dispose();
+//        this.dispose();
         LoginAdmVIEW loginAdmVIEW = new LoginAdmVIEW();
 
         this.desktopPane.add(loginAdmVIEW);

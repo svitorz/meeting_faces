@@ -1,4 +1,5 @@
-CREATE EXTENSION pgcrypto;
+/*
+CREATE EXTENSION pgcrypto; 
 
 CREATE TABLE USUARIO(
 	ID_USUARIO SERIAL,
@@ -10,8 +11,7 @@ CREATE TABLE USUARIO(
 	SENHA varchar(255), 
 	CONSTRAINT PK_USUARIO PRIMARY KEY (ID_USUARIO),
 	CONSTRAINT uniquekey_usuario_email UNIQUE (email)
-);
-
+); 
 CREATE TABLE ADMINISTRADOR(
 	ID_ADMINISTRADOR SERIAL,
 	PRIMEIRO_NOME VARCHAR(20),
@@ -52,3 +52,6 @@ CREATE TABLE DESCRICAO(
 	CONSTRAINT fk_descricao_morador FOREIGN KEY (id_morador)
 		REFERENCES morador(id_morador)
 );
+*/
+select  * from administrador;
+
