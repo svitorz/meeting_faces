@@ -12,8 +12,9 @@ require 'conexao/conexao.php';
 $titulo_pagina = "Seu perfil";
 require 'header.php';
 ?>
+<div class="py-5">
 <section class="p-5" style="background-color: #eee;">
-    <div class="row">
+    <div class="row py-5">
         <div class="col-lg-4">
             <div class="card text-capitalize mb-4">
                 <div class="card-body text-center">
@@ -30,7 +31,7 @@ require 'header.php';
                     </div> -->
                 </div>
             </div>
-            <div class="card text-capitalize mb-4 mb-lg-0">
+            <div class="card text-capitalize mb-4 mb-lg-0" style="display:none;">
                 <div class="card-body p-0">
                     <ul class="list-group list-group-flush rounded-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -92,3 +93,4 @@ require 'header.php';
 </div>
 </div>
 </section>
+</div>

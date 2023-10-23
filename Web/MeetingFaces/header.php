@@ -98,7 +98,7 @@
     }
     unset($_SESSION['usuario_existe']);
     
-    if(isset($_SESSION['erro'])&&$_SESSION['erro']){
+    if(isset($_SESSION['erro'])&& $_SESSION['erro']){
       //Mensagem exibida caso ocorra algum erro em operações
       ?>
       <div class="alert alert-warning" role="alert">
@@ -106,6 +106,5 @@
       </div>
       <?php
     }
-
-
+    unset($_SESSION['erro']);
 ?>

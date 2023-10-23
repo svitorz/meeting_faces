@@ -500,7 +500,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
     }//Fecha método gravar()
 
     private void excluir() {
-        if (JOptionPane.showConfirmDialog(null, "Deseja Realmente excluir o Funcionário?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(null, "Deseja Realmente excluir o morador de rua?", "Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(null,
                     moradoresCTR.excluirMoradores(moradoresDTO)
             );

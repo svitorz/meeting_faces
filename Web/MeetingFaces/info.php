@@ -14,25 +14,13 @@ if (!autenticado()) {
 $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
-
-//SELECT com inner join que pega todos os dados do morador, 
-//os dados de quem cadastrou com o id administrador,
-// a descricao caso o morador tenha alguma aprovada e o id e o nome do usuario que enviou a descricao
-    $sql = "SELECT MORADOR.*,
-                ADMINISTRADOR.PRIMEIRO_NOME AS NOME_ADMINISTRADOR,
-                    ADMINISTRADOR.ID_ADMINISTRADOR,
-                        DESCRICAO.COMENTARIO,
-                            DESCRICAO.SITUACAO,
-                            USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO,
-                                USUARIO.SEGUNDO_NOME AS SEGUNDO_NOME_USUARIO,
-                                    USUARIO.ID_USUARIO
-                                        FROM MORADOR INNER JOIN ADMINISTRADOR 
-                                            ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR 
-                                                LEFT JOIN DESCRICAO 
-                                                    ON MORADOR.ID_MORADOR=DESCRICAO.ID_MORADOR 
-                                                        LEFT JOIN USUARIO 
-                                                            ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO
-                                                                WHERE MORADOR.ID_MORADOR = ?";
+$sql = "SELECT DESCRICAO.*, MORADOR.*,USUARIO.ID_USUARIO, USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO,
+                        USUARIO.SEGUNDO_NOME AS SEGUNDO_NOME_USUARIO,ADMINISTRADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMINISTRADOR,
+                                ADMINISTRADOR.ID_ADMINISTRADOR
+                                     FROM DESCRICAO INNER JOIN USUARIO ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO
+                                            INNER JOIN MORADOR ON DESCRICAO.ID_MORADOR=MORADOR.ID_MORADOR
+                                                    INNER JOIN ADMINISTRADOR ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
+                                                            WHERE MORADOR.ID_MORADOR = ? AND DESCRICAO.SITUACAO = 'APROVADO' ORDER BY COMENTARIO ASC;";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id_morador]);
 $row = $stmt->fetch();
@@ -55,8 +43,6 @@ require 'header.php';
                     <div class="d-flex justify-content-center mb-2">
                     <a href="formulario-feedback.php?id_morador=<?=$id_morador;?>" class="btn btn-success me-2">Enviar feedback</a>
                     <?php if(isAdmin()){
-                        //Caso o usuário seja administrador, são exibidas as opçoes de 
-                        //editar e excluir morador
                         ?>
                         <a href="formulario-editar-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-warning me-2">Editar</a>
                         <a href="excluir-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-danger">Excluir</a>
@@ -66,39 +52,38 @@ require 'header.php';
                     </div>
                 </div>
             </div>
-            <div class="card text-capitalize mb-4 mb-lg-0">
-                <div class="card-body p-0">
-                    <ul class="list-group list-group-flush rounded-3">
-                        <?php  
-                        while($rowDescricao = $stmt->fetch()){
-                            if(isset($rowDescricao['comentario']) && $rowDescricao['comentario'] && $rowDescricao['situacao']=='APROVADO'){ 
-                                //
+            <!-- <div class="card mb-4 mb-lg-0">
+                <div class="card-body p-0"> -->
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col" style="width: 50%;">Descrição</th>
+                          <th scope="col" style="width: 25%;">Usuário</th>
+                          <th scope="col" style="width: 25%;">ID:</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php 
+                        while($rowDescricao = $stmt->fetch(PDO::FETCH_ASSOC)){ 
                         ?>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <p class="mb-0"> <?= $rowDescricao['comentario']; ?> </p>
-                                <p> 
-                                    Feito por:
-                                    <?= $rowDescricao['primeiro_nome_usuario']; ?> 
-                                    <?= $rowDescricao['segundo_nome_usuario']; ?> 
-                                </p>
-                                <?php 
-                                if(isAdmin()){
-                                    //Caso o usuario seja admin, é mostrado o ID no banco de quem enviu o comentário
-                                    ?>
-                                <p>
-                                    Id:<?= $rowDescricao['id_usuario']; ?>
-                                </p>
-                                <?php
-                                }
-                            }
-                                ?>
-                            </li>
+                        <tr>
+                        <td> 
+                            <?= $rowDescricao['comentario']; ?>
+                        </td>
+                        <td class="text-capitalize"> 
+                            <?= $rowDescricao['primeiro_nome_usuario']; ?>
+                        </td>
+                        <td>
+                             <?= $rowDescricao['id_usuario']; ?>
+                        </td>
+                        </tr>
                         <?php
-                            }
+                        }   
                         ?>
-                    </ul>
-                </div>
-            </div>
+                        </tbody>
+                    </table>
+                <!-- </div>
+            </div> -->
         </div>
         <div class="col-lg-8">
             <div class="card text-capitalize mb-4">
@@ -195,8 +180,8 @@ require 'header.php';
                             <p class="mb-0">Cadastrado por</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted text-capitalize text-capitalize mb-0">
-                                <?= $row['nome_administrador']; ?>, id: <?= $row['id_administrador']; ?>
+                            <p class="text-muted text-capitalize mb-0">
+                                <?= $row['primeiro_nome_administrador']; ?> ,  id: <?= $row['id_administrador']; ?>
                             </p>
                         </div>
                     </div>

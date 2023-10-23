@@ -12,7 +12,6 @@ try{
     $stmt = $conn->prepare($sql);
     $stmt->execute([$email]);
     $row = $stmt->fetch();
-    var_dump($row);
     if($row && password_verify($senha, $row['senha'])){
         $_SESSION['id_usuario'] = $row['id_usuario'];
         $_SESSION['primeiro_nome'] = $row['primeiro_nome'];
@@ -28,7 +27,6 @@ try{
         $stmt = $conn->prepare($sql);
         $stmt->execute([$email]);
         $row = $stmt->fetch();
-        var_dump($row);
             if($row && password_verify($senha, $row['senha'])){
                 $_SESSION['id_administrador'] = $row['id_administrador'];
                 $_SESSION['primeiro_nome'] = $row['primeiro_nome'];
@@ -37,10 +35,14 @@ try{
                 $_SESSION['ADM'] = TRUE;
                 $_SESSION['USUARIO'] = FALSE;
                 redireciona('inicio.php');
+        }else{
+            redireciona('formulario-login.php');
+            $_SESSION['erro'] = true;
         }
     }
 } catch(Exception $e){
     $_SESSION['erro'] = true;
+    redireciona('formulario-login.php');
     exit();
 }
 ?>

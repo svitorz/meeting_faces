@@ -23,7 +23,7 @@ $stmt->execute([$email]);
 $count = $stmt->rowCount();
 if ($count >= 1) {
     $_SESSION['usuario_existe'] = true;
-    header('Location: formulario-cadastro-usuario.php');
+    redireciona('formulario-cadastro-usuario.php');
     exit();
 }
 $insert = "INSERT INTO usuario(primeiro_nome, segundo_nome, email, telefone,data_nasc, senha) VALUES (?,?,?,?,?,crypt(?, gen_salt('bf',8)))";

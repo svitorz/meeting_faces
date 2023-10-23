@@ -160,6 +160,7 @@ public class LoginAdmVIEW extends javax.swing.JInternalFrame {
             }//Fecha else sen_fun
         }//Fecha else log_fun
     }//Fecha método verificaPreenchimento()
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
     private javax.swing.JButton btnVoltar;
