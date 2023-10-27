@@ -16,8 +16,8 @@ $data_nasc = filter_input(INPUT_POST, 'data_nasc', FILTER_SANITIZE_SPECIAL_CHARS
 $nome_familiar = filter_input(INPUT_POST, 'nome_familiar', FILTER_SANITIZE_SPECIAL_CHARS);
 $grau_parentesco = filter_input(INPUT_POST, 'grau_parentesco', FILTER_SANITIZE_SPECIAL_CHARS);
 $id_administrador = filter_input(INPUT_POST, 'id_administrador', FILTER_SANITIZE_SPECIAL_CHARS);
-$data = str_replace("/", "-", $data_nasc);
 $data_nasc = filter_input(INPUT_POST, 'data_nasc', FILTER_SANITIZE_SPECIAL_CHARS);
+$data = str_replace("/", "-", $data_nasc);
 //transforma em string a data atual do sistema
 strval($ano_atual = date('d/m/Y'));
 //faz a comparação do string, se a inserida for maior que a data atual, a data inserida se torna nula. 
@@ -42,7 +42,7 @@ if($result){
     $_SESSION['sucesso'] = true;
     header('Location: listagem-pessoas.php');
     exit();
-}else {
+}else{
     $_SESSION['erro'] = true;
     header('Location: listagem-pessoas.php');
     exit();

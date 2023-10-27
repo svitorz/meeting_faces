@@ -17,25 +17,36 @@ strval($ano_atual = date('d/m/Y'));
 if(strcmp($data_nasc,$ano_atual)>=0){
     $data_nasc = null;
 }
-$sql = "SELECT id_usuario FROM usuario WHERE email = ?";
-$stmt = $conn->prepare($sql);
-$stmt->execute([$email]);
-$count = $stmt->rowCount();
-if ($count >= 1) {
-    $_SESSION['usuario_existe'] = true;
-    redireciona('formulario-cadastro-usuario.php');
-    exit();
+
+$select = "SELECT EMAIL FROM ADMINISTRADOR WHERE EMAIL ilike ?;"; 
+try {
+    $stmt = $conn->prepare($select);
+    $stmt->execute([$email]);
+    $count = $stmt->rowCount();
+    if($count >= 1){
+        $_SESSION['erro'] = "O Email já está sendo utilizado como administrador.";
+        redireciona('formulario-cadastro-usuario.php');
+        exit();
+    }else{
+        $insert = "INSERT INTO USUARIO(PRIMEIRO_NOME, SEGUNDO_NOME, EMAIL, TELEFONE, SENHA, DATA_NASC) VALUES (?,?,?,?,crypt(?, gen_salt('bf',8)),?);";
+        $stmt = $conn->prepare($insert);
+        $result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone, $senha, $data_nasc]);
+    }
+} catch (Exception $e) {
+    $_SESSION['result'] = false;
+    $erro = $e->getMessage();
 }
-$insert = "INSERT INTO usuario(primeiro_nome, segundo_nome, email, telefone,data_nasc, senha) VALUES (?,?,?,?,?,crypt(?, gen_salt('bf',8)))";
-$stmt = $conn->prepare($insert);
-$result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone,$data_nasc, $senha]);
-if($result==true){  
-    $_SESSION['sucesso'] = true;
+
+if($result == true){
     redireciona('formulario-login.php');
-    exit();
+    $_SESSION['succeso'] = true;
+    die();
 }else{
-    $_SESSION['erro'] = true;
+    if(stripos($erro,'duplicate key') != false){
+        $erro = "O erro <b>\"$email\"</b> já está registrado. <br><br> $erro";
+    }
+    $_SESSION['erro'] = $erro;
+    $_SESSION['result'] = false;
     redireciona('formulario-cadastro-usuario.php');
-    exit();
 }
 ?>

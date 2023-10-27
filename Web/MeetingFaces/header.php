@@ -65,9 +65,10 @@
     ?>
     <?php  
     }
+
     //As mensagens ficam no header como forma de economizar código, pois podem ser exibidas
     //em qualquer tela, como na de inicio, de formulario de cadastro, de login, etc
-  if(isset($_SESSION['sucesso'])&&$_SESSION['sucesso']){
+  if(isset($_SESSION['sucesso']) && $_SESSION['sucesso']){
     //Mensagem de sucesso de qualquer operação dentro do sistema
     ?>
     <div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
@@ -89,20 +90,22 @@
     }
     if(isset($_SESSION['usuario_existe']) && $_SESSION['usuario_existe']){
       //Mensagem exibida caso o usuário tente se cadastrar com um email já utilizado no banco
+      $erro = $_SESSION['erro'];
       ?>
       <div class="alert alert-warning" role="alert">
         <h4>O email informado já existe.</h4>
-        <p>Verifique se você já possui uma conta ou se o email informado está correto.</p>
+        <p><?= $erro; ?></p>
       </div>
       <?php
     }
     unset($_SESSION['usuario_existe']);
     
     if(isset($_SESSION['erro'])&& $_SESSION['erro']){
-      //Mensagem exibida caso ocorra algum erro em operações
+      $erro = $_SESSION['erro'];
       ?>
       <div class="alert alert-warning" role="alert">
         <h4>Erro ao realizar operação.</h4>
+        <p> <?=$erro; ?></p>
       </div>
       <?php
     }

@@ -10,6 +10,8 @@
             <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/CadastroAdminVIEW.java</file>
             <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/DescricaoVIEW.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dao/AdministradorDAO.java</file>
+        </group>
     </open-files>
 </project-private>

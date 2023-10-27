@@ -87,7 +87,7 @@ include 'header.php';
         </div>
       </div>
       <!-- Hidden necessário para saber qual administrador está cadastrando o morador de rua -->
-      <input type="hidden" name="id_administrador" id="id_administrador" value="<?= $_SESSION['id_administrador']; ?>" />
+      <input type="hidden" name="id_administrador" id="id_administrador" value="<?= id_usuario() ?>" />
       <button type="submit" class="btn btn-primary btn-block mb-4">Cadastrar</button>
     </form>
     </div>
