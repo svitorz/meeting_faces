@@ -58,25 +58,27 @@ include 'header.php';
     <div class="row">
         <div class="form-outline col mb-4">
             <label class="form-label" for="primeiro_nome">Nome</label>
-            <input type="text" id="primeiro_nome" name="primeiro_nome" class="form-control" placeholder="Ex: José" />
+            <input type="text" id="primeiro_nome" name="primeiro_nome" class="form-control" placeholder="Ex: José" required />
         </div>
         <div class="form-outline col mb-4">
             <label class="form-label" for="segundo_nome">Sobrenome</label>
-            <input type="text" id="segundo_nome" name="segundo_nome" class="form-control" placeholder="Ex: Silva" />
+            <input type="text" id="segundo_nome" name="segundo_nome" class="form-control" placeholder="Ex: Silva" required />
         </div>
-      </div>
+    </div>
       <div class="form-outline mb-4">
           <label class="form-label" for="email_usuario">Endereço de email</label>
         <input type="email" id="email_usuario" name="email_usuario" class="form-control" placeholder="joao@gmail.com" required/>
       </div>
-      <div class="form-outline mb-4">
+    <div class="row">  
+      <div class="form-outline col mb-4">
           <label class="form-label" for="telefone">Telefone</label>
         <input type="tel" id="telefone" name="telefone" class="form-control" maxlength="15" onkeyup="handlePhone(event)" placeholder="(17)99999-9999" required />
       </div>
-      <div class="form-outline mb-4">
+      <div class="form-outline col mb-4">
           <label class="form-label" for="data_nasc">Data de nascimento</label>
-          <input type="text" class="form-control" id="data_nasc" name="data_nasc" placeholder="Ex.: dd/mm/aaaa" /> 
+          <input type="text" class="form-control" id="data_nasc" name="data_nasc" placeholder="Ex.: dd/mm/aaaa"  required  /> 
       </div>
+    </div>
       <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="senha" name="senha" required/>
@@ -88,11 +90,9 @@ include 'header.php';
                     As senhas informadas não estão iguais.
                 </div>
             </div>
-      <div class="form-check d-flex justify-content-center mb-4">
-        <input class="form-check-input me-2" type="checkbox" value="" id="check" />
-        <label class="form-check-label" for="form6Example8"> Ao criar sua conta você concorda com os <a href=""> termos e condições</a>. </label>
-      </div>
       <button type="submit" class="btn btn-primary btn-block mb-4">Cadastrar</button>
     </form>
 </div>
+<div class="fixed-bottom">
 <?php include 'footer.php'; ?>
+</div>

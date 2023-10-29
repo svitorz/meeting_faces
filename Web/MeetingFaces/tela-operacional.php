@@ -32,14 +32,6 @@ if(isAdmin()){
                                 Listagem de usuários cadastrados
                             </span>
                         </a>
-                    </li> 
-                        <li class="nav-link mb-5">
-                        <a class="nav-link" href="formulario-cadastro-cadastrador.php">
-                            <span class="btn btn-dark text-uppercase">
-                                Cadastrar novo cadastrador
-                            </span>
-                        </a>
-                    </li>
                     </li>
                     <li class="nav-link mb-5">
                         <a class="nav-link" href="listagem-feedback.php">

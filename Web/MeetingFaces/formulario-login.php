@@ -10,8 +10,8 @@ $titulo_pagina = "Faça login";
 require "header.php"; 
 ?>
 <div class="container-fluid my-5 py-5">
-    <div class="justify-content-center align-items-center">
-        <div class="container px-5 me-5 mb-5">
+    <div class="justify-content-center align-items-center pb-5">
+        <div class="container py-5 my-5">
             <form action="login.php" method="post">
                 <div class="form-outline mb-4">
                     <label class="form-label" for="email">Email:</label>
@@ -26,4 +26,6 @@ require "header.php";
         </div>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<div class="fixed-bottom">
+    <?php include 'footer.php'; ?>
+</div>
