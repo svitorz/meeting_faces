@@ -16,11 +16,11 @@ include 'header.php';
 <!-- Link JQUERY via CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(function() {
         $("#data_nasc").mask("00/00/0000")
     })
-</script>
+</script> -->
 <script>
     const handlePhone = (event) => {
         let input = event.target
@@ -76,7 +76,7 @@ include 'header.php';
       </div>
       <div class="form-outline col mb-4">
           <label class="form-label" for="data_nasc">Data de nascimento</label>
-          <input type="text" class="form-control" id="data_nasc" name="data_nasc" placeholder="Ex.: dd/mm/aaaa"  required  /> 
+          <input type="date" class="form-control" id="data_nasc" name="data_nasc" placeholder="Ex.: dd/mm/aaaa"  required  /> 
       </div>
     </div>
       <div class="mb-3">

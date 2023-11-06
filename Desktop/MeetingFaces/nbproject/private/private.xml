@@ -11,7 +11,13 @@
             <file>file:/C:/Users/vitor/OneDrive/Documentos/GitHub/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/DescricaoVIEW.java</file>
         </group>
         <group>
-            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/dao/AdministradorDAO.java</file>
+            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/DescricaoVIEW.java</file>
+            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/CadastroMoradorVIEW.java</file>
+            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/PrincipalVIEW.java</file>
+            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/TelaInicalVIEW.java</file>
+            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/CadastroAdminVIEW.java</file>
+            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/SelectAdminVIEW.java</file>
+            <file>file:/home/vitor/Repositórios/meeting_faces/Desktop/MeetingFaces/src/br/com/meetingfaces/view/LoginAdmVIEW.java</file>
         </group>
     </open-files>
 </project-private>

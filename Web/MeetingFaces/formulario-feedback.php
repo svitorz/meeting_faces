@@ -40,3 +40,6 @@ if(isAdmin()){
         </form>
     </div>
 </div>
+<div class="fixed-bottom">
+    <?php require 'footer.php'; ?>
+</div>

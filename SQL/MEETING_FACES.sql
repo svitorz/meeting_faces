@@ -1,4 +1,3 @@
-/*
 CREATE EXTENSION pgcrypto; 
 
 CREATE TABLE USUARIO(
@@ -52,6 +51,3 @@ CREATE TABLE DESCRICAO(
 	CONSTRAINT fk_descricao_morador FOREIGN KEY (id_morador)
 		REFERENCES morador(id_morador)
 );
-*/
-select  * from administrador;
-
