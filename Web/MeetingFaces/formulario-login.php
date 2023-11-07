@@ -26,6 +26,28 @@ require "header.php";
         </div>
     </div>
 </div>
+<?php 
+if(isset($_SESSION['result_login'])){
+    if($_SESSION['result_login']){
+      
+      
+    }else{
+      $erro = $_SESSION['erro'];
+      unset($_SESSION['erro']);
+      ?>
+      <div class="alert alert-warning">
+        <h4>Falha ao realizar autenticação!</h4>
+        <p>
+          <?php echo $erro; ?>
+        </p>
+      </div>
+      <?php
+    }
+    unset($_SESSION['result_login']);
+  }
+?>
+</div>
+</div>
 <div class="fixed-bottom">
     <?php include 'footer.php'; ?>
 </div>

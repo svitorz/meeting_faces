@@ -40,6 +40,32 @@ if(isAdmin()){
         </form>
     </div>
 </div>
+
+<?php
+if(isset($_SESSION['sucesso'])){
+    if($_SESSION['sucesso'] == true){
+        ?>
+        <div class="alert alert-success">
+            <h4>Feedback enviado com sucesso!</h4>
+            <p>Aguarde a aprovação por nossos administradores.</p>
+        </div>
+<?php
+unset($_SESSION['sucesso']);
+    }else{
+        unset($_SESSION['sucesso']);
+        $erro = $_SESSION['erro'];
+        ?>
+        <div class="alert alert-danger">
+            <h4>Erro ao enviar feedback!</h4>
+            <p> <?= $erro ?> </p>
+        </div>
+        <?php
+        unset($_SESSION['erro']);
+    }
+}
+?>
+
+
 <div class="fixed-bottom">
     <?php require 'footer.php'; ?>
 </div>

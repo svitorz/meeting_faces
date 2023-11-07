@@ -25,8 +25,6 @@ try {
     $count = $stmt->rowCount();
     if($count >= 1){
         $_SESSION['erro'] = "O Email já está sendo utilizado como administrador.";
-        redireciona('formulario-cadastro-usuario.php');
-        exit();
     }else{
         $insert = "INSERT INTO USUARIO(PRIMEIRO_NOME, SEGUNDO_NOME, EMAIL, TELEFONE, SENHA, DATA_NASC) VALUES (?,?,?,?,crypt(?, gen_salt('bf',8)),?);";
         $stmt = $conn->prepare($insert);
@@ -47,6 +45,6 @@ if($result == true){
     }
     $_SESSION['erro'] = $erro;
     $_SESSION['result'] = false;
-    redireciona('formulario-cadastro-usuario.php');
 }
+redireciona('formulario-cadastro-usuario.php');
 ?>

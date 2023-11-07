@@ -47,7 +47,6 @@ if(isset($aprovacao)&&isset($id)){
     //e a session de sucesso é verdadeira, para que a mensagem de sucesso seja exibida
     if($result>0){
         $_SESSION['sucesso'] = true;
-        header('Location: listagem-feedback.php');
-        exit();
     }   
 }
+redireciona('listagem-feedback.php');

@@ -2,8 +2,36 @@
 session_start();
 
 require 'logica.php';
+
 $titulo_pagina = null;
+
 require_once 'header.php';
+
+if(isset($_SESSION['sucesso'])){
+    if($_SESSION['sucesso']){
+        ?>
+        <div class="alert alert-success">
+            <h4>Operação realizada com sucesso!</h4>
+
+        </div>
+        <?php
+        unset($_SESSION['sucesso']);
+    }else {
+        $erro = $_SESSION['erro'];
+        unset($_SESSION['erro']);
+        ?>
+        <div class="alert alert-danger">
+            <h4>
+                Erro ao realizar operação! Tente novamente.
+            </h4>
+            <p>
+                <?= $erro; ?>
+            </p>
+        </div>
+        <?php
+        unset($_SESSION['sucesso']);
+    }
+}
 ?>
 <section id="header" class="container-fluid py-5" style="height: 100vh;">
     <header class="py-5 my-5">

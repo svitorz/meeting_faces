@@ -57,6 +57,28 @@ require_once 'header.php';
         ?>
     </tbody>
 </table>
+<?php 
+if(isset($_SESSION['sucesso'])){
+    if($_SESSION['sucesso'] == true){
+        ?>
+        <div class="alert alert-success">
+            <h4>Operação realizada com sucesso!</h4>
+        </div>
+<?php
+unset($_SESSION['sucesso']);
+} else {
+unset($_SESSION['sucesso']);
+$error = $_SESSION['erro'];
+?>
+<div class="alert alert-danger">
+<h4>Erro ao excluir usuário!</h4>
+<p> <?= $error; ?> </p>
+</div>
+<?php
+unset($_SESSION['erro']);
+}
+}
+?>
 <?php
 require_once 'footer.php';
 ?>

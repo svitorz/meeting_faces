@@ -36,7 +36,7 @@
       <?php } else { ?>
         <!-- caso a sessão tenha sido iniciada, é exibido o botão de perfil e sair -->
       <div class="d-flex">
-          <a href="perfil-usuario.php" class="btn btn-outline-dark me-2"> 
+          <a <?php if(!isAdmin()){ ?> href="info-usuario.php?id_usuario=<?= id_usuario() ?> <?php } ?>" class="btn btn-outline-dark me-2"> 
           <i class="fa-solid fa-user"></i>
           <span class="text-capitalize"> <?= nome_usuario(); ?> </span>
           </a>
@@ -65,49 +65,4 @@
     ?>
     <?php  
     }
-
-    //As mensagens ficam no header como forma de economizar código, pois podem ser exibidas
-    //em qualquer tela, como na de inicio, de formulario de cadastro, de login, etc
-  if(isset($_SESSION['sucesso']) && $_SESSION['sucesso']){
-    //Mensagem de sucesso de qualquer operação dentro do sistema
-    ?>
-    <div class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
-      <strong>Formulário enviado com sucesso!</strong> Os dados foram registrados com sucesso!
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php
-    unset($_SESSION['sucesso']);
-    }
-    if(isset($_SESSION['restrito'])&&$_SESSION['restrito']){
-      //Mensagem de tentativa de acesso a conteúdo restrito
-    ?>
-    <div class="alert alert-danger alert-dismissible fade show fixed-bottom" role="alert">
-      <strong>Você está tentando acessar conteúdo restrito</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php
-    unset($_SESSION['restrito']);
-    }
-    if(isset($_SESSION['usuario_existe']) && $_SESSION['usuario_existe']){
-      //Mensagem exibida caso o usuário tente se cadastrar com um email já utilizado no banco
-      $erro = $_SESSION['erro'];
-      ?>
-      <div class="alert alert-warning" role="alert">
-        <h4>O email informado já existe.</h4>
-        <p><?= $erro; ?></p>
-      </div>
-      <?php
-    }
-    unset($_SESSION['usuario_existe']);
-    
-    if(isset($_SESSION['erro'])&& $_SESSION['erro']){
-      $erro = $_SESSION['erro'];
-      ?>
-      <div class="alert alert-warning" role="alert">
-        <h4>Erro ao realizar operação.</h4>
-        <p> <?=$erro; ?></p>
-      </div>
-      <?php
-    }
-    unset($_SESSION['erro']);
 ?>

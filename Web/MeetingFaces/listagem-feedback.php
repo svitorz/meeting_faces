@@ -64,3 +64,13 @@ require 'header.php';
         ?>
     </tbody>
 </table>
+<?php 
+if(isset($_SESSION['result'])){
+  if($_SESSION['result'] == true){
+    ?>
+    <div class="alert alert-success">
+      <h4>Feedback aprovado com sucesso!</h4>
+    </div>
+    <?php 
+  }
+}

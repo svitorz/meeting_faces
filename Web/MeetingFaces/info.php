@@ -14,19 +14,25 @@ if (!autenticado()) {
 $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
-$sql = "SELECT DESCRICAO.*, MORADOR.*,USUARIO.ID_USUARIO, USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO,
-                        USUARIO.SEGUNDO_NOME AS SEGUNDO_NOME_USUARIO,ADMINISTRADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMINISTRADOR,
-                                ADMINISTRADOR.ID_ADMINISTRADOR
-                                     FROM DESCRICAO INNER JOIN USUARIO ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO
-                                            INNER JOIN MORADOR ON DESCRICAO.ID_MORADOR=MORADOR.ID_MORADOR
-                                                    INNER JOIN ADMINISTRADOR ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
-                                                            WHERE MORADOR.ID_MORADOR = ? AND DESCRICAO.SITUACAO = 'APROVADO' ORDER BY COMENTARIO ASC;";
-$stmt = $conn->prepare($sql);
-$stmt->execute([$id_morador]);
+$sql = "SELECT MORADOR.*,ADMINISTRADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMINISTRADOR,
+ADMINISTRADOR.ID_ADMINISTRADOR FROM MORADOR INNER JOIN ADMINISTRADOR 
+        ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
+            WHERE MORADOR.ID_MORADOR = ?;";
+
+try {
+    //code...
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id_morador]);
+} catch (Exception $e) {
+    //throw $th;
+    echo $e->getMessage();
+}
 $row = $stmt->fetch();
+
 $titulo_pagina = "Perfil de <span class='text-capitalize'>".$row['primeiro_nome']."</span>"; 
+
 require 'header.php'; 
-    ?>
+?>
 <section class="p-5" style="background-color: #eee;">
     <div class="row">
         <div class="col-lg-4">
@@ -63,7 +69,16 @@ require 'header.php';
                         </tr>
                       </thead>
                       <tbody>
-                      <?php 
+                      <?php
+                      $selectdescricao = "SELECT DESCRICAO.*, USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO FROM DESCRICAO INNER JOIN USUARIO ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO WHERE DESCRICAO.ID_MORADOR = ?;"; 
+                      try {
+                        //code...
+                        $stmt = $conn->prepare($selectdescricao);
+                        $stmt->execute([$id_morador]);
+                      } catch (Exception $e) {
+                        //throw $th;
+                        echo $e->getMessage();
+                      }
                         while($rowDescricao = $stmt->fetch(PDO::FETCH_ASSOC)){ 
                         ?>
                         <tr>

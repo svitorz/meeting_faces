@@ -7,42 +7,56 @@ require 'conexao/conexao.php';
 
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
-try{
-    $sql = "SELECT * FROM USUARIO WHERE EMAIL ilike ?";
+
+
+//Verifica se existem administradores
+$sql = "SELECT ID_ADMINISTRADOR AS ID, * FROM ADMINISTRADOR WHERE email ILIKE ?";
+
+try {
     $stmt = $conn->prepare($sql);
     $stmt->execute([$email]);
-    $row = $stmt->fetch();
-    if($row && password_verify($senha, $row['senha'])){
-        $_SESSION['id_usuario'] = $row['id_usuario'];
-        $_SESSION['primeiro_nome'] = $row['primeiro_nome'];
-        $_SESSION['segundo_nome'] = $row['segundo_nome'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['telefone'] = $row['telefone'];
-        $_SESSION['data_nasc'] = $row['data_nasc'];
-        $_SESSION['USUARIO'] = TRUE;
-        $_SESSION['ADM'] = FALSE;
-        redireciona('inicio.php');
-    }else{
-        $sql = "SELECT * FROM administrador WHERE email ilike ?";
+    $_SESSION['tipo_user'] = 'admin';
+} catch (Exception $e) {
+    $result = false;
+    $error = $e->getMessage();
+}
+
+$count = $stmt->rowCount();
+
+if($count == 0){
+
+    $sql = "SELECT ID_USUARIO AS ID,* FROM USUARIO WHERE email ilike ?";
+    try {
         $stmt = $conn->prepare($sql);
         $stmt->execute([$email]);
-        $row = $stmt->fetch();
-            if($row && password_verify($senha, $row['senha'])){
-                $_SESSION['id_administrador'] = $row['id_administrador'];
-                $_SESSION['primeiro_nome'] = $row['primeiro_nome'];
-                $_SESSION['segundo_nome'] = $row['segundo_nome'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['ADM'] = TRUE;
-                $_SESSION['USUARIO'] = FALSE;
-                redireciona('inicio.php');
-        }else{
-            redireciona('formulario-login.php');
-            $_SESSION['erro'] = true;
-        }
+        $_SESSION['tipo_user'] = 'user';
+    } catch (Exception $e) {
+        $result = false;
+        $error = $e->getMessage();
     }
-} catch(Exception $e){
-    $_SESSION['erro'] = true;
-    redireciona('formulario-login.php');
-    exit();
 }
+
+
+
+$row = $stmt->fetch();
+
+if(password_verify($senha, $row['senha'])){
+    $_SESSION['email'] = $row['email'];
+    $_SESSION['primeiro_nome'] = $row['primeiro_nome'];
+    $_SESSION['segundo_nome'] = $row['segundo_nome'];
+    $_SESSION['telefone'] = $row['telefone'];
+    $_SESSION['data_nasc'] = $row['data_nasc'];
+    $_SESSION['id_usuario'] = $row['id'];
+    $_SESSION['result_login'] = true;
+}else {
+    $_SESSION['erro'] = $error;
+    $_SESSION['result_login'] = false;
+    unset($_SESSION['email']);
+    unset($_SESSION['primeiro_nome']);
+    unset($_SESSION['segundo_nome']);
+    unset($_SESSION['telefone']);
+    unset($_SESSION['data_nasc']);
+    unset($_SESSION['tipo_user']);
+}
+redireciona('formulario-login.php')
 ?>

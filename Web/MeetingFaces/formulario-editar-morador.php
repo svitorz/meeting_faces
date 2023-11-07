@@ -17,14 +17,6 @@ $row = $stmt->fetch();
 $titulo_pagina = "Insira as novas informações do morador";
 include 'header.php';
 ?>
-<!-- Link JQUERY via CDN -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-<script type="text/javascript">
-    $(function() {
-        $("#data_nasc").mask("00/00/0000")
-    })
-</script>
 <div class="container-fluid px-5 py-3">
   <div class="container">
     <form action="editar-morador.php" method="post">

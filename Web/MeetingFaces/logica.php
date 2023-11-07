@@ -1,6 +1,6 @@
 <?php
 function autenticado(){
-    if(isset($_SESSION['email'])){
+    if(isset($_SESSION['email']) && !empty($_SESSION['email'])){
         return true;
     }else {
         return false;
@@ -17,9 +17,6 @@ function email_usuario(){
 }
 
 function id_usuario(){
-    if(isset($_SESSION['ADM']) && $_SESSION['ADM']){
-        return $_SESSION['id_administrador'];
-    }
     return $_SESSION['id_usuario'];
 }
 function telefone_usuario(){
@@ -37,8 +34,9 @@ function redireciona($pagina = null){
 }
 
 function isAdmin(){
-    if(isset($_SESSION['ADM']) && $_SESSION['ADM']){
+    if($_SESSION['tipo_user'] == 'admin'){
         return true;
+    }else{
+        return false;
     }
-    return false;
 }

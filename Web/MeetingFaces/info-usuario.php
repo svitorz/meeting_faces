@@ -3,7 +3,7 @@ session_start();
 
 require 'logica.php';
 //Verifica se é admin
-if (!isAdmin()) {
+if (!autenticado()) {
     $_SESSION['restrito'] = true;
     redireciona();
     die();
@@ -17,11 +17,19 @@ $id_usuario = filter_input(INPUT_GET, 'id_usuario',FILTER_SANITIZE_NUMBER_INT);
 require 'conexao/conexao.php';
 
 $sql = "SELECT * FROM USUARIO WHERE id_usuario = ?";
-$stmt = $conn->prepare($sql);
-$stmt->execute([$id_usuario]);
+
+try {
+    //code...
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id_usuario]);
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+
 $row = $stmt->fetch();
 
 $titulo_pagina = "Perfil de ".$row['primeiro_nome']; 
+
 require 'header.php';
 ?>
 <section class="p-5" style="background-color: #eee;">
@@ -91,6 +99,49 @@ require 'header.php';
         </div>
     </div>
     </div>
+    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col" style="width: 50%;">Descrição</th>
+                          <th scope="col" style="width: 25%;">Pessoa em situação de rua</th>
+                          <th scope="col" style="width: 25%;"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                      $selectdescricao = 
+                      "SELECT DESCRICAO.*, MORADOR.PRIMEIRO_NOME , MORADOR.SEGUNDO_NOME, MORADOR.ID_MORADOR
+                        FROM DESCRICAO INNER JOIN MORADOR ON MORADOR.ID_MORADOR=DESCRICAO.ID_MORADOR
+                            LEFT JOIN USUARIO ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO
+                                WHERE DESCRICAO.ID_USUARIO = ?;"; 
+                      try {
+                        //code...
+                        $stmt = $conn->prepare($selectdescricao);
+                        $stmt->execute([$id_usuario]);
+                      } catch (Exception $e) {
+                        //throw $th;
+                        echo $e->getMessage();
+                      }
+                        while($rowDescricao = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+                        ?>
+                        <tr>
+                        <td> 
+                            <?= $rowDescricao['comentario']; ?>
+                        </td>
+                        <td class="text-capitalize">
+                            <a href="info.php?id_morador=<?= $rowDescricao['id_morador']; ?>">
+                                <?= $rowDescricao['primeiro_nome'] . " " . " " . $rowDescricao['segundo_nome']; ?>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="excluir-descricao.php?id_descricao=<?= $rowDescricao['id_descricao']; ?>" class="btn btn-danger">Excluir</a>
+                        </td>
+                        </tr>
+                        <?php
+                        }   
+                        ?>
+                        </tbody>
+                    </table>
 </section>
 <div class="fixed-bottom">
     <?php require 'footer.php'; ?>
