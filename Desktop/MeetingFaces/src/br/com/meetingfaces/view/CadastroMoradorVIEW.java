@@ -6,9 +6,14 @@ import br.com.meetingfaces.ctr.MoradoresCTR;
 import br.com.meetingfaces.dto.AdministradorDTO;
 import br.com.meetingfaces.ctr.AdministradorCTR;
 import br.com.meetingfaces.dto.MoradoresDTO;
+import java.sql.Date;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 public class CadastroMoradorVIEW extends javax.swing.JFrame {
 
@@ -47,17 +52,17 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         labelNome = new javax.swing.JLabel();
         nomeMorador = new javax.swing.JTextField();
         labelData_nasc = new javax.swing.JLabel();
-        nomeFamiliarProximo = new javax.swing.JTextField();
-        data_nasc = new javax.swing.JTextField();
         cidadeNatal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         labelSobrenome = new javax.swing.JLabel();
         sobrenomeMorador = new javax.swing.JTextField();
-        grauParentesco = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         cidadeAtual = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        grauParentesco = new javax.swing.JTextField();
+        nomeFamiliarProximo = new javax.swing.JTextField();
+        data_nasc = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pesquisa_nome_morador = new javax.swing.JTextField();
@@ -80,23 +85,11 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
             }
         });
 
-        labelData_nasc.setText("Data de nascimento:");
+        labelData_nasc.setText("Grau de parentesco");
 
-        nomeFamiliarProximo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeFamiliarProximoActionPerformed(evt);
-            }
-        });
+        jLabel4.setText("Nome de um familiar próximo");
 
-        data_nasc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                data_nascActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("Cidade origem:");
-
-        jLabel2.setText("Nome de um familiar próximo");
+        jLabel2.setText("Data de nascimento");
 
         labelSobrenome.setText("Sobrenome");
 
@@ -106,13 +99,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
             }
         });
 
-        grauParentesco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grauParentescoActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Grau de parentesco");
+        jLabel3.setText("Cidade de origem");
 
         cidadeAtual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,50 +109,66 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
 
         jLabel5.setText("Cidade atual");
 
+        grauParentesco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grauParentescoActionPerformed(evt);
+            }
+        });
+
+        nomeFamiliarProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeFamiliarProximoActionPerformed(evt);
+            }
+        });
+
+        try {
+            data_nasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        data_nasc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                data_nascActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(labelNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(nomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(labelSobrenome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sobrenomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sobrenomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cidadeNatal, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(labelData_nasc)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(data_nasc, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                                .addComponent(nomeFamiliarProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(grauParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(cidadeAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel5))
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cidadeNatal, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cidadeAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelData_nasc)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(grauParentesco, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nomeFamiliarProximo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(data_nasc, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))))
+                .addGap(12, 12, 12))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,27 +181,27 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(sobrenomeMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nomeFamiliarProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(data_nasc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cidadeNatal, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(nomeFamiliarProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(data_nasc, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelData_nasc))
-                .addGap(27, 27, 27)
+                    .addComponent(labelData_nasc)
+                    .addComponent(grauParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(grauParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cidadeNatal, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cidadeAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cidadeAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         jLabel1.setText("Pesquisar");
@@ -309,7 +312,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         });
 
         btnSair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSair.setText("Sair");
+        btnSair.setText("Voltar");
         btnSair.setAlignmentY(0.0F);
         btnSair.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSair.setMaximumSize(new java.awt.Dimension(113, 35));
@@ -324,12 +327,6 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -342,6 +339,12 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(92, 92, 92))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +353,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 27, Short.MAX_VALUE)
+                        .addGap(0, 30, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -373,17 +376,9 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeFamiliarProximoActionPerformed
 
-    private void data_nascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_data_nascActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_data_nascActionPerformed
-
     private void sobrenomeMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sobrenomeMoradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sobrenomeMoradorActionPerformed
-
-    private void grauParentescoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grauParentescoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_grauParentescoActionPerformed
 
     private void cidadeAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeAtualActionPerformed
         // TODO add your handling code here:
@@ -447,6 +442,14 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         liberaBotoes(false, true, true, true, true);
     }//GEN-LAST:event_tabelaSelectMouseClicked
 
+    private void grauParentescoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grauParentescoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_grauParentescoActionPerformed
+
+    private void data_nascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_data_nascActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_data_nascActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -489,7 +492,8 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
             moradoresDTO.setCidade_natal(cidadeNatal.getText());
             moradoresDTO.setNome_familiar_proximo(nomeFamiliarProximo.getText());
             moradoresDTO.setGrau_parentesco(grauParentesco.getText());
-            moradoresDTO.setData_nasc(data_nasc.getText());
+            moradoresDTO.setData_nasc(verificaPreenchimento());
+            System.out.println(verificaPreenchimento());
             administradorDTO.setId_login(id_login);
 
             JOptionPane.showMessageDialog(null,
@@ -514,7 +518,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         moradoresDTO.setCidade_natal(cidadeNatal.getText());
         moradoresDTO.setNome_familiar_proximo(nomeFamiliarProximo.getText());
         moradoresDTO.setGrau_parentesco(grauParentesco.getText());
-        moradoresDTO.setData_nasc(data_nasc.getText());
+        moradoresDTO. setData_nasc(verificaPreenchimento());
         JOptionPane.showMessageDialog(null,
                 moradoresCTR.alterarMoradores(moradoresDTO)
         );
@@ -592,6 +596,16 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
         btnExcluir.setEnabled(d);
         btnSair.setEnabled(e);
     }//Fecha método liberaBotoes(boolean a, boolean b, boolean c, boolean d, boolean e)
+    
+    private String verificaPreenchimento() {
+            String data_nascimento;
+        if (data_nasc.getText().equalsIgnoreCase("  /  /    ")) {
+            data_nascimento = null;
+        }else{
+            data_nascimento = " '" + data_nasc.getText() + "'";
+        }
+        return data_nascimento;
+    }//Fecha método verificaPreenchimento()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -601,7 +615,7 @@ public class CadastroMoradorVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField cidadeAtual;
     private javax.swing.JTextField cidadeNatal;
-    private javax.swing.JTextField data_nasc;
+    private javax.swing.JFormattedTextField data_nasc;
     private javax.swing.JTextField grauParentesco;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -40,8 +40,8 @@ if(isset($_SESSION['sucesso'])){
             <h2 class="fs-1">
                 Meeting Faces
             </h2>
-                <a href="" class="btn btn-outline-light mt-2 p-3 px-4 btn-lg border">
-                    Texto 
+                <a href="#banner" class="btn btn-outline-light mt-2 p-3 px-4 btn-lg border">
+                    Saiba mais
                 </a>
             </div>
         </div>
@@ -178,9 +178,6 @@ if(isset($_SESSION['sucesso'])){
             <p>
                 Além do papel do governo, a sociedade civil desempenha um papel crucial na assistência à população em situação de rua. Organizações não governamentais, grupos de voluntários e indivíduos engajados estão trabalhando incansavelmente para fornecer comida, roupas, cuidados médicos e apoio emocional a essas pessoas vulneráveis. O trabalho desses heróis anônimos é essencial para preencher as lacunas deixadas pelas políticas públicas e demonstra a solidariedade presente na sociedade brasileira.    
             </p>
-            <footer>
-              <a href="#fourth" class="button scrolly">Ipsum ornare lorem dolor</a>
-            </footer>
           </div>
         </div>
       </div>

@@ -36,7 +36,7 @@ public class MoradoresDAO {
                     + "'" + moradoresDTO.getSegundo_nome() + "', "
                     + "'" + moradoresDTO.getCidade_atual() + "', "
                     + "'" + moradoresDTO.getCidade_natal() + "', "
-                    + "'" + moradoresDTO.getData_nasc() + "', "
+                    + " " + moradoresDTO.getData_nasc() + " , "
                     + "'" + moradoresDTO.getNome_familiar_proximo() + "', "
                     + "'" + moradoresDTO.getGrau_parentesco() + "',"
                     + administradorDTO.getId_login()
@@ -81,7 +81,8 @@ public class MoradoresDAO {
                     + "cidade_atual = '" + moradoresDTO.getCidade_atual() + "', "
                     + "data_nasc  = '" + moradoresDTO.getData_nasc() + "', "
                     + "nome_familiar_proximo = '" + moradoresDTO.getNome_familiar_proximo() + "', "
-                    + "grau_parentesco = '" + moradoresDTO.getGrau_parentesco() + "';";
+                    + "grau_parentesco = '" + moradoresDTO.getGrau_parentesco() + "' "
+                    + "WHERE ID_MORADOR = " + moradoresDTO.getId_morador() + ";";
 
             System.out.println(comando);
             stmt.execute(comando);
@@ -160,10 +161,7 @@ public class MoradoresDAO {
                     break;
 
                 case 2: //Pesquisa por id
-                    comando = "SELECT * "
-                            + "FROM morador "
-                            + "WHERE "
-                            + "id_morador = " + moradoresDTO.getId_morador() + ";";
+                    comando = "SELECT TO_CHAR(data_nasc, 'dd/mm/yyyy') AS data_nasc, id_morador, primeiro_nome,segundo_nome,cidade_atual, cidade_natal, nome_familiar_proximo, grau_parentesco FROM morador WHERE id_morador = " + moradoresDTO.getId_morador() + ";";
 
             }//fecha switch opcao
             //Executa o comando SQL no banco de Dados

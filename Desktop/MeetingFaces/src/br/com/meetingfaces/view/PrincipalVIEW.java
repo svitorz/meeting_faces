@@ -6,12 +6,10 @@
 package br.com.meetingfaces.view;
 
 import javax.swing.JOptionPane;
+import br.com.meetingfaces.dto.AdministradorDTO;
 
 public class PrincipalVIEW extends javax.swing.JFrame {
-
-    /**
-     * Creates new form PrincipalVIEW
-     */
+    
     public PrincipalVIEW() {
         initComponents();
     }
@@ -143,7 +141,7 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_sairBotaoActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-//        this.dispose();
+
         LoginAdmVIEW loginAdmVIEW = new LoginAdmVIEW();
 
         this.desktopPane.add(loginAdmVIEW);
@@ -151,8 +149,8 @@ public class PrincipalVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        CadastroAdminVIEW cadastroAdminVIEW = new CadastroAdminVIEW();
-        cadastroAdminVIEW.setVisible(true);
+        CadastroAdmVIEW cadastroAdmVIEW = new CadastroAdmVIEW();
+        cadastroAdmVIEW.setVisible(true);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**

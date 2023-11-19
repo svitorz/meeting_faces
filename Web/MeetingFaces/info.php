@@ -14,7 +14,7 @@ if (!autenticado()) {
 $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
-$sql = "SELECT MORADOR.*,ADMINISTRADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMINISTRADOR,
+$sql = "SELECT TO_CHAR(morador.data_nasc, 'dd/mm/yyyy') AS data_nasc, TO_CHAR(morador.data_nasc, 'YYYY') as ano_nasc, morador.id_morador, morador.primeiro_nome,morador.segundo_nome,morador.cidade_atual, morador.cidade_natal, morador.nome_familiar_proximo, grau_parentesco ,ADMINISTRADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMINISTRADOR,
 ADMINISTRADOR.ID_ADMINISTRADOR FROM MORADOR INNER JOIN ADMINISTRADOR 
         ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
             WHERE MORADOR.ID_MORADOR = ?;";
@@ -38,8 +38,10 @@ require 'header.php';
         <div class="col-lg-4">
             <div class="card text-capitalize mb-4">
                 <div class="card-body text-center">
+                <!--
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                        class="rounded-circle img-fluid" style="width: 150px;">
+                    class="rounded-circle img-fluid" style="width: 150px;"> 
+                -->
                     <h5 class="my-3">
                         <?= $row['primeiro_nome']; ?>
                     </h5>
@@ -63,9 +65,15 @@ require 'header.php';
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col" style="width: 50%;">Descrição</th>
+                          <th scope="col" <?php if(isAdmin()) { echo "style='width: 50%;'"; }else{ echo "style='width: 50%;'"; } ?> >Descrição</th>
                           <th scope="col" style="width: 25%;">Usuário</th>
+                        <?php
+                        if(isAdmin()){ 
+                        ?>
                           <th scope="col" style="width: 25%;">ID:</th>
+                        <?php
+                        }
+                        ?>
                         </tr>
                       </thead>
                       <tbody>
@@ -88,12 +96,16 @@ require 'header.php';
                         <td class="text-capitalize"> 
                             <?= $rowDescricao['primeiro_nome_usuario']; ?>
                         </td>
+                        <?php
+                        if(isAdmin()){
+                            ?>
                         <td>
                              <?= $rowDescricao['id_usuario']; ?>
                         </td>
                         </tr>
                         <?php
-                        }   
+                           }   
+                        }
                         ?>
                         </tbody>
                     </table>
@@ -186,8 +198,26 @@ require 'header.php';
                     </div>
                     <?php
                     }
+                    if(isset($row['data_nasc']) && $row['data_nasc']){
+                        $date = date("Y");
+                        $idade = $date - $row['ano_nasc'];
                     ?>
-                    <?php if(isAdmin()){
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Data de nascimento e idade</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted text-capitalize mb-0">
+                                <?= $row['data_nasc']; ?> , <?= $idade; ?> anos.
+                            </p>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                     if(isAdmin()){
                         ?>
                     <hr>
                     <div class="row">
