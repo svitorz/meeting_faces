@@ -1,4 +1,4 @@
 <?php 
-//Redireciona ao início.php
-header('Location: /inicio.php');
+//Redireciona ao início
+header('Location: inicio.php');
 ?>

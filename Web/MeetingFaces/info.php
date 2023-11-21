@@ -49,7 +49,7 @@ require 'header.php';
                         <?= $row['cidade_atual']; ?>
                     </p>
                     <div class="d-flex justify-content-center mb-2">
-                    <a href="formulario-feedback.php?id_morador=<?=$id_morador;?>" class="btn btn-success me-2">Enviar feedback</a>
+                    <a href="formulario-descricao.php?id_morador=<?=$id_morador;?>" class="btn btn-success me-2">Enviar descrição</a>
                     <?php if(isAdmin()){
                         ?>
                         <a href="formulario-editar-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-warning me-2">Editar</a>
@@ -78,7 +78,7 @@ require 'header.php';
                       </thead>
                       <tbody>
                       <?php
-                      $selectdescricao = "SELECT DESCRICAO.*, USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO FROM DESCRICAO INNER JOIN USUARIO ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO WHERE DESCRICAO.ID_MORADOR = ?;"; 
+                      $selectdescricao = "SELECT DESCRICAO.*, USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO FROM DESCRICAO INNER JOIN USUARIO ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO WHERE DESCRICAO.ID_MORADOR = ? AND DESCRICAO.SITUACAO = 'APROVADO';"; 
                       try {
                         //code...
                         $stmt = $conn->prepare($selectdescricao);

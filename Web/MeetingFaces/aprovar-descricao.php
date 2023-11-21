@@ -3,7 +3,7 @@ session_start();
 
 require 'logica.php';
 
-//Função responsável por permitir apenas que administradores tenham acesso aos feedbacks
+//Função responsável por permitir apenas que administradores tenham acesso as descrições
 if(!isAdmin()){
     $_SESSION['restrito'] = true;
     redireciona();
@@ -43,10 +43,10 @@ if(isset($aprovacao)&&isset($id)){
     $result = $stmt->rowCount();
     //caso o número de colunas alterado seja maior que 0,
     //é entendido que a alteração foi feita com sucesso
-    //Então o usuário é retornado para a página de listagem de feedbacks
+    //Então o usuário é retornado para a página de listagem de descrições
     //e a session de sucesso é verdadeira, para que a mensagem de sucesso seja exibida
     if($result>0){
         $_SESSION['sucesso'] = true;
     }   
 }
-redireciona('listagem-feedback.php');
+redireciona('listagem-descricao.php');

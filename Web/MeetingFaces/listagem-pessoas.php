@@ -23,7 +23,7 @@ $stmt = $conn->query($sql);
                 <h5 class="card-title text-capitalize"> <?= $row['primeiro_nome']; ?> </h5>
                 <p class="card-text">Está localizado na cidade de <span class="text-capitalize"> <?=$row['cidade_atual']; ?> </span> </p>
                 <a href="info.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-primary mx-3 mb-2">Informações</a>
-                <a href="formulario-feedback.php?id_morador=<?=$row['id_morador']?>" class="btn btn-info mx-4 mb-2">Enviar feedback</a>
+                <a href="formulario-descricao.php?id_morador=<?=$row['id_morador']?>" class="btn btn-info mx-4 mb-2">Enviar descrição</a>
                 <?php 
                 if(isAdmin()){
                     ?>

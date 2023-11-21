@@ -94,7 +94,7 @@ while($row = $stmt->fetch()){
         }
         ?>
         <a href="info.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-primary my-1">Informações</a>
-        <a href="formulario-feedback.php?id_morador=<?=$row['id_morador']?>" class="btn btn-success">Adicionar feedback</a>
+        <a href="formulario-descricao.php?id_morador=<?=$row['id_morador']?>" class="btn btn-success">Adicionar descrição</a>
         <?php
         if(isAdmin()){
                     ?>

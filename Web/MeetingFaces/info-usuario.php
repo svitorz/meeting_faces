@@ -10,7 +10,6 @@ if (!autenticado()) {
 }
 
 //Página necessária caso o administrador queira saber de quem é o perfil que enviou
-//Um feedback (Código reutilizado da página de perfil de morador)
 
 $id_usuario = filter_input(INPUT_GET, 'id_usuario',FILTER_SANITIZE_NUMBER_INT);
 

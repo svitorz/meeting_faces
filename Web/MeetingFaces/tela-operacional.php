@@ -34,9 +34,9 @@ if(isAdmin()){
                         </a>
                     </li>
                     <li class="nav-link mb-5">
-                        <a class="nav-link" href="listagem-feedback.php">
+                        <a class="nav-link" href="listagem-descricao.php">
                             <span class="btn btn-dark text-uppercase">
-                                Aprovação de feedbacks
+                                Aprovação de Descrições
                             </span>
                         </a>
                     </li>

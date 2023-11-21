@@ -13,8 +13,8 @@ include 'header.php';
 <h5 class="text-center">
   Nenhum campo é obrigatório, porém insira a maior quantidade de informações possível,
    caso queira deixar uma observação, vá até a página de
-    <a href="formulario-feedback.php">
-      Feedback
+    <a href="formulario-.php">
+      Descrição
     </a>.
 </h5>
 <div class="container-fluid px-5 py-3">

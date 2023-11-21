@@ -19,10 +19,10 @@ $sql = "SELECT DESCRICAO.*, USUARIO.PRIMEIRO_NOME AS NOME_USUARIO, MORADOR.PRIME
 $stmt = $conn->query($sql);
 $stmt->execute();
 $count = $stmt->rowCount();
-$titulo_pagina = "Feedbacks para aprovação";
+$titulo_pagina = "Descrições para aprovação";
 require 'header.php';
 ?>
-<h2 class="text-center">Olá <?= nome_usuario() ?>, você tem <?= $count ?> feedbacks para aprovação.</h2>
+<h2 class="text-center">Olá <?= nome_usuario() ?>, você tem <?= $count ?> descrições para aprovação.</h2>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -44,13 +44,13 @@ require 'header.php';
           <td> <a href="info.php?id_morador=<?= $row["id_morador"]?>"><?= $row["nome_morador"]?>, ID: <?= $row["id_morador"]?> </a></td>
           <td>  
             <div class="input-group">
-              <form action="aprovar-feedback.php" method="post">
+              <form action="aprovar-descricao.php" method="post">
                 <input type="hidden" name="id" value="<?=$row['id_descricao'];?>" />
                 <input type="hidden" name="descricao" value="<?=$row['comentario'];?>" />
                 <input type="hidden" name="aprovacao" value="2" />
                 <button type="submit" class="btn btn-sm btn-danger mx-2">Excluir</button>
               </form>
-              <form action="aprovar-feedback.php" method="post">
+              <form action="aprovar-descricao.php" method="post">
                 <input type="hidden" name="id" value="<?=$row['id_descricao'];?>" />
                 <input type="hidden" name="descricao" value="<?=$row['comentario'];?>" />
                 <input type="hidden" name="aprovacao" value="3" />
@@ -69,7 +69,7 @@ if(isset($_SESSION['result'])){
   if($_SESSION['result'] == true){
     ?>
     <div class="alert alert-success">
-      <h4>Feedback aprovado com sucesso!</h4>
+      <h4>Descrição aprovado com sucesso!</h4>
     </div>
     <?php 
   }
