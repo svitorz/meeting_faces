@@ -21,7 +21,7 @@ $data = str_replace("/", "-", $data_nasc);
 //conexão com o banco
 require 'conexao/conexao.php';
 
-$sql = "UPDATE MORADOR SET primeiro_nome = ?, segundo_nome = ?, cidade_atual = ?, cidade_natal = ?, data_nasc = ?, nome_familiar_proximo = ?, grau_parentesco = ? WHERE id_morador = ?";
+$sql = "UPDATE MORADORES SET primeiro_nome = ?, segundo_nome = ?, cidade_atual = ?, cidade_natal = ?, data_nasc = ?, nome_familiar_proximo = ?, grau_parentesco = ? WHERE id_morador = ?";
 
 try {
     //code...

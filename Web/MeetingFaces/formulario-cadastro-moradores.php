@@ -14,7 +14,7 @@ include 'header.php';
   Nenhum campo é obrigatório, porém insira a maior quantidade de informações possível,
    caso queira deixar uma observação, vá até a página de
     <a href="formulario-.php">
-      Descrição
+      Comentário
     </a>.
 </h5>
 <div class="container-fluid px-5 py-3">

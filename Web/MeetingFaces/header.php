@@ -44,7 +44,7 @@
       </div>
       <?php }
       //Caso o usuário seja administrador, é exibido o botão da tela operacional,
-      //onde pode realizar alterações de cadastro e aprovação de descrições
+      //onde pode realizar alterações de cadastro e aprovação de comentários
       if(isAdmin()){
         ?>
         <div class="d-flex">

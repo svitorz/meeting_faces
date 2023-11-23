@@ -25,7 +25,7 @@ if($senha != $confsenha){
     die();
 }
 
-$select = "SELECT EMAIL FROM ADMINISTRADOR WHERE EMAIL ilike ?;"; 
+$select = "SELECT EMAIL FROM ADMINISTRADORES WHERE EMAIL ilike ?;"; 
 try {
     $stmt = $conn->prepare($select);
     $stmt->execute([$email]);
@@ -33,7 +33,7 @@ try {
     if($count >= 1){
         $_SESSION['erro'] = "O Email já está sendo utilizado como administrador.";
     }else{
-        $insert = "INSERT INTO USUARIO(PRIMEIRO_NOME, SEGUNDO_NOME, EMAIL, TELEFONE, SENHA, DATA_NASC) VALUES (?,?,?,?,crypt(?, gen_salt('bf',8)),?);";
+        $insert = "INSERT INTO USUARIOS(PRIMEIRO_NOME, SEGUNDO_NOME, EMAIL, TELEFONE, SENHA, DATA_NASC) VALUES (?,?,?,?,crypt(?, gen_salt('bf',8)),?);";
         $stmt = $conn->prepare($insert);
         $result = $stmt->execute([$primeiro_nome, $segundo_nome, $email, $telefone, $senha, $data_nasc]);
     }

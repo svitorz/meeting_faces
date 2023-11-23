@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-//Página necessária para acessar mais informações dos moradores de rua, como dados e descrições
+//Página necessária para acessar mais informações dos moradores de rua, como dados e comentários
 
 require 'logica.php';
 //Caso não esteja autenticado, redireciona para o formulário de login
@@ -14,10 +14,10 @@ if (!autenticado()) {
 $id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
-$sql = "SELECT TO_CHAR(morador.data_nasc, 'dd/mm/yyyy') AS data_nasc, TO_CHAR(morador.data_nasc, 'YYYY') as ano_nasc, morador.id_morador, morador.primeiro_nome,morador.segundo_nome,morador.cidade_atual, morador.cidade_natal, morador.nome_familiar_proximo, grau_parentesco ,ADMINISTRADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMINISTRADOR,
-ADMINISTRADOR.ID_ADMINISTRADOR FROM MORADOR INNER JOIN ADMINISTRADOR 
-        ON MORADOR.ID_ADMINISTRADOR=ADMINISTRADOR.ID_ADMINISTRADOR
-            WHERE MORADOR.ID_MORADOR = ?;";
+$sql = "SELECT TO_CHAR(moradores.data_nasc, 'dd/mm/yyyy') AS data_nasc, TO_CHAR(moradores.data_nasc, 'YYYY') as ano_nasc, moradores.id_morador, moradores.primeiro_nome,moradores.segundo_nome,moradores.cidade_atual, moradores.cidade_natal, moradores.nome_familiar_proximo, grau_parentesco ,ADMINISTRADORES.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMINISTRADOR,
+ADMINISTRADORES.ID_ADMINISTRADOR FROM MORADORES INNER JOIN ADMINISTRADORES 
+        ON moradores.ID_ADMINISTRADOR=ADMINISTRADORES.ID_ADMINISTRADOR
+            WHERE moradores.ID_MORADOR = ?;";
 
 try {
     //code...
@@ -38,10 +38,10 @@ require 'header.php';
         <div class="col-lg-4">
             <div class="card text-capitalize mb-4">
                 <div class="card-body text-center">
-                <!--
+<!--             
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                     class="rounded-circle img-fluid" style="width: 150px;"> 
-                -->
+                 -->
                     <h5 class="my-3">
                         <?= $row['primeiro_nome']; ?>
                     </h5>
@@ -49,7 +49,7 @@ require 'header.php';
                         <?= $row['cidade_atual']; ?>
                     </p>
                     <div class="d-flex justify-content-center mb-2">
-                    <a href="formulario-descricao.php?id_morador=<?=$id_morador;?>" class="btn btn-success me-2">Enviar descrição</a>
+                    <a href="formulario-comentario.php?id_morador=<?=$id_morador;?>" class="btn btn-success me-2">Enviar Comentário</a>
                     <?php if(isAdmin()){
                         ?>
                         <a href="formulario-editar-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-warning me-2">Editar</a>
@@ -65,7 +65,7 @@ require 'header.php';
                     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col" <?php if(isAdmin()) { echo "style='width: 50%;'"; }else{ echo "style='width: 50%;'"; } ?> >Descrição</th>
+                          <th scope="col" <?php if(isAdmin()) { echo "style='width: 50%;'"; }else{ echo "style='width: 50%;'"; } ?> >Comentário</th>
                           <th scope="col" style="width: 25%;">Usuário</th>
                         <?php
                         if(isAdmin()){ 
@@ -78,29 +78,29 @@ require 'header.php';
                       </thead>
                       <tbody>
                       <?php
-                      $selectdescricao = "SELECT DESCRICAO.*, USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO FROM DESCRICAO INNER JOIN USUARIO ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO WHERE DESCRICAO.ID_MORADOR = ? AND DESCRICAO.SITUACAO = 'APROVADO';"; 
+                      $selectcomentario = "SELECT COMENTARIOS.*, USUARIOS.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO FROM COMENTARIOS INNER JOIN USUARIOS ON COMENTARIOS.ID_USUARIO=USUARIOS.ID_USUARIO WHERE COMENTARIOS.ID_MORADOR = ? AND COMENTARIOS.SITUACAO = 'APROVADO';"; 
                       try {
                         //code...
-                        $stmt = $conn->prepare($selectdescricao);
+                        $stmt = $conn->prepare($selectcomentario);
                         $stmt->execute([$id_morador]);
                       } catch (Exception $e) {
                         //throw $th;
                         echo $e->getMessage();
                       }
-                        while($rowDescricao = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+                        while($rowcomentario = $stmt->fetch(PDO::FETCH_ASSOC)){ 
                         ?>
                         <tr>
                         <td> 
-                            <?= $rowDescricao['comentario']; ?>
+                            <?= $rowcomentario['comentario']; ?>
                         </td>
                         <td class="text-capitalize"> 
-                            <?= $rowDescricao['primeiro_nome_usuario']; ?>
+                            <?= $rowcomentario['primeiro_nome_usuario']; ?>
                         </td>
                         <?php
                         if(isAdmin()){
                             ?>
                         <td>
-                             <?= $rowDescricao['id_usuario']; ?>
+                             <?= $rowcomentario['id_usuario']; ?>
                         </td>
                         </tr>
                         <?php

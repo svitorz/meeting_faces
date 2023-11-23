@@ -10,7 +10,7 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT id_usuario,primeiro_nome,segundo_nome FROM usuario ORDER BY primeiro_nome";
+$sql = "SELECT id_usuario,primeiro_nome,segundo_nome FROM USUARIOS ORDER BY primeiro_nome";
 
 $stmt = $conn->query($sql);
 $titulo_pagina = "Listagem dos usuários cadastrados no sistema";

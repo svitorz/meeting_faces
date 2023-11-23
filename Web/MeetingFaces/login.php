@@ -10,7 +10,7 @@ $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_SPECIAL_CHARS);
 
 
 //Verifica se existem administradores
-$sql = "SELECT ID_ADMINISTRADOR AS ID, * FROM ADMINISTRADOR WHERE email ILIKE ?";
+$sql = "SELECT ID_ADMINISTRADOR AS ID, * FROM ADMINISTRADORES WHERE email ILIKE ?";
 
 try {
     $stmt = $conn->prepare($sql);
@@ -25,7 +25,7 @@ $count = $stmt->rowCount();
 
 if($count == 0){
 
-    $sql = "SELECT ID_USUARIO AS ID,* FROM USUARIO WHERE email ilike ?";
+    $sql = "SELECT ID_USUARIO AS ID,* FROM USUARIOS WHERE email ilike ?";
     try {
         $stmt = $conn->prepare($sql);
         $stmt->execute([$email]);

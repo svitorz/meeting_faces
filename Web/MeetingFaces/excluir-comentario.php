@@ -9,14 +9,14 @@ if(!autenticado()){
 
 require 'conexao/conexao.php';
 
-$id_descricao = filter_input(INPUT_GET, 'id_descricao', FILTER_SANITIZE_NUMBER_INT);
+$id_comentario = filter_input(INPUT_GET, 'id_comentario', FILTER_SANITIZE_NUMBER_INT);
 
-$sql = "DELETE FROM DESCRICAO WHERE ID_DESCRICAO = ?";
+$sql = "DELETE FROM COMENTARIOS WHERE ID_comentario = ?";
 
 try {
     //code...
     $stmt = $conn->prepare($sql);
-    $result = $stmt->execute([$id_descricao]);
+    $result = $stmt->execute([$id_comentario]);
 } catch (Exception $e) {
     $error = $e->getMessage();
     $_SESSION['sucesso'] = false;

@@ -39,14 +39,14 @@ public class DescricaoDAO {
             //Comando SQL que sera executado no banco de dados
             String comando = "";
 
-            comando = "SELECT DESCRICAO.COMENTARIO,DESCRICAO.ID_DESCRICAO,USUARIO.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO,\n"
-                    + "	MORADOR.PRIMEIRO_NOME AS PRIMEIRO_NOME_MORADOR \n"
-                    + "		FROM DESCRICAO \n"
-                    + "				INNER JOIN USUARIO ON\n"
-                    + "				DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO\n"
-                    + "					LEFT JOIN MORADOR ON\n"
-                    + "						DESCRICAO.ID_MORADOR=MORADOR.ID_MORADOR\n"
-                    + "							WHERE DESCRICAO.situacao='Em análise';";
+            comando = "SELECT COMENTARIOS.COMENTARIO,COMENTARIOS.ID_DESCRICAO,USUARIOS.PRIMEIRO_NOME AS PRIMEIRO_NOME_USUARIO,\n"
+                    + "	MORADORES.PRIMEIRO_NOME AS PRIMEIRO_NOME_MORADOR \n"
+                    + "		FROM COMENTARIOS \n"
+                    + "				INNER JOIN USUARIOS ON\n"
+                    + "				COMENTARIOS.ID_USUARIO=USUARIOS.ID_USUARIO\n"
+                    + "					LEFT JOIN MORADORES ON\n"
+                    + "						COMENTARIOS.ID_MORADOR=MORADORES.ID_MORADOR\n"
+                    + "							WHERE COMENTARIOS.situacao='Em análise';";
 
             System.out.println(comando);
             rs = stmt.executeQuery(comando);
@@ -73,12 +73,12 @@ public class DescricaoDAO {
 
             switch (opcao) {
                 case 1: //Pesquisa por nome
-                    comando = "UPDATE DESCRICAO SET situacao = 'APROVADO' WHERE id_descricao = "
+                    comando = "UPDATE COMENTARIOS SET situacao = 'APROVADO' WHERE id_descricao = "
                             + descricaoDTO.getId_descricao() + ";";
                     break;
 
                 case 2: //Pesquisa por id
-                    comando = "UPDATE DESCRICAO SET situacao = 'REPROVADO' WHERE id_descricao = "
+                    comando = "UPDATE COMENTARIOS SET situacao = 'REPROVADO' WHERE id_descricao = "
                             + descricaoDTO.getId_descricao() + ";";
 
             }//fecha switch opcao

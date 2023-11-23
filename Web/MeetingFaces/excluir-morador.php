@@ -12,7 +12,7 @@ require 'conexao/conexao.php';
 
 $id_morador = filter_input(INPUT_GET, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
 
-$sqlDesc = "DELETE FROM DESCRICAO WHERE id_morador = ?";
+$sqlDesc = "DELETE FROM COMENTARIOS WHERE id_morador = ?";
 
 try {
     //code...
@@ -25,7 +25,7 @@ try {
 
 
 
-$sql = "DELETE FROM MORADOR WHERE id_morador = ?";
+$sql = "DELETE FROM MORADORES WHERE id_morador = ?";
 
 try {
     //code...

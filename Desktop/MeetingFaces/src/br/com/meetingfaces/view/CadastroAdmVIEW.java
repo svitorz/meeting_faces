@@ -223,11 +223,15 @@ public class CadastroAdmVIEW extends javax.swing.JFrame {
             administradorDTO.setSegundo_nome(segundo_nome.getText());
             administradorDTO.setEmail(email.getText());
             administradorDTO.setSenha(senha.getText());
+            administradorDTO.setId_administrador(1);
             
             JOptionPane.showMessageDialog(null, administradorCTR.inserirAdmin(administradorDTO));
 
-            if (administradorDAO.inserirAdministrador(administradorDTO) == true) {
+            if (administradorDTO.getId_administrador() > 0) {
+                LoginAdmVIEW loginAdmVIEW = new LoginAdmVIEW();
+                loginAdmVIEW.setVisible(true);
                 this.dispose();
+                
             }
 
         } catch (Exception e) {

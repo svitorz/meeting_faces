@@ -8,7 +8,7 @@ require_once 'header.php';
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT id_morador,primeiro_nome,cidade_atual FROM MORADOR ORDER BY primeiro_nome";
+$sql = "SELECT id_morador,primeiro_nome,cidade_atual FROM MORADORES ORDER BY primeiro_nome";
 $stmt = $conn->query($sql);
 ?>
 <div class="row p-5">
@@ -23,7 +23,7 @@ $stmt = $conn->query($sql);
                 <h5 class="card-title text-capitalize"> <?= $row['primeiro_nome']; ?> </h5>
                 <p class="card-text">Está localizado na cidade de <span class="text-capitalize"> <?=$row['cidade_atual']; ?> </span> </p>
                 <a href="info.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-primary mx-3 mb-2">Informações</a>
-                <a href="formulario-descricao.php?id_morador=<?=$row['id_morador']?>" class="btn btn-info mx-4 mb-2">Enviar descrição</a>
+                <a href="formulario-comentario.php?id_morador=<?=$row['id_morador']?>" class="btn btn-info mx-4 mb-2">Enviar Comentário</a>
                 <?php 
                 if(isAdmin()){
                     ?>

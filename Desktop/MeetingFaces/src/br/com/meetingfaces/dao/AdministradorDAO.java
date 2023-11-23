@@ -30,7 +30,7 @@ public class AdministradorDAO {
             //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
-            comando = "INSERT INTO administrador(primeiro_nome, segundo_nome, email"
+            comando = "INSERT INTO ADMINISTRADORES(primeiro_nome, segundo_nome, email"
                     + ", senha) VALUES("
                     + "'" + administradorDTO.getPrimeiro_nome() + "', "
                     + "'" + administradorDTO.getSegundo_nome() + "', "
@@ -67,7 +67,7 @@ public class AdministradorDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
-            comando = "Update administrador set "
+            comando = "Update ADMINISTRADORES set "
                     + "primeiro_nome = '" + administradorDTO.getPrimeiro_nome() + "', "
                     + "segundo_nome = '" + administradorDTO.getSegundo_nome() + "', "
                     + "email = '" + administradorDTO.getEmail() + "', "
@@ -104,7 +104,7 @@ public class AdministradorDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
 
-            comando = "Delete from administrador "
+            comando = "Delete from ADMINISTRADORES "
                     + "where id_administrador = " + administradorDTO.getId_administrador();
 
             stmt.execute(comando);
@@ -135,17 +135,17 @@ public class AdministradorDAO {
             switch (opcao) {
                 case 1: //Pesquisa por nome
                     comando = "Select * "
-                            + "from ADMINISTRADOR "
+                            + "from ADMINISTRADORES "
                             + "where primeiro_nome '%" + administradorDTO.getPrimeiro_nome() + "%' "
                             + "order by primeiro_nome";
                     break;
 
                 case 2: //Pesquisa por id
                     comando = "Select * "
-                            + "from ADMINISTRADOR "
+                            + "from ADMINISTRADORES "
                             + "where id_administrador = " + administradorDTO.getId_administrador();
                 case 3:
-                    comando = "SELECT PRIMEIRO_NOME,SEGUNDO_NOME,EMAIL,ID_ADMINISTRADOR FROM ADMINISTRADOR;";
+                    comando = "SELECT PRIMEIRO_NOME,SEGUNDO_NOME,EMAIL,ID_ADMINISTRADOR FROM ADMINISTRADORES;";
 
             }//fecha switch opcao
             //Executa o comando SQL no banco de Dados
@@ -174,7 +174,7 @@ public class AdministradorDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
             String comando = "Select id_administrador "
-                    + "from administrador "
+                    + "from ADMINISTRADORES "
                     + "where email ilike '%" + administradorDTO.getEmail() + "%'"
                     + " and senha = crypt('" + administradorDTO.getSenha() + "', senha)";
             //Executa o comando SQL no banco de Dados

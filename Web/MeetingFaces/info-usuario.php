@@ -15,7 +15,7 @@ $id_usuario = filter_input(INPUT_GET, 'id_usuario',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
 
-$sql = "SELECT * FROM USUARIO WHERE id_usuario = ?";
+$sql = "SELECT * FROM USUARIOS WHERE id_usuario = ?";
 
 try {
     //code...
@@ -101,39 +101,39 @@ require 'header.php';
     <table class="table">
                       <thead>
                         <tr>
-                          <th scope="col" style="width: 50%;">Descrição</th>
+                          <th scope="col" style="width: 50%;">Comentário</th>
                           <th scope="col" style="width: 25%;">Pessoa em situação de rua</th>
                           <th scope="col" style="width: 25%;"></th>
                         </tr>
                       </thead>
                       <tbody>
                       <?php
-                      $selectdescricao = 
-                      "SELECT DESCRICAO.*, MORADOR.PRIMEIRO_NOME , MORADOR.SEGUNDO_NOME, MORADOR.ID_MORADOR
-                        FROM DESCRICAO INNER JOIN MORADOR ON MORADOR.ID_MORADOR=DESCRICAO.ID_MORADOR
-                            LEFT JOIN USUARIO ON DESCRICAO.ID_USUARIO=USUARIO.ID_USUARIO
-                                WHERE DESCRICAO.ID_USUARIO = ?;"; 
+                      $selectcomentario = 
+                      "SELECT comentario.*, MORADOR.PRIMEIRO_NOME , MORADOR.SEGUNDO_NOME, MORADOR.ID_MORADOR
+                        FROM comentario INNER JOIN MORADOR ON MORADOR.ID_MORADOR=comentario.ID_MORADOR
+                            LEFT JOIN USUARIO ON comentario.ID_USUARIO=USUARIO.ID_USUARIO
+                                WHERE comentario.ID_USUARIO = ?;"; 
                       try {
                         //code...
-                        $stmt = $conn->prepare($selectdescricao);
+                        $stmt = $conn->prepare($selectcomentario);
                         $stmt->execute([$id_usuario]);
                       } catch (Exception $e) {
                         //throw $th;
                         echo $e->getMessage();
                       }
-                        while($rowDescricao = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+                        while($rowcomentario = $stmt->fetch(PDO::FETCH_ASSOC)){ 
                         ?>
                         <tr>
                         <td> 
-                            <?= $rowDescricao['comentario']; ?>
+                            <?= $rowcomentario['comentario']; ?>
                         </td>
                         <td class="text-capitalize">
-                            <a href="info.php?id_morador=<?= $rowDescricao['id_morador']; ?>">
-                                <?= $rowDescricao['primeiro_nome'] . " " . " " . $rowDescricao['segundo_nome']; ?>
+                            <a href="info.php?id_morador=<?= $rowcomentario['id_morador']; ?>">
+                                <?= $rowcomentario['primeiro_nome'] . " " . " " . $rowcomentario['segundo_nome']; ?>
                             </a>
                         </td>
                         <td>
-                            <a href="excluir-descricao.php?id_descricao=<?= $rowDescricao['id_descricao']; ?>" class="btn btn-danger">Excluir</a>
+                            <a href="excluir-comentario.php?id_comentario=<?= $rowcomentario['id_comentario']; ?>" class="btn btn-danger">Excluir</a>
                         </td>
                         </tr>
                         <?php

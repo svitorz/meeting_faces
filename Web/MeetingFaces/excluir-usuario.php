@@ -17,9 +17,9 @@ $id_usuario = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
 require 'conexao/conexao.php';
 
 
-$sql = "DELETE FROM DESCRICAO WHERE ID_USUARIO = ?"; 
+$sql = "DELETE FROM COMENTARIOS WHERE ID_USUARIO = ?"; 
 
-$sql = "DELETE FROM usuario WHERE id_usuario = ?";
+$sql = "DELETE FROM USUARIOS WHERE id_usuario = ?";
 
 
 try {
@@ -36,8 +36,8 @@ try {
 if($result === true){
     $_SESSION['sucesso'] = true;
 }else {
-    if(stripos($error, "fk_usuario_descricao")){
-        $error = "Não é possível excluir este usuário pois há descrições feitas por ele. <br /> Entre em seu perfil e exclua suas descrições antes de excluir sua conta!";
+    if(stripos($error, "fk_usuario_comentario")){
+        $error = "Não é possível excluir este usuário pois há comentários feitas por ele. <br /> Entre em seu perfil e exclua suas comentários antes de excluir sua conta!";
     }
     $_SESSION['sucesso'] = false;
     $_SESSION['erro'] = $error;

@@ -19,7 +19,7 @@ $grau_parentesco = filter_input(INPUT_POST, 'grau_parentesco', FILTER_SANITIZE_S
 $id_administrador = filter_input(INPUT_POST, 'id_administrador', FILTER_SANITIZE_SPECIAL_CHARS);
 
 $sql = "INSERT INTO 
-MORADOR(primeiro_nome,segundo_nome, cidade_atual, cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_administrador) 
+MORADORES(primeiro_nome,segundo_nome, cidade_atual, cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco,id_administrador) 
 VALUES (?,?,?,?,?,?,?,?)";
 
 try {

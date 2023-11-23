@@ -73,7 +73,7 @@ if(isset($data)&&!empty($data)){
     }
 }
 
-$sql = "SELECT * FROM MORADOR $where";
+$sql = "SELECT * FROM MORADORES $where";
 
 $stmt = $conn->query($sql);
 $stmt->execute();
@@ -94,7 +94,7 @@ while($row = $stmt->fetch()){
         }
         ?>
         <a href="info.php?id_morador=<?=$row['id_morador'];?>" class="btn btn-primary my-1">Informações</a>
-        <a href="formulario-descricao.php?id_morador=<?=$row['id_morador']?>" class="btn btn-success">Adicionar descrição</a>
+        <a href="formulario-comentario.php?id_morador=<?=$row['id_morador']?>" class="btn btn-success">Adicionar Comentário</a>
         <?php
         if(isAdmin()){
                     ?>

@@ -30,7 +30,7 @@ public class MoradoresDAO {
             //Criar um statement
             stmt = ConexaoDAO.con.createStatement();
             //Criando a query
-            comando = "INSERT INTO morador(primeiro_nome, segundo_nome, cidade_atual,"
+            comando = "INSERT INTO MORADORES(primeiro_nome, segundo_nome, cidade_atual,"
                     + "cidade_natal,data_nasc, nome_familiar_proximo, grau_parentesco, id_administrador) VALUES ("
                     + "'" + moradoresDTO.getPrimeiro_nome() + "', "
                     + "'" + moradoresDTO.getSegundo_nome() + "', "
@@ -74,12 +74,12 @@ public class MoradoresDAO {
             //Cria o Statement que responsavel por executar alguma coisa no banco de dados
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
-            comando = "Update morador set "
+            comando = "Update MORADORES set "
                     + "primeiro_nome = '" + moradoresDTO.getPrimeiro_nome() + "', "
                     + "segundo_nome = '" + moradoresDTO.getSegundo_nome() + "', "
                     + "cidade_natal = '" + moradoresDTO.getCidade_natal() + "', "
                     + "cidade_atual = '" + moradoresDTO.getCidade_atual() + "', "
-                    + "data_nasc  = '" + moradoresDTO.getData_nasc() + "', "
+                    + "data_nasc  = " + moradoresDTO.getData_nasc() + ", "
                     + "nome_familiar_proximo = '" + moradoresDTO.getNome_familiar_proximo() + "', "
                     + "grau_parentesco = '" + moradoresDTO.getGrau_parentesco() + "' "
                     + "WHERE ID_MORADOR = " + moradoresDTO.getId_morador() + ";";
@@ -116,7 +116,7 @@ public class MoradoresDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
 
-            comando = "Delete from morador "
+            comando = "Delete from MORADORES "
                     + "where id_morador = " + moradoresDTO.getId_morador();
 
             stmt.execute(comando);
@@ -155,13 +155,13 @@ public class MoradoresDAO {
             switch (opcao) {
                 case 1: //Pesquisa por nome
                     comando = "Select primeiro_nome,id_morador "
-                            + "from morador "
+                            + "from MORADORES "
                             + " WHERE primeiro_nome ILIKE '%" + moradoresDTO.getPrimeiro_nome() + "%' "
                             + "order by primeiro_nome";
                     break;
 
                 case 2: //Pesquisa por id
-                    comando = "SELECT TO_CHAR(data_nasc, 'dd/mm/yyyy') AS data_nasc, id_morador, primeiro_nome,segundo_nome,cidade_atual, cidade_natal, nome_familiar_proximo, grau_parentesco FROM morador WHERE id_morador = " + moradoresDTO.getId_morador() + ";";
+                    comando = "SELECT TO_CHAR(data_nasc, 'dd/mm/yyyy') AS data_nasc, id_morador, primeiro_nome,segundo_nome,cidade_atual, cidade_natal, nome_familiar_proximo, grau_parentesco FROM moradores WHERE id_morador = " + moradoresDTO.getId_morador() + ";";
 
             }//fecha switch opcao
             //Executa o comando SQL no banco de Dados
