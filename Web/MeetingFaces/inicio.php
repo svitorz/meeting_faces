@@ -142,11 +142,8 @@ unset($_SESSION['sucesso']);
     <div class="container-fluid py-5">
         <div class="text-center">
             <h3>
-                Titulo 
+               Arquitetura hostil: o que é e por que é um problema 
             </h3>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aspernatur amet, laudantium esse veritatis, neque, adipisci necessitatibus soluta dolore a officiis impedit doloribus! Reiciendis nostrum error tempore doloremque repellat optio.
-            </p>
         </div>
     </div>
 </section> <!-- Fecha seção -->
@@ -169,12 +166,12 @@ unset($_SESSION['sucesso']);
         </div>
     </div>
 </section> <!-- Fecha seção -->
-<section id="banner3">
+<!-- <section id="banner3">
     <div class="container-fluid text-black text-center py-5">
-        <h4>Titulo</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem vel, doloremque dolor incidunt dolorum quibusdam porro, expedita rem sapiente ut vero laboriosam deleniti blanditiis quisquam eum explicabo perferendis beatae deserunt?</p>
+        <h4></h4>
+        <p></p>
     </div>
-</section>
+</section> -->
 <section id="last">
 <div class="py-5 text-white">
       <div class="container">

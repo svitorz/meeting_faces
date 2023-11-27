@@ -71,7 +71,7 @@ public class AdministradorDAO {
                     + "primeiro_nome = '" + administradorDTO.getPrimeiro_nome() + "', "
                     + "segundo_nome = '" + administradorDTO.getSegundo_nome() + "', "
                     + "email = '" + administradorDTO.getEmail() + "', "
-                    + "senha = " + administradorDTO.getSenha() + "'";
+                    + "senha = crypt(" + administradorDTO.getSenha() + ", gen_salt('bf',8))'";
 
             stmt.execute(comando.toUpperCase());
             ConexaoDAO.con.commit();
