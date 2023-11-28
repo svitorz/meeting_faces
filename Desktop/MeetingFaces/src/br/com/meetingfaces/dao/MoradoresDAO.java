@@ -116,7 +116,10 @@ public class MoradoresDAO {
             stmt = ConexaoDAO.con.createStatement();
             //Comando SQL que sera executado no banco de dados
 
-            comando = "Delete from MORADORES "
+            comando = "DELETE FROM COMENTARIOS "
+                    + "WHERE ID_MORADOR = " 
+                    + moradoresDTO.getId_morador() + "; "
+                    + "Delete from MORADORES "
                     + "where id_morador = " + moradoresDTO.getId_morador();
 
             stmt.execute(comando);

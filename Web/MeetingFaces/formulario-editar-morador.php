@@ -6,7 +6,7 @@ if (!isAdmin()) {
   redireciona();
   die();
 }
-$id_morador = filter_input(INPUT_GET, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
+$id_morador = filter_input(INPUT_POST, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
 

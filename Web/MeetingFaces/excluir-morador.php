@@ -10,7 +10,7 @@ if(!isAdmin()){
 
 require 'conexao/conexao.php';
 
-$id_morador = filter_input(INPUT_GET, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
+$id_morador = filter_input(INPUT_POST, 'id_morador', FILTER_SANITIZE_NUMBER_INT);
 
 $sqlDesc = "DELETE FROM COMENTARIOS WHERE id_morador = ?";
 

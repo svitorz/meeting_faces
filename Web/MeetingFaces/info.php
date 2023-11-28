@@ -11,7 +11,7 @@ if (!autenticado()) {
     die();
 }
 
-$id_morador = filter_input(INPUT_GET, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
+$id_morador = filter_input(INPUT_POST, 'id_morador',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
 $sql = "SELECT TO_CHAR(moradores.data_nasc, 'dd/mm/yyyy') AS data_nasc, TO_CHAR(moradores.data_nasc, 'YYYY') as ano_nasc, moradores.id_morador, moradores.primeiro_nome,moradores.segundo_nome,moradores.cidade_atual, moradores.cidade_natal, moradores.nome_familiar_proximo, grau_parentesco ,ADMINISTRADORES.PRIMEIRO_NOME AS PRIMEIRO_NOME_ADMINISTRADOR,
@@ -49,11 +49,20 @@ require 'header.php';
                         <?= $row['cidade_atual']; ?>
                     </p>
                     <div class="d-flex justify-content-center mb-2">
-                    <a href="formulario-comentario.php?id_morador=<?=$id_morador;?>" class="btn btn-success me-2">Enviar Comentário</a>
+                        <form action="formulario-comentario.php" method="post">
+                            <button type="submit" class="btn btn-success">Enviar comentário</button>
+                            <input type="hidden" name="id_morador" value="<?= $id_morador; ?>">
+                        </form>
                     <?php if(isAdmin()){
                         ?>
-                        <a href="formulario-editar-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-warning me-2">Editar</a>
-                        <a href="excluir-morador.php?id_morador=<?=$id_morador;?>" class="btn btn-danger">Excluir</a>
+                        <form action="formulario-editar-morador.php" method="post">
+                            <input type="hidden" name="id_morador" value="<?= $id_morador; ?>">
+                            <button type="submit" class="btn btn-warning me-2">Editar</button>
+                        </form>
+                        <form action="excluir-morador.php" method="post">
+                            <input type="hidden" name="id_morador" value="<?= $id_morador; ?>">
+                            <button type="submit" class="btn btn-danger me-2">Excluir</button>
+                        </form>
                     <?php 
                     }
                     ?>
@@ -70,7 +79,7 @@ require 'header.php';
                         <?php
                         if(isAdmin()){ 
                         ?>
-                          <th scope="col" style="width: 25%;">ID:</th>
+                          <th scope="col" style="width: 25%;"></th>
                         <?php
                         }
                         ?>
@@ -99,9 +108,12 @@ require 'header.php';
                         <?php
                         if(isAdmin()){
                             ?>
-                        <td>
-                             <?= $rowcomentario['id_usuario']; ?>
-                        </td>
+                        <!-- <td>
+                             <form action="excluir-comentario.php" method="post">
+                                <input type="hidden" name="id_descricao" id="id_descricao" value="<?= $rowcomentario['id_descricao'] ?>" />
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                             </form>
+                        </td> -->
                         </tr>
                         <?php
                            }   

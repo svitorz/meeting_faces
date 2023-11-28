@@ -14,13 +14,10 @@ include 'header.php';
 
 ?>
 <!-- Link JQUERY via CDN -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-<!-- <script type="text/javascript">
-    $(function() {
-        $("#data_nasc").mask("00/00/0000")
-    })
-</script> -->
+
 <script>
     const handlePhone = (event) => {
         let input = event.target

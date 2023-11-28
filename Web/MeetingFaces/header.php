@@ -36,9 +36,13 @@
       <?php } else { ?>
         <!-- caso a sessão tenha sido iniciada, é exibido o botão de perfil e sair -->
       <div class="d-flex">
-          <a <?php if(!isAdmin()){ ?> href="info-usuario.php?id_usuario=<?= id_usuario() ?> <?php } ?>" class="btn btn-outline-dark me-2"> 
-          <i class="fa-solid fa-user"></i>
-          <span class="text-capitalize"> <?= nome_usuario(); ?> </span>
+         <form action="info-usuario.php" method="post">
+           <input type="hidden" name="id_usuario" value="<?= id_usuario(); ?>">
+           <button type="submit" class="text-capitalize mx-2 btn btn-dark">
+             <i class="fa-solid fa-user"></i>
+             <?= nome_usuario(); ?>
+             </button>
+          </form>
           </a>
           <a href="logout.php" class="btn-dark btn me-2">Sair</a>
       </div>

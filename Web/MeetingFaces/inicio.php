@@ -216,7 +216,7 @@ unset($_SESSION['sucesso']);
         <h5 class="text-uppercase">Agradecimentos</h5>
 
         <p>
-          Agradecimentos á todos os professores do curso técnico de informática por auxiliar na documentação e no desenvolvimento do projeto.
+          Agradecimentos à todos os professores do curso técnico de informática por auxiliar na documentação e no desenvolvimento do projeto.
           Em especial ao tutor do projeto, o Dr. Pf. Cecílio Rodas.
         </p>
       </div>

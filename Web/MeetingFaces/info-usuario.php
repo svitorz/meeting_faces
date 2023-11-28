@@ -11,7 +11,7 @@ if (!autenticado()) {
 
 //Página necessária caso o administrador queira saber de quem é o perfil que enviou
 
-$id_usuario = filter_input(INPUT_GET, 'id_usuario',FILTER_SANITIZE_NUMBER_INT);
+$id_usuario = filter_input(INPUT_POST, 'id_usuario',FILTER_SANITIZE_NUMBER_INT);
 
 require 'conexao/conexao.php';
 
@@ -109,10 +109,10 @@ require 'header.php';
                       <tbody>
                       <?php
                       $selectcomentario = 
-                      "SELECT comentario.*, MORADOR.PRIMEIRO_NOME , MORADOR.SEGUNDO_NOME, MORADOR.ID_MORADOR
-                        FROM comentario INNER JOIN MORADOR ON MORADOR.ID_MORADOR=comentario.ID_MORADOR
-                            LEFT JOIN USUARIO ON comentario.ID_USUARIO=USUARIO.ID_USUARIO
-                                WHERE comentario.ID_USUARIO = ?;"; 
+                      "SELECT comentarios.*, MORADORES.PRIMEIRO_NOME , MORADORES.SEGUNDO_NOME, MORADORES.ID_MORADOR
+                        FROM comentarios INNER JOIN MORADORES ON MORADORES.ID_MORADOR=comentarios.ID_MORADOR
+                            LEFT JOIN USUARIOS ON comentarios.ID_USUARIO=USUARIOS.ID_USUARIO
+                                WHERE comentarios.ID_USUARIO = ?;"; 
                       try {
                         //code...
                         $stmt = $conn->prepare($selectcomentario);
